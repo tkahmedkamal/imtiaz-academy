@@ -1,0 +1,112 @@
+{
+  "global":{
+    "index": "Indeks",
+    "name": "Nama",
+    "country": "Negara",
+    "national": "ID Kebangsaan",
+    "email": "Emel",
+    "phone": "Nombor Telefon",
+    "gender": "Jantina",
+    "status": "Status",
+    "active": "Aktif",
+    "pending": "Tangguh",
+    "inactive": "Tidak Aktif",
+    "actions": "Tindakan",
+    "address": "Alamat",
+    "male": "Lelaki",
+    "female": "Perempuan",
+    "choose": "Pilih",
+    "delete": "Padam",
+    "cancel": "Batal",
+    "edit": "Edit",
+    "archive": "Arkib",
+    "loading": "Memuatkan",
+    "all": "Semua",
+    "search": "Cari",
+    "details": "Butiran",
+    "personal": "Peribadi",
+    "collective": "Kolektif"
+  },
+  "pagination": {
+    "showing": "Memaparkan",
+    "to": "hingga",
+    "of": "daripada",
+    "results": "Hasil",
+    "next": "Seterusnya",
+    "prev": "Sebelumnya"
+  },
+  "confirmDelete": {
+    "message": "Adakah anda pasti ingin padam?"
+  },
+  "archive": {
+    "label": "Arkib",
+    "message": "Adakah anda pasti mahu mengarkibkan?"
+  },
+  "sidebar": {
+    "dashboard": "Papan Pemuka",
+    "students": "Pelajar",
+    "teachers": "Guru",
+    "educational": "Program Pendidikan"
+  },
+  "students": {
+    "title": "Pelajar",
+    "editTitle": "Edit Pelajar",
+    "addTitle": "Tambah Pelajar Baru",
+    "form": {
+      "state": "Negeri",
+      "job": "Pekerjaan",
+      "age": "Umur",
+      "placeholders": {
+        "name": "Masukkan nama anda",
+        "country": "Masukkan negara anda",
+        "state": "Masukkan negeri anda",
+        "phone": "Masukkan nombor telefon anda",
+        "national": "Masukkan ID kebangsaan anda",
+        "job": "Masukkan pekerjaan anda",
+        "address": "Masukkan alamat anda",
+        "age": "Masukkan umur anda"
+      }
+    },
+    "buttons": {
+      "add": "Pelajar baru",
+      "edit": "Edit Pelajar"
+    }
+  },
+  "educational": {
+    "addTitle": "Tambah Program baharu",
+    "editTitle": "Edit Program",
+    "form": {
+      "placeholders": {
+        "name": "Masukkan nama anda"
+      }
+    },
+    "buttons": {
+      "add": "Program baru",
+      "edit": "Edit program"
+    },
+    "details": {
+      "title": "Butiran Program Pendidikan",
+      "addTitle": "Tambah Butiran baharu",
+      "editTitle": "Edit Butiran",
+      "texts": {
+        "sub": "Nama Sub Program",
+        "numOfClasses": "Bilangan Kelas",
+        "minutes": "Tempoh Kelas Dalam Minit",
+        "numOfHours": "Bilangan Jam",
+        "cost": "Kos Program",
+        "discount": "Diskaun",
+        "costAfterDiscount": "Kos Program Selepas Diskaun",
+        "programType": "Jenis Program"
+      },
+      "form":{
+        "placeholders": {
+            "sub": "Masukkan Nama Sub Program"
+        }
+      },
+      "buttons": {
+        "add": "Butiran baru",
+        "edit": "Edit butiran"
+      }
+    }
+  }
+}

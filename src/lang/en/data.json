@@ -1,0 +1,112 @@
+{
+  "global":{
+    "index": "Index",
+    "name": "Name",
+    "country": "Country",
+    "national": "NationalID",
+    "email": "Email",
+    "phone": "Phone Number",
+    "gender": "Gender",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "actions": "Actions",
+    "pending": "Pending",
+    "address": "Address",
+    "male": "Male",
+    "female": "Female",
+    "choose": "Choose",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "archive": "Archive",
+    "loading": "Loading",
+    "all": "All",
+    "search": "Search",
+    "details": "Details",
+    "personal": "Personal",
+    "collective": "Collective"
+  },
+  "pagination": {
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "results": "Results",
+    "next": "Next",
+    "prev": "Prev"
+  },
+  "confirmDelete": {
+    "message": "Are you sure want to delete ?"
+  },
+  "archive": {
+    "label": "Archive",
+    "message": "Are you sure want to archive ?"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "students": "Students",
+    "teachers": "Teachers",
+    "educational": "Educational Program"
+  },
+  "students": {
+    "title": "Students",
+    "addTitle": "Add new Student",
+    "editTitle": "Edit Student",
+    "form": {
+      "state": "State",
+      "job": "Job",
+      "age": "Age",
+      "placeholders": {
+        "name": "Enter your name",
+        "country": "Enter your country",
+        "state": "Enter your state",
+        "phone": "Enter your phone number",
+        "national": "Enter your national ID",
+        "job": "Enter your job",
+        "address": "Enter your address",
+        "age": "Enter your age"
+      }
+    },
+    "buttons": {
+      "add": "New student",
+      "edit": "Edit Student"
+    }
+  },
+  "educational": {
+    "addTitle": "Add new Program",
+    "editTitle": "Edit Program",
+    "form": {
+      "placeholders": {
+        "name": "Enter your name"
+      }
+    },
+    "buttons": {
+      "add": "New program",
+      "edit": "Edit program"
+    },
+    "details": {
+      "title": "Educational Program Details",
+      "addTitle": "Add new Details",
+      "editTitle": "Edit Details",
+      "texts": {
+        "sub": "Sub Program Name",
+        "numOfClasses": "Number of Classes",
+        "minutes": "Class Duration In Minutes",
+        "numOfHours": "Number of Hours",
+        "cost": "Program Cost",
+        "discount": "Discount",
+        "costAfterDiscount": "Program Cost After Discount",
+        "programType": "Program Type"
+      },
+      "form":{
+        "placeholders": {
+            "sub": "Enter Sub Program Name"
+        }
+      },
+      "buttons": {
+        "add": "New details",
+        "edit": "Edit details"
+      }
+    }
+  }
+}
