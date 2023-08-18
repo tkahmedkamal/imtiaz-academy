@@ -48,7 +48,8 @@
     "students": "Students",
     "teachers": "Teachers",
     "educational-program": "Educational Program",
-    "details": "Details"
+    "details": "Details",
+    "course": "Course"
   },
   "students": {
     "title": "Students",
@@ -100,28 +101,28 @@
       "add": "New program",
       "edit": "Edit program"
     },
-    "details": {
-      "title": "Educational Program Details",
-      "addTitle": "Add new Details",
-      "editTitle": "Edit Details",
+    "course": {
+      "title": "Course",
+      "addTitle": "Add new course",
+      "editTitle": "Edit course",
       "texts": {
-        "sub": "Sub Program Name",
+        "name": "Name",
         "numOfClasses": "Number of Classes",
         "minutes": "Class Duration In Minutes",
         "numOfHours": "Number of Hours",
         "cost": "Program Cost",
         "discount": "Discount",
-        "costAfterDiscount": "Program Cost After Discount",
+        "costAfterDiscount": "Cost After Discount",
         "programType": "Program Type"
       },
       "form":{
         "placeholders": {
-            "sub": "Enter Sub Program Name"
+            "name": "Enter Name"
         }
       },
       "buttons": {
-        "add": "New details",
-        "edit": "Edit details"
+        "add": "New course",
+        "edit": "Edit course"
       }
     }
   }

@@ -48,7 +48,8 @@
     "students": "Pelajar",
     "teachers": "Guru",
     "educational-program": "Program Pendidikan",
-    "details": "Butiran"
+    "details": "Butiran",
+    "course": "Kursus"
   },
   "students": {
     "title": "Pelajar",
@@ -100,23 +101,23 @@
       "add": "Program baru",
       "edit": "Edit program"
     },
-    "details": {
-      "title": "Butiran Program Pendidikan",
-      "addTitle": "Tambah Butiran baharu",
-      "editTitle": "Edit Butiran",
+    "course": {
+      "title": "Kursus",
+      "addTitle": "tambah Kursus baharu",
+      "editTitle": "edit Kursus",
       "texts": {
-        "sub": "Nama Sub Program",
+        "name": "Nama",
         "numOfClasses": "Bilangan Kelas",
         "minutes": "Tempoh Kelas Dalam Minit",
         "numOfHours": "Bilangan Jam",
         "cost": "Kos Program",
         "discount": "Diskaun",
-        "costAfterDiscount": "Kos Program Selepas Diskaun",
+        "costAfterDiscount": "Kos Selepas Diskaun",
         "programType": "Jenis Program"
       },
       "form":{
         "placeholders": {
-            "sub": "Masukkan Nama Sub Program"
+            "name": "Masukkan Nama"
         }
       },
       "buttons": {
