@@ -24,7 +24,7 @@
     "all": "All",
     "search": "Search",
     "personal": "Personal",
-    "collective": "Collective"
+    "group": "Group"
   },
   "pagination": {
     "showing": "Showing",
