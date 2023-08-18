@@ -5,7 +5,7 @@ const obj = {
   darkMode: 'class',
   theme: {
     screens: {
-      xs: '375px',
+      xs: '320px',
       sm: '768px',
       md: '992px',
       lg: '1200px',
@@ -55,7 +55,7 @@ const obj = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-debug-screens')],
 };
 
 export default obj;
