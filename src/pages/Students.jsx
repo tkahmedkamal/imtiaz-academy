@@ -3,7 +3,6 @@ import {
   TableOperational,
   Filters,
   StatusFilter,
-  GenderFilter,
   CountryFilter,
 } from '../ui';
 import { AddStudent, StudentsTable } from '../features/students';
@@ -22,7 +21,6 @@ const Student = () => {
         >
           <Filters>
             <StatusFilter />
-            <GenderFilter />
             <CountryFilter />
           </Filters>
         </TableOperational>
