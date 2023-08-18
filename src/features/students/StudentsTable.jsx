@@ -36,10 +36,8 @@ const StudentsTable = () => {
             <Table.Th>{t('global.index')}</Table.Th>
             <Table.Th>{t('global.name')}</Table.Th>
             <Table.Th>{t('global.country')}</Table.Th>
-            <Table.Th>{t('global.national')}</Table.Th>
-            <Table.Th>{t('global.email')}</Table.Th>
             <Table.Th>{t('global.phone')}</Table.Th>
-            <Table.Th>{t('global.gender')}</Table.Th>
+            <Table.Th>{t('global.credit')}</Table.Th>
             <Table.Th>{t('global.status')}</Table.Th>
             <Table.Th>{t('global.actions')}</Table.Th>
           </Table.Thead>
