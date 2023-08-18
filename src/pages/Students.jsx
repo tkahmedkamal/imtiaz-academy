@@ -22,8 +22,8 @@ const Student = () => {
         >
           <Filters>
             <StatusFilter />
-            <CountryFilter />
             <CreditFilter />
+            <CountryFilter />
           </Filters>
         </TableOperational>
       </Modal>
