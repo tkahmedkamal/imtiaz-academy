@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { getStudents } from '../../services/studentsApi';
 import { useStudentsCtx } from '../../context/StudentContext';
+import { toast } from 'react-hot-toast';
 
 const useStudents = () => {
   const queryClient = useQueryClient();
@@ -17,14 +18,7 @@ const useStudents = () => {
     pending: false,
   };
 
-  const gender = {
-    all: null,
-    male: true,
-    female: false,
-  };
-
   const statusValue = searchParams.get('status') || 'all';
-  const genderValue = searchParams.get('gender') || 'all';
   const countryValue = searchParams.get('country') || 'all';
   const checkCountryValue =
     !countryValue || countryValue === 'all'
@@ -32,17 +26,23 @@ const useStudents = () => {
       : `countryPr=${countryValue}`;
   const searchValue = searchParams.get('search') || '';
 
-  const filterQueries = `isActive=${status[statusValue]},isMale=${gender[genderValue]},${checkCountryValue},namePr=${searchValue},nameSc=${searchValue}&isGeneralSearch=true`;
+  const filterQueries = `isActive=${status[statusValue]},${checkCountryValue},namePr=${searchValue},nameSc=${searchValue}&isGeneralSearch=true`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['students', filterQueries, currentPage],
     queryFn: () => getStudents(currentPage, filterQueries),
+    onError: ({ message }) => {
+      toast.error(message);
+    },
   });
 
   if (currentPage < pageCount) {
     queryClient.prefetchQuery({
       queryKey: ['students', filterQueries, currentPage + 1],
       queryFn: () => getStudents(currentPage + 1, filterQueries),
+      onError: ({ message }) => {
+        toast.error(message);
+      },
     });
   }
 
@@ -50,6 +50,9 @@ const useStudents = () => {
     queryClient.prefetchQuery({
       queryKey: ['students', filterQueries, currentPage - 1],
       queryFn: () => getStudents(currentPage - 1, filterQueries),
+      onError: ({ message }) => {
+        toast.error(message);
+      },
     });
   }
 
