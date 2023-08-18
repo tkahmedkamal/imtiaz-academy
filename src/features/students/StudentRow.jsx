@@ -22,14 +22,11 @@ const StudentRow = ({ index, student }) => {
     nameSc,
     countryPr,
     countrySc,
-    nationalId,
-    email,
     phoneNumber,
-    genderPr,
-    genderSc,
     isActive,
     statusTypePr,
     statusTypeSc,
+    credit,
   } = student;
 
   return (
@@ -37,10 +34,18 @@ const StudentRow = ({ index, student }) => {
       <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
       <Table.Td>{lng === 'en' ? namePr : nameSc}</Table.Td>
       <Table.Td>{lng === 'en' ? countryPr : countrySc}</Table.Td>
-      <Table.Td>{nationalId}</Table.Td>
-      <Table.Td>{email}</Table.Td>
       <Table.Td>{phoneNumber}</Table.Td>
-      <Table.Td>{lng === 'en' ? genderPr : genderSc}</Table.Td>
+      <Table.Td>
+        {credit < 0 ? (
+          <Tag label={credit} status='warn' />
+        ) : credit === 0 ? (
+          <Tag label={credit} status='success' />
+        ) : credit > 0 ? (
+          <Tag label={credit} status='error' />
+        ) : (
+          ''
+        )}
+      </Table.Td>
       <Table.Td>
         {isActive ? (
           <Tag
