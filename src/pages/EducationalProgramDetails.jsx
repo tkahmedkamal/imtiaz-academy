@@ -1,4 +1,4 @@
-import { Modal, TableOperational } from '../ui';
+import { Modal, TableOperational, ProgramTypeFilter } from '../ui';
 import { EducationalDetailsTable } from '../features/educationalDetails';
 import EducationalDetailsProvider from '../context/EducationalDetailsContext';
 import { withPage } from '../hocs';
@@ -7,7 +7,9 @@ const EducationalProgramDetails = () => {
   return (
     <EducationalDetailsProvider>
       <Modal>
-        <TableOperational />
+        <TableOperational>
+          <ProgramTypeFilter />
+        </TableOperational>
       </Modal>
       <EducationalDetailsTable />
     </EducationalDetailsProvider>

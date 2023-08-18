@@ -9,9 +9,16 @@ const useEducationalDetails = () => {
   const { pageCount } = useEducationalCtx();
   const { prefetchQuery } = useQueryClient();
 
+  const programTypeStatus = {
+    all: '',
+    personal: true,
+    group: false,
+  };
+
   const currentPage = +searchParams.get('page') || 1;
   const searchValue = searchParams.get('search') || '';
-  const filterQueries = `subProgramNamePr=${searchValue}&isGeneralSearch=true`;
+  const programType = searchParams.get('programType') || 'all';
+  const filterQueries = `subProgramNamePr=${searchValue},programTypeId=${programTypeStatus[programType]}&isGeneralSearch=true`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['educational-details', currentPage, filterQueries],
