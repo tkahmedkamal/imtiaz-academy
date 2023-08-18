@@ -1,11 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { BiEdit } from 'react-icons/bi';
 import { LuFileArchive } from 'react-icons/lu';
+import { MdPayment } from 'react-icons/md';
+import { TbInfoSquare } from 'react-icons/tb';
 
 import { Table, ActionBtn, Modal, Tag, Confirm } from '../../ui';
 import EditStudentForm from './EditStudentForm';
 import { useConfig } from '../../context/ConfigContext';
 import useArchiveStudent from './useArchiveStudent';
+import AddPaymentTransactionForm from './AddPaymentTransactionForm.jsx';
 import { Archive } from '../../assets';
 
 const StudentRow = ({ index, student }) => {
@@ -62,6 +65,22 @@ const StudentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
+          <Modal.Open opens={`add-student-transaction-${id}`}>
+            <ActionBtn
+              title={t('students.transaction.title')}
+              icon={<MdPayment />}
+              status='primary'
+            />
+          </Modal.Open>
+
+          <Modal.Open opens={`info-student-${id}`}>
+            <ActionBtn
+              title={t('global.info')}
+              icon={<TbInfoSquare />}
+              status='primary'
+            />
+          </Modal.Open>
+
           <Modal.Open opens={`archive-student-${id}`}>
             <ActionBtn
               title={t('global.archive')}
@@ -72,6 +91,10 @@ const StudentRow = ({ index, student }) => {
 
           <Modal.Window name={`edit-student-${id}`}>
             <EditStudentForm student={student} />
+          </Modal.Window>
+
+          <Modal.Window name={`add-student-transaction-${id}`}>
+            <AddPaymentTransactionForm studentId={id} />
           </Modal.Window>
 
           <Modal.Window name={`archive-student-${id}`}>

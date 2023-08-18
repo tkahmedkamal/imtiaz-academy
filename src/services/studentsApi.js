@@ -30,7 +30,7 @@ export const addStudent = async student => {
     });
 
     if (data.status === 406) {
-      throw Error(data.msg);
+      return Promise.reject(Error(data?.msg));
     }
 
     return data;
@@ -52,7 +52,7 @@ export const editStudent = async student => {
     });
 
     if (data.status === 406) {
-      throw Error(data.msg);
+      return Promise.reject(Error(data?.msg));
     }
 
     return data;
@@ -74,7 +74,42 @@ export const deleteStudent = async id => {
     });
 
     if (data.status === 406) {
-      throw Error(data.msg);
+      return Promise.reject(Error(data?.msg));
+    }
+
+    return data;
+  } catch ({
+    message,
+    response: {
+      data: { status, title },
+    },
+  }) {
+    if (status === 404) {
+      throw Error(`Student is ${title}`);
+    }
+
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+
+export const addPaymentTransaction = async studentPaymentTrans => {
+  try {
+    const { data } = await axiosConfig.post(
+      `/api/student/fee`,
+      studentPaymentTrans,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+
+    if (data.status === 406) {
+      return Promise.reject(Error(data?.msg));
     }
 
     return data;
@@ -109,7 +144,7 @@ export const archiveStudent = async id => {
     );
 
     if (data.status === 406) {
-      throw Error(data.msg);
+      return Promise.reject(Error(data?.msg));
     }
 
     return data;

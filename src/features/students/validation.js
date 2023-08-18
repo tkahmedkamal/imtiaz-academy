@@ -1,67 +1,63 @@
-import * as yup from 'yup';
+import { object, string, number, date } from 'yup';
 
-const studentSchema = yup.object().shape({
-  namePr: yup
-    .string()
+const studentSchema = object().shape({
+  namePr: string()
     .min(3, 'Name must be three or more letters')
     .required('Name is a required field'),
-  nameSc: yup
-    .string()
+  nameSc: string()
     .min(3, 'Name must be three or more letters')
     .required('Name is a required field'),
-  countryPr: yup
-    .string()
+  countryPr: string()
     .min(3, 'Country must be three or more letters')
     .required('Country is a required field'),
-  countrySc: yup
-    .string()
+  countrySc: string()
     .min(3, 'Country must be three or more letters')
     .required('Country is a required field'),
-  statePr: yup
-    .string()
+  statePr: string()
     .min(3, 'State must be three or more letters')
     .required('State is a required field'),
-  stateSc: yup
-    .string()
+  stateSc: string()
     .min(3, 'State must be three or more letters')
     .required('State is a required field'),
-  email: yup
-    .string()
+  email: string()
     .email('Email is invalid')
     .required('Email is a required field'),
-  phoneNumber: yup
-    .string()
+  phoneNumber: string()
     .min(11, 'The phone number must be eleven digits')
     .required('Phone number is a required field'),
-  nationalId: yup
-    .string()
+  nationalId: string()
     .min(9, 'The nationalId must be eleven digits')
     .required('National-ID is a required field'),
-  jobPr: yup
-    .string()
+  jobPr: string()
     .min(3, 'Job must be three or more letters')
     .required('Job is a required field'),
-  jobSc: yup
-    .string()
+  jobSc: string()
     .min(3, 'Job must be three or more letters')
     .required('Job is a required field'),
-  addressPr: yup
-    .string()
+  addressPr: string()
     .min(3, 'Address must be three or more letters')
     .required('Address is a required field'),
-  addressSc: yup
-    .string()
+  addressSc: string()
     .min(3, 'Address must be three or more letters')
     .required('Address is a required field'),
-  gender: yup
-    .string()
+  gender: string()
     .oneOf(['male', 'female'], 'The gender must')
     .required('Gender is a required field'),
-  age: yup
-    .number()
+  age: number()
     .min(5, 'The minimum age is 5')
     .max(100, 'The maximum age is 100')
     .required('Age is a required field'),
 });
 
-export { studentSchema };
+const paymentTransactionSchema = object().shape({
+  amountPaid: number()
+    .min(5, 'The amount paid is 5 minimum')
+    .required('Amount paid is a required field'),
+  paidTime: date().required('Paid time is a required field'),
+  referancePaidNumber: string()
+    .min(17, 'Paid reference number must not exceed 17 characters')
+    .max(17, 'Paid reference number must not exceed 17 characters')
+    .required('Reference paid number is a required field'),
+});
+
+export { studentSchema, paymentTransactionSchema };
