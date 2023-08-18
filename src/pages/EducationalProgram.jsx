@@ -25,4 +25,4 @@ const EducationalProgram = () => {
   );
 };
 
-export default withPage(EducationalProgram, 'sidebar.educational');
+export default withPage(EducationalProgram, 'sidebar.educational-program');

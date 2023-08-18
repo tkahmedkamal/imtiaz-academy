@@ -29,7 +29,7 @@ const Sidebar = () => {
       link: '/teachers',
     },
     {
-      label: t('sidebar.educational'),
+      label: t('sidebar.educational-program'),
       icon: <HiOutlineUserGroup />,
       link: '/educational-program',
     },
