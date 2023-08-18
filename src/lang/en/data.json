@@ -25,7 +25,8 @@
     "search": "Search",
     "personal": "Personal",
     "group": "Group",
-    "info": "Information"
+    "info": "Information",
+    "credit": "Credit"
   },
   "pagination": {
     "showing": "Showing",
