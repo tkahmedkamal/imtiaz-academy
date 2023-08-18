@@ -119,7 +119,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
                 id='inputProgramTypeId'
               >
                 <option value={true}>{t('global.personal')}</option>
-                <option value={false}>{t('global.collective')}</option>
+                <option value={false}>{t('global.group')}</option>
               </Select>
             </FormControl>
 
