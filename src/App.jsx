@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
 import { HiOutlineX } from 'react-icons/hi';
@@ -18,6 +18,8 @@ import {
 
 const App = () => {
   const [toggle, setToggle] = useState(true);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleToggleSidebar = () => {
     setToggle(prev => !prev);
@@ -30,6 +32,12 @@ const App = () => {
       setToggle(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (pathname === '/') {
+      navigate('/dashboard');
+    }
+  }, [navigate, pathname]);
 
   return (
     <div className='flex w-full'>
@@ -52,7 +60,7 @@ const App = () => {
       </button>
 
       <Routes>
-        <Route path='/' element={<AppLayout toggle={toggle} />}>
+        <Route path='/dashboard' element={<AppLayout toggle={toggle} />}>
           <Route index element={<Dashboard />} />
           <Route path='students' element={<Student />} />
           <Route path='teachers' element={<Teachers />} />

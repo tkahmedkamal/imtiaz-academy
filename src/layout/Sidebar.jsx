@@ -16,22 +16,22 @@ const Sidebar = () => {
     {
       label: t('sidebar.dashboard'),
       icon: <AiOutlineDashboard />,
-      link: '/',
+      link: '/dashboard',
     },
     {
       label: t('sidebar.students'),
       icon: <HiOutlineUsers />,
-      link: '/students',
+      link: '/dashboard/students',
     },
     {
       label: t('sidebar.teachers'),
       icon: <HiOutlineUserGroup />,
-      link: '/teachers',
+      link: '/dashboard/teachers',
     },
     {
       label: t('sidebar.educational-program'),
       icon: <HiOutlineUserGroup />,
-      link: '/educational-program',
+      link: '/dashboard/educational-program',
     },
   ];
 
