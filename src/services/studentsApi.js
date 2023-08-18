@@ -110,8 +110,6 @@ export const addPaymentTransaction = async studentPaymentTrans => {
       },
     );
 
-    console.log(data);
-
     if (data.status === 406) {
       return Promise.reject(Error(data?.msg));
     }
