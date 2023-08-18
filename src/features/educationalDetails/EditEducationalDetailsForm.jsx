@@ -24,7 +24,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
     const data = {
       ...values,
       id,
-      programTypeId: values.programTypeId === 'true' ? true : false,
+      programTypeId: values.programTypeId === 'true',
     };
 
     mutate(data);
@@ -58,16 +58,18 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
                 placeholder={`${t(
                   'educational.details.form.placeholders.sub',
                 )} ( English )`}
-                id={`${t('educational.details.texts.sub')}-en`}
+                label={`${t('educational.details.texts.sub')}-en`}
                 value={values.subProgramNamePr}
+                id='inputSubProgramNamePr'
               />
               <Input
                 name='subProgramNameSc'
                 placeholder={`${t(
                   'educational.details.form.placeholders.sub',
                 )} ( Malaysia )`}
-                id={`${t('educational.details.texts.sub')}-ml`}
+                label={`${t('educational.details.texts.sub')}-ml`}
                 value={values.subProgramNameSc}
+                id='inputSubProgramNameSc'
               />
             </FormControl>
 
@@ -75,16 +77,18 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
               <Input
                 name='numberOfClasses'
                 placeholder='0'
-                id={`${t('educational.details.texts.numOfClasses')}`}
+                label={`${t('educational.details.texts.numOfClasses')}`}
                 type='number'
                 value={values.numberOfClasses}
+                id='inputNumberOfClasses'
               />
               <Input
                 name='classDurationInMinutes'
                 placeholder='0'
-                id={`${t('educational.details.texts.minutes')}`}
+                label={`${t('educational.details.texts.minutes')}`}
                 type='number'
                 value={values.classDurationInMinutes}
+                id='inputClassDurationInMinutes'
               />
             </FormControl>
 
@@ -92,16 +96,18 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
               <Input
                 name='programCost'
                 placeholder='0'
-                id={`${t('educational.details.texts.cost')}`}
+                label={`${t('educational.details.texts.cost')}`}
                 type='number'
                 value={values.programCost}
+                id='inputProgramCost'
               />
               <Input
                 name='discount'
                 placeholder='0'
-                id={`${t('educational.details.texts.discount')}`}
+                label={`${t('educational.details.texts.discount')}`}
                 type='number'
                 value={values.discount}
+                id='inputDiscount'
               />
             </FormControl>
 
@@ -110,6 +116,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
                 label={t('educational.details.texts.programType')}
                 name='programTypeId'
                 value={values.programTypeId}
+                id='inputProgramTypeId'
               >
                 <option value={true}>{t('global.personal')}</option>
                 <option value={false}>{t('global.collective')}</option>

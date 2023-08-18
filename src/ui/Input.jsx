@@ -1,15 +1,15 @@
 import { useField } from 'formik';
 
-const Input = ({ ...props }) => {
+const Input = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
     <div className='w-full'>
       <label
-        htmlFor={props.id.toLowerCase()}
+        htmlFor={props.id.split(' ').join('')}
         className='mb-2 block font-publicSans text-xs font-semibold capitalize text-primary-text/80 dark:text-dark-secondary-text'
       >
-        {props.id.split('-').join(' ')}
+        {label.split('-').join(' ')}
       </label>
 
       <input

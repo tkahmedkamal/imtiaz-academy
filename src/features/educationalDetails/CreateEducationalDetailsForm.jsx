@@ -12,7 +12,7 @@ const CreateEducationalDetailsForm = ({ programId, closeModal }) => {
   const handleSubmit = values => {
     const data = {
       ...values,
-      programTypeId: values.programTypeId === 'true' ? true : false,
+      programTypeId: values.programTypeId === 'true',
     };
 
     mutate(data);
@@ -38,7 +38,7 @@ const CreateEducationalDetailsForm = ({ programId, closeModal }) => {
         validationSchema={educationalDetailsSchema}
         onSubmit={handleSubmit}
       >
-        {props => (
+        {() => (
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Input
@@ -46,14 +46,16 @@ const CreateEducationalDetailsForm = ({ programId, closeModal }) => {
                 placeholder={`${t(
                   'educational.details.form.placeholders.sub',
                 )} ( English )`}
-                id={`${t('educational.details.texts.sub')}-en`}
+                label={`${t('educational.details.texts.sub')}-en`}
+                id='inputSubProgramPr'
               />
               <Input
                 name='subProgramNameSc'
                 placeholder={`${t(
                   'educational.details.form.placeholders.sub',
                 )} ( Malaysia )`}
-                id={`${t('educational.details.texts.sub')}-ml`}
+                label={`${t('educational.details.texts.sub')}-ml`}
+                id='inputSubProgramSc'
               />
             </FormControl>
 
@@ -61,14 +63,16 @@ const CreateEducationalDetailsForm = ({ programId, closeModal }) => {
               <Input
                 name='numberOfClasses'
                 placeholder='0'
-                id={`${t('educational.details.texts.numOfClasses')}`}
+                label={`${t('educational.details.texts.numOfClasses')}`}
                 type='number'
+                id='inputNumberOfClasses'
               />
               <Input
                 name='classDurationInMinutes'
                 placeholder='0'
-                id={`${t('educational.details.texts.minutes')}`}
+                label={`${t('educational.details.texts.minutes')}`}
                 type='number'
+                id='inputClassDurationInMinutes'
               />
             </FormControl>
 
@@ -76,14 +80,16 @@ const CreateEducationalDetailsForm = ({ programId, closeModal }) => {
               <Input
                 name='programCost'
                 placeholder='0'
-                id={`${t('educational.details.texts.cost')}`}
+                label={`${t('educational.details.texts.cost')}`}
                 type='number'
+                id='inputProgramCost'
               />
               <Input
                 name='discount'
                 placeholder='0'
-                id={`${t('educational.details.texts.discount')}`}
+                label={`${t('educational.details.texts.discount')}`}
                 type='number'
+                id='inputDiscount'
               />
             </FormControl>
 
@@ -91,6 +97,7 @@ const CreateEducationalDetailsForm = ({ programId, closeModal }) => {
               <Select
                 label={t('educational.details.texts.programType')}
                 name='programTypeId'
+                id='inputProgramTypeId'
               >
                 <option value='true'>{t('global.personal')}</option>
                 <option value='false'>{t('global.collective')}</option>

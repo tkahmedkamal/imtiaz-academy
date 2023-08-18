@@ -34,16 +34,18 @@ const EditEducationalForm = ({ program, closeModal }) => {
                 placeholder={`${t(
                   'educational.form.placeholders.name',
                 )} ( English )`}
-                id={`${t('global.name')}-en`}
+                label={`${t('global.name')}-en`}
                 value={values.namePr}
+                id='inputNamePr'
               />
               <Input
                 name='nameSc'
                 placeholder={`${t(
                   'educational.form.placeholders.name',
                 )} ( Malaysia )`}
-                id={`${t('global.name')}-ml`}
+                label={`${t('global.name')}-ml`}
                 value={values.nameSc}
+                id='inputNameSc'
               />
             </FormControl>
 

@@ -13,8 +13,8 @@ const CreateStudentForm = ({ closeModal }) => {
     const data = {
       ...values,
       registrationDate: new Date().toISOString(),
-      isMale: values.gender === 'male' ? true : false,
-      isActive: values.active === 'active' ? true : false,
+      isMale: values.gender === 'male',
+      isActive: values.active === 'active',
     };
     delete data.active;
     delete data.gender;
@@ -50,7 +50,7 @@ const CreateStudentForm = ({ closeModal }) => {
         validationSchema={studentSchema}
         onSubmit={handleSubmit}
       >
-        {props => (
+        {() => (
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Input
@@ -58,14 +58,16 @@ const CreateStudentForm = ({ closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.name',
                 )} ( English )`}
-                id={`${t('global.name')}-en`}
+                label={`${t('global.name')}-en`}
+                id='inputNamePr'
               />
               <Input
                 name='nameSc'
                 placeholder={`${t(
                   'students.form.placeholders.name',
                 )} ( Malaysia )`}
-                id={`${t('global.name')}-ml`}
+                label={`${t('global.name')}-ml`}
+                id='inputNameSc'
               />
             </FormControl>
 
@@ -75,14 +77,16 @@ const CreateStudentForm = ({ closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.country',
                 )} ( English )`}
-                id={`${t('global.country')}-en`}
+                label={`${t('global.country')}-en`}
+                id='inputCountryPr'
               />
               <Input
                 name='countrySc'
                 placeholder={`${t(
                   'students.form.placeholders.country',
                 )} ( Malaysia )`}
-                id={`${t('global.country')}-ml`}
+                label={`${t('global.country')}-ml`}
+                id='inputCountrySc'
               />
             </FormControl>
 
@@ -92,14 +96,16 @@ const CreateStudentForm = ({ closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.state',
                 )} ( English )`}
-                id={`${t('students.form.state')}-en`}
+                label={`${t('students.form.state')}-en`}
+                id='inputStatePr'
               />
               <Input
                 name='stateSc'
                 placeholder={`${t(
                   'students.form.placeholders.state',
                 )} ( Malaysia )`}
-                id={`${t('students.form.state')}-ml`}
+                label={`${t('students.form.state')}-ml`}
+                id='inputStateSc'
               />
             </FormControl>
 
@@ -107,19 +113,22 @@ const CreateStudentForm = ({ closeModal }) => {
               <Input
                 name='email'
                 placeholder='example@example.com'
-                id={t('global.email')}
+                label={t('global.email')}
+                id='inputEmail'
               />
               <Input
                 name='phoneNumber'
                 placeholder={t('students.form.placeholders.phone')}
-                id={t('global.phone')}
+                label={t('global.phone')}
+                id='inputPhoneNumber'
               />
             </FormControl>
 
             <Input
               name='nationalId'
               placeholder={t('students.form.placeholders.national')}
-              id={t('global.national')}
+              label={t('global.national')}
+              id='inputNationalId'
             />
 
             <FormControl>
@@ -128,14 +137,16 @@ const CreateStudentForm = ({ closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.job',
                 )} ( English )`}
-                id={`${t('students.form.job')}-en`}
+                label={`${t('students.form.job')}-en`}
+                id='inputJobPr'
               />
               <Input
                 name='jobSc'
                 placeholder={`${t(
                   'students.form.placeholders.job',
                 )} ( Malaysia )`}
-                id={`${t('students.form.job')}-ml`}
+                label={`${t('students.form.job')}-ml`}
+                id='inputJobSc'
               />
             </FormControl>
 
@@ -145,23 +156,25 @@ const CreateStudentForm = ({ closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.address',
                 )} ( English )`}
-                id={`${t('global.address')}-en`}
+                label={`${t('global.address')}-en`}
+                id='inputAddressPr'
               />
               <Input
                 name='addressSc'
                 placeholder={`${t(
                   'students.form.placeholders.address',
                 )} ( Malaysia )`}
-                id={`${t('global.address')}-ml`}
+                label={`${t('global.address')}-ml`}
+                id='inputAddressSc'
               />
             </FormControl>
 
             <FormControl>
-              <Select label={t('global.gender')} name='gender'>
+              <Select label={t('global.gender')} name='gender' id='inputGender'>
                 <option value='male'>{t('global.male')}</option>
                 <option value='female'>{t('global.female')}</option>
               </Select>
-              <Select label={t('global.status')} name='active'>
+              <Select label={t('global.status')} name='active' id='inputStatus'>
                 <option value='active'>{t('global.active')}</option>
                 <option value='inactive'>{t('global.inactive')}</option>
               </Select>
@@ -170,8 +183,9 @@ const CreateStudentForm = ({ closeModal }) => {
             <Input
               name='age'
               placeholder={t('students.form.placeholders.age')}
-              id={t('students.form.age')}
+              label={t('students.form.age')}
               type='number'
+              id='inputAge'
               min='5'
               max='100'
             />

@@ -25,7 +25,7 @@ const CreateEducationalForm = ({ closeModal }) => {
         validationSchema={educationalSchema}
         onSubmit={handleSubmit}
       >
-        {props => (
+        {() => (
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Input
@@ -33,14 +33,16 @@ const CreateEducationalForm = ({ closeModal }) => {
                 placeholder={`${t(
                   'educational.form.placeholders.name',
                 )} ( English )`}
-                id={`${t('global.name')}-en`}
+                label={`${t('global.name')}-en`}
+                id='inputNamePr'
               />
               <Input
                 name='nameSc'
                 placeholder={`${t(
                   'educational.form.placeholders.name',
                 )} ( Malaysia )`}
-                id={`${t('global.name')}-ml`}
+                label={`${t('global.name')}-ml`}
+                id='inputNameSc'
               />
             </FormControl>
 

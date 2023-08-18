@@ -32,8 +32,8 @@ const EditStudentForm = ({ student, closeModal }) => {
     const data = {
       ...student,
       ...values,
-      isMale: values.gender === 'male' ? true : false,
-      isActive: values.active === 'active' ? true : false,
+      isMale: values.gender === 'male',
+      isActive: values.active === 'active',
     };
     delete data.active;
     delete data.gender;
@@ -77,7 +77,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.name',
                 )} ( English )`}
-                id={`${t('global.name')}-en`}
+                label={`${t('global.name')}-en`}
+                id='inputNamePr'
                 value={values.namePr}
               />
               <Input
@@ -85,7 +86,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.name',
                 )} ( Malaysia )`}
-                id={`${t('global.name')}-ml`}
+                label={`${t('global.name')}-ml`}
+                id='inputNameSc'
                 value={values.nameSc}
               />
             </FormControl>
@@ -96,7 +98,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.country',
                 )} ( English )`}
-                id={`${t('global.country')}-en`}
+                label={`${t('global.country')}-en`}
+                id='inputCountryPr'
                 value={values.countryPr}
               />
               <Input
@@ -104,7 +107,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.country',
                 )} ( Malaysia )`}
-                id={`${t('global.country')}-ml`}
+                label={`${t('global.country')}-ml`}
+                id='inputCountrySc'
                 value={values.countrySc}
               />
             </FormControl>
@@ -115,7 +119,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.state',
                 )} ( English )`}
-                id={`${t('students.form.state')}-en`}
+                label={`${t('students.form.state')}-en`}
+                id='inputStatePr'
                 value={values.statePr}
               />
               <Input
@@ -123,7 +128,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.state',
                 )} ( Malaysia )`}
-                id={`${t('students.form.state')}-ml`}
+                label={`${t('students.form.state')}-ml`}
+                id='inputStateSc'
                 value={values.stateSc}
               />
             </FormControl>
@@ -132,13 +138,15 @@ const EditStudentForm = ({ student, closeModal }) => {
               <Input
                 name='email'
                 placeholder='example@example.com'
-                id={t('global.email')}
+                label={t('global.email')}
+                id='inputEmail'
                 value={values.email}
               />
               <Input
                 name='phoneNumber'
                 placeholder={t('students.form.placeholders.phone')}
-                id={t('global.phone')}
+                label={t('global.phone')}
+                id='inputPhoneNumber'
                 value={values.phoneNumber}
               />
             </FormControl>
@@ -146,7 +154,8 @@ const EditStudentForm = ({ student, closeModal }) => {
             <Input
               name='nationalId'
               placeholder={t('students.form.placeholders.national')}
-              id={t('global.national')}
+              label={t('global.national')}
+              id='inputNationalId'
               value={values.nationalId}
             />
 
@@ -156,7 +165,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.job',
                 )} ( English )`}
-                id={`${t('students.form.job')}-en`}
+                label={`${t('students.form.job')}-en`}
+                id='inputJobPr'
                 value={values.jobPr}
               />
               <Input
@@ -164,7 +174,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.job',
                 )} ( Malaysia )`}
-                id={`${t('students.form.job')}-ml`}
+                label={`${t('students.form.job')}-ml`}
+                id='inputJobSc'
                 value={values.jobSc}
               />
             </FormControl>
@@ -175,7 +186,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.address',
                 )} ( English )`}
-                id={`${t('global.address')}-en`}
+                label={`${t('global.address')}-en`}
+                id='inputAddressPr'
                 value={values.addressPr}
               />
               <Input
@@ -183,7 +195,8 @@ const EditStudentForm = ({ student, closeModal }) => {
                 placeholder={`${t(
                   'students.form.placeholders.address',
                 )} ( Malaysia )`}
-                id={`${t('global.address')}-ml`}
+                label={`${t('global.address')}-ml`}
+                id='inputAddressSc'
                 value={values.addressSc}
               />
             </FormControl>
@@ -192,6 +205,7 @@ const EditStudentForm = ({ student, closeModal }) => {
               <Select
                 label={t('global.gender')}
                 name='gender'
+                id='inputGender'
                 value={values.gender}
               >
                 <option value='male'>{t('global.male')}</option>
@@ -200,6 +214,7 @@ const EditStudentForm = ({ student, closeModal }) => {
               <Select
                 label={t('global.status')}
                 name='active'
+                id='inputStatus'
                 value={values.active}
               >
                 <option value='active'>{t('global.active')}</option>
@@ -210,8 +225,9 @@ const EditStudentForm = ({ student, closeModal }) => {
             <Input
               name='age'
               placeholder={t('students.form.placeholders.age')}
-              id={t('students.form.age')}
+              label={t('students.form.age')}
               type='number'
+              id='inputAge'
               min='5'
               max='100'
               value={values.age}
