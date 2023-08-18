@@ -24,7 +24,8 @@
     "all": "All",
     "search": "Search",
     "personal": "Personal",
-    "group": "Group"
+    "group": "Group",
+    "info": "Information"
   },
   "pagination": {
     "showing": "Showing",
@@ -70,6 +71,20 @@
     "buttons": {
       "add": "New student",
       "edit": "Edit Student"
+    },
+    "transaction": {
+      "title": "Add Payment Transaction",
+      "form": {
+        "amount": "Amount Paid",
+        "paidTime": "Paid Time",
+        "refPaidNum": "Reference Paid Number",
+        "placeholders": {
+          "refPaidNum": "Enter Reference Paid Number"
+        }
+      },
+      "buttons": {
+        "add": "Add Transaction"
+      }
     }
   },
   "educational": {

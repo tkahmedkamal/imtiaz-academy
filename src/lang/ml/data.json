@@ -24,7 +24,8 @@
     "all": "Semua",
     "search": "Cari",
     "personal": "Peribadi",
-    "group": "Kumpulan"
+    "group": "Kumpulan",
+    "info": "Maklumat"
   },
   "pagination": {
     "showing": "Memaparkan",
@@ -70,6 +71,20 @@
     "buttons": {
       "add": "Pelajar baru",
       "edit": "Edit Pelajar"
+    },
+    "transaction": {
+      "title": "Tambah Transaksi Pembayaran",
+      "form": {
+        "amount": "Amaun yang dibayar",
+        "paidTime": "Masa Berbayar",
+        "refPaidNum": "Nombor Dibayar Rujukan",
+        "placeholders": {
+          "refPaidNum": "Masukkan Nombor Rujukan Dibayar"
+        }
+      },
+      "buttons": {
+        "add": "Tambah Transaksi"
+      }
     }
   },
   "educational": {
