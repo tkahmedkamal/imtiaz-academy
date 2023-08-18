@@ -4,16 +4,14 @@ import { toast } from 'react-hot-toast';
 import { addPaymentTransaction } from '../../services/studentsApi';
 
 const useAddPaymentTransaction = closeModal => {
-  const { invalidateQueries } = useQueryClient();
+  const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation({
     mutationFn: studentPaymentTrans =>
       addPaymentTransaction(studentPaymentTrans),
 
     onSuccess: ({ msg }) => {
-      invalidateQueries({
-        queryKey: ['students'],
-      });
+      queryClient.invalidateQueries({ queryKey: ['students'] });
       toast.success(msg);
       closeModal?.();
     },

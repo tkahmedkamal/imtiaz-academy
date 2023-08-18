@@ -54,7 +54,7 @@ const paymentTransactionSchema = object().shape({
     .min(5, 'The amount paid is 5 minimum')
     .required('Amount paid is a required field'),
   paidTime: date().required('Paid time is a required field'),
-  referancePaidNumber: string()
+  referencePaidNumber: string()
     .min(17, 'Paid reference number must not exceed 17 characters')
     .max(17, 'Paid reference number must not exceed 17 characters')
     .required('Reference paid number is a required field'),

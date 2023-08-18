@@ -29,7 +29,7 @@ const AddPaymentTransactionForm = ({ studentId, closeModal }) => {
         initialValues={{
           amountPaid: '',
           paidTime: '',
-          referancePaidNumber: '',
+          referencePaidNumber: '',
         }}
         validationSchema={paymentTransactionSchema}
         onSubmit={handleSubmit}
@@ -54,7 +54,7 @@ const AddPaymentTransactionForm = ({ studentId, closeModal }) => {
 
             <FormControl>
               <Input
-                name='referancePaidNumber'
+                name='referencePaidNumber'
                 placeholder={t(
                   'students.transaction.form.placeholders.refPaidNum',
                 )}
