@@ -37,7 +37,7 @@ const StudentRow = ({ index, student }) => {
       <Table.Td>{phoneNumber}</Table.Td>
       <Table.Td>
         {credit < 0 ? (
-          <Tag label={credit} status='warn' />
+          <Tag label={credit} status='info' />
         ) : credit === 0 ? (
           <Tag label={credit} status='success' />
         ) : credit > 0 ? (

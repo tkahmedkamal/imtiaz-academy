@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { HiOutlineUsers } from 'react-icons/hi';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { HiOutlineUserGroup } from 'react-icons/hi';
+import { MdOutlineOndemandVideo } from 'react-icons/md';
 
 import SidebarListItem from './SidebarListItem';
 import { leftSideVariants } from '../utils/motion';
@@ -32,6 +33,11 @@ const Sidebar = () => {
       label: t('sidebar.educational-program'),
       icon: <HiOutlineUserGroup />,
       link: '/dashboard/educational-program',
+    },
+    {
+      label: t('sidebar.course'),
+      icon: <MdOutlineOndemandVideo />,
+      link: '/dashboard/educational-program/course',
     },
   ];
 

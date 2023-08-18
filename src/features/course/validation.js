@@ -1,10 +1,10 @@
 import { object, string, number, ref } from 'yup';
 
-const educationalDetailsSchema = object().shape({
-  subProgramNamePr: string()
+const courseSchema = object().shape({
+  namePr: string()
     .min(3, 'Sub program name must be three or more letters')
     .required('Sub program name is a required field'),
-  subProgramNameSc: string()
+  nameSc: string()
     .min(3, 'Sub program name must be three or more letters')
     .required('Sub program name is a required field'),
   numberOfClasses: number()
@@ -29,4 +29,4 @@ const educationalDetailsSchema = object().shape({
     .required('Program type is a required field'),
 });
 
-export { educationalDetailsSchema };
+export { courseSchema };

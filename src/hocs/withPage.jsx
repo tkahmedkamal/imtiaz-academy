@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import Breadcrumb from '../ui/Breadcrumb';
 
-const withPage = (Component, title, isPrev, prevLabel, prevLink) => {
+const withPage = (Component, title) => {
   function Config(props) {
     const { t } = useTranslation();
 
@@ -18,12 +18,7 @@ const withPage = (Component, title, isPrev, prevLabel, prevLink) => {
             <h1 className='font-publicSans text-3xl font-semibold text-primary-text dark:text-dark-primary-text/75'>
               {t(title)}
             </h1>
-            <Breadcrumb
-              current={t(title)}
-              isPrev={isPrev}
-              prevLabel={t(prevLabel)}
-              prevLink={prevLink}
-            />
+            <Breadcrumb />
           </div>
         </div>
         <Component {...props} />

@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { BiEdit } from 'react-icons/bi';
 
 import { Table, ActionBtn, Modal, Tag } from '../../ui';
-import EditEducationalDetailsForm from './EditEducationalDetailsForm';
+import EditCourseForm from './EditCourseForm';
 import { useConfig } from '../../context/ConfigContext';
 
-const EducationalDetailsRow = ({ index, detail }) => {
+const CourseRow = ({ index, detail }) => {
   const { t } = useTranslation();
   const { lng } = useConfig();
 
@@ -16,8 +16,8 @@ const EducationalDetailsRow = ({ index, detail }) => {
     programCost,
     discount,
     programCostAfterDiscount,
-    subProgramNamePr,
-    subProgramNameSc,
+    namePr,
+    nameSc,
     programTypePr,
     programTypeSc,
     programTypeId,
@@ -26,7 +26,7 @@ const EducationalDetailsRow = ({ index, detail }) => {
   return (
     <Table.Tr>
       <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
-      <Table.Td>{lng === 'en' ? subProgramNamePr : subProgramNameSc}</Table.Td>
+      <Table.Td>{lng === 'en' ? namePr : nameSc}</Table.Td>
       <Table.Td>{numberOfClasses}</Table.Td>
       <Table.Td>{numberOfHours}</Table.Td>
       <Table.Td>{`${programCost} MYR`}</Table.Td>
@@ -59,7 +59,7 @@ const EducationalDetailsRow = ({ index, detail }) => {
             </Modal.Open>
 
             <Modal.Window name={`edit-educational-${id}`}>
-              <EditEducationalDetailsForm detail={detail} />
+              <EditCourseForm detail={detail} />
             </Modal.Window>
           </Modal>
         </div>
@@ -68,4 +68,4 @@ const EducationalDetailsRow = ({ index, detail }) => {
   );
 };
 
-export default EducationalDetailsRow;
+export default CourseRow;

@@ -7,7 +7,7 @@ import { useEducationalCtx } from '../../context/EducationalContext';
 const useEducational = () => {
   const [searchParams] = useSearchParams();
   const { pageCount } = useEducationalCtx();
-  const { prefetchQuery } = useQueryClient();
+  const queryClient = useQueryClient();
 
   const currentPage = +searchParams.get('page') || 1;
   const searchValue = searchParams.get('search') || '';
@@ -19,14 +19,14 @@ const useEducational = () => {
   });
 
   if (currentPage < pageCount) {
-    prefetchQuery({
+    queryClient.prefetchQuery({
       queryKey: ['educational', currentPage + 1, filterQueries],
       queryFn: () => getEducational(currentPage + 1, filterQueries),
     });
   }
 
   if (currentPage > 1) {
-    prefetchQuery({
+    queryClient.prefetchQuery({
       queryKey: ['educational', currentPage - 1, filterQueries],
       queryFn: () => getEducational(currentPage - 1, filterQueries),
     });

@@ -12,7 +12,7 @@ import {
   Student,
   Teachers,
   EducationalProgram,
-  EducationalProgramDetails,
+  Course,
   NotFound,
 } from './pages';
 
@@ -66,7 +66,7 @@ const App = () => {
           <Route path='teachers' element={<Teachers />} />
           <Route path='educational-program'>
             <Route index element={<EducationalProgram />} />
-            <Route path='details' element={<EducationalProgramDetails />} />
+            <Route path='course' element={<Course />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Route>

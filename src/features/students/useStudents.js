@@ -26,7 +26,7 @@ const useStudents = () => {
       : `countryPr=${countryValue}`;
   const searchValue = searchParams.get('search') || '';
 
-  const filterQueries = `isActive=${status[statusValue]},${checkCountryValue},namePr=${searchValue},nameSc=${searchValue}&isGeneralSearch=true`;
+  const filterQueries = `isActive=${status[statusValue]},${checkCountryValue},namePr=${searchValue}&isGeneralSearch=true`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['students', filterQueries, currentPage],

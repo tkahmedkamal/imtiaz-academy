@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
-import { editEducationalDetails } from '../../services/educationalDetailsApi';
+import { editCourse } from '../../services/courseApi';
 
-const useEditEducationalDetails = closeModal => {
+const useCourse = closeModal => {
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation({
-    mutationFn: details => editEducationalDetails(details),
+    mutationFn: details => editCourse(details),
     onSuccess: () => {
       // TODO: Fix this message => return from API
       queryClient.invalidateQueries({ queryKey: ['educational-details'] });
@@ -25,4 +25,4 @@ const useEditEducationalDetails = closeModal => {
   };
 };
 
-export default useEditEducationalDetails;
+export default useCourse;

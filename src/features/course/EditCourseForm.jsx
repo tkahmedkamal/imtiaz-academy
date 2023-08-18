@@ -2,17 +2,17 @@ import { Formik, Form } from 'formik';
 import { useTranslation } from 'react-i18next';
 
 import { LoadingButton, Input, FormControl, Select } from '../../ui';
-import { educationalDetailsSchema } from './validation';
-import useEditEducationalDetails from './useEditEducationalDetails';
+import { courseSchema } from './validation';
+import useEditCourse from './useEditCourse';
 
-const EditEducationalDetailsForm = ({ detail, closeModal }) => {
+const EditCourseForm = ({ detail, closeModal }) => {
   const { t } = useTranslation();
-  const { mutate, isLoading } = useEditEducationalDetails(closeModal);
+  const { mutate, isLoading } = useEditCourse(closeModal);
 
   const {
     id,
-    subProgramNamePr,
-    subProgramNameSc,
+    namePr,
+    nameSc,
     numberOfClasses,
     classDurationInMinutes,
     programCost,
@@ -33,13 +33,13 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
   return (
     <>
       <h2 className='font-publicSans text-xl font-medium text-primary-text dark:text-dark-primary-text/75'>
-        {t('educational.details.editTitle')}
+        {t('educational.course.editTitle')}
       </h2>
 
       <Formik
         initialValues={{
-          subProgramNamePr,
-          subProgramNameSc,
+          namePr,
+          nameSc,
           numberOfClasses,
           classDurationInMinutes,
           programCost,
@@ -47,29 +47,29 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
           programTypeId,
           educationalProgramId,
         }}
-        validationSchema={educationalDetailsSchema}
+        validationSchema={courseSchema}
         onSubmit={handleSubmit}
       >
         {({ values }) => (
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Input
-                name='subProgramNamePr'
+                name='namePr'
                 placeholder={`${t(
-                  'educational.details.form.placeholders.sub',
+                  'educational.course.form.placeholders.name',
                 )} ( English )`}
-                label={`${t('educational.details.texts.sub')}-en`}
+                label={`${t('educational.course.texts.name')}-en`}
                 value={values.subProgramNamePr}
-                id='inputSubProgramNamePr'
+                id='inputNamePr'
               />
               <Input
-                name='subProgramNameSc'
+                name='nameSc'
                 placeholder={`${t(
-                  'educational.details.form.placeholders.sub',
+                  'educational.course.form.placeholders.name',
                 )} ( Malaysia )`}
-                label={`${t('educational.details.texts.sub')}-ml`}
+                label={`${t('educational.course.texts.name')}-ml`}
                 value={values.subProgramNameSc}
-                id='inputSubProgramNameSc'
+                id='inputNameSc'
               />
             </FormControl>
 
@@ -77,7 +77,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
               <Input
                 name='numberOfClasses'
                 placeholder='0'
-                label={`${t('educational.details.texts.numOfClasses')}`}
+                label={`${t('educational.course.texts.numOfClasses')}`}
                 type='number'
                 value={values.numberOfClasses}
                 id='inputNumberOfClasses'
@@ -85,7 +85,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
               <Input
                 name='classDurationInMinutes'
                 placeholder='0'
-                label={`${t('educational.details.texts.minutes')}`}
+                label={`${t('educational.course.texts.minutes')}`}
                 type='number'
                 value={values.classDurationInMinutes}
                 id='inputClassDurationInMinutes'
@@ -96,7 +96,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
               <Input
                 name='programCost'
                 placeholder='0'
-                label={`${t('educational.details.texts.cost')}`}
+                label={`${t('educational.course.texts.cost')}`}
                 type='number'
                 value={values.programCost}
                 id='inputProgramCost'
@@ -104,7 +104,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
               <Input
                 name='discount'
                 placeholder='0'
-                label={`${t('educational.details.texts.discount')}`}
+                label={`${t('educational.course.texts.discount')}`}
                 type='number'
                 value={values.discount}
                 id='inputDiscount'
@@ -113,7 +113,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
 
             <FormControl>
               <Select
-                label={t('educational.details.texts.programType')}
+                label={t('educational.course.texts.programType')}
                 name='programTypeId'
                 value={values.programTypeId}
                 id='inputProgramTypeId'
@@ -129,7 +129,7 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
                 isLoading={isLoading}
                 status='success'
               >
-                {t('educational.details.buttons.edit')}
+                {t('educational.course.buttons.edit')}
               </LoadingButton>
             </div>
           </Form>
@@ -139,4 +139,4 @@ const EditEducationalDetailsForm = ({ detail, closeModal }) => {
   );
 };
 
-export default EditEducationalDetailsForm;
+export default EditCourseForm;

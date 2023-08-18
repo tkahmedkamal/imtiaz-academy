@@ -9,7 +9,7 @@ import EditEducationalForm from './EditEducationalForm';
 import { useConfig } from '../../context/ConfigContext';
 import useArchiveEducational from './useArchiveEducational';
 import { Archive } from '../../assets';
-import CreateEducationalDetailsForm from '../educationalDetails/CreateEducationalDetailsForm';
+import CreateEducationalDetailsForm from '../course/CreateCourseForm.jsx';
 
 const EducationalRow = ({ index, program }) => {
   const { t } = useTranslation();
@@ -33,14 +33,6 @@ const EducationalRow = ({ index, program }) => {
               />
             </Modal.Open>
 
-            <Modal.Open opens={`archive-educational-${id}`}>
-              <ActionBtn
-                title={t('global.archive')}
-                icon={<LuFileArchive />}
-                status='warn'
-              />
-            </Modal.Open>
-
             <Modal.Open opens={`create-details-educational-${id}`}>
               <ActionBtn
                 title={t('educational.details.buttons.add')}
@@ -60,6 +52,14 @@ const EducationalRow = ({ index, program }) => {
             <Modal.Window name={`edit-educational-${id}`}>
               <EditEducationalForm program={program} />
             </Modal.Window>
+
+            <Modal.Open opens={`archive-educational-${id}`}>
+              <ActionBtn
+                title={t('global.archive')}
+                icon={<LuFileArchive />}
+                status='warn'
+              />
+            </Modal.Open>
 
             <Modal.Window name={`archive-educational-${id}`}>
               <Confirm

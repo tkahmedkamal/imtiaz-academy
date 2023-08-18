@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Table, Spinner, Pagination, Empty } from '../../ui';
-import useEducationalDetails from './useEducationalDetails';
-import EducationalDetailsRow from './EducationalDetailsRow';
-import { useEducationalDetailsCtx } from '../../context/EducationalDetailsContext';
+import useCourse from './useCourse';
+import CourseRow from './CourseRow.jsx';
+import { useCourseCtx } from '../../context/CourseContext';
 
-const EducationalDetailsTable = () => {
+const CourseTable = () => {
   const { t } = useTranslation();
-  const { data, isLoading } = useEducationalDetails();
+  const { data, isLoading } = useCourse();
 
   const {
     data: details,
@@ -17,7 +17,7 @@ const EducationalDetailsTable = () => {
     totalPages,
   } = data?.pagedResponse || {};
 
-  const { setLength, setPageCount } = useEducationalDetailsCtx();
+  const { setLength, setPageCount } = useCourseCtx();
 
   useEffect(() => {
     setLength(totalRecordsFiltered);
@@ -34,26 +34,22 @@ const EducationalDetailsTable = () => {
         <Table>
           <Table.Thead>
             <Table.Th>{t('global.index')}</Table.Th>
-            <Table.Th>{t('educational.details.texts.sub')}</Table.Th>
-            <Table.Th>{t('educational.details.texts.numOfClasses')}</Table.Th>
-            <Table.Th>{t('educational.details.texts.numOfHours')}</Table.Th>
-            <Table.Th>{t('educational.details.texts.cost')}</Table.Th>
-            <Table.Th>{t('educational.details.texts.discount')}</Table.Th>
+            <Table.Th>{t('educational.course.texts.name')}</Table.Th>
+            <Table.Th>{t('educational.course.texts.numOfClasses')}</Table.Th>
+            <Table.Th>{t('educational.course.texts.numOfHours')}</Table.Th>
+            <Table.Th>{t('educational.course.texts.cost')}</Table.Th>
+            <Table.Th>{t('educational.course.texts.discount')}</Table.Th>
             <Table.Th>
-              {t('educational.details.texts.costAfterDiscount')}
+              {t('educational.course.texts.costAfterDiscount')}
             </Table.Th>
-            <Table.Th>{t('educational.details.texts.programType')}</Table.Th>
+            <Table.Th>{t('educational.course.texts.programType')}</Table.Th>
             <Table.Th>{t('global.actions')}</Table.Th>
           </Table.Thead>
 
           <Table.Tbody
             data={details}
             render={(detail, index) => (
-              <EducationalDetailsRow
-                key={detail.id}
-                detail={detail}
-                index={index}
-              />
+              <CourseRow key={detail.id} detail={detail} index={index} />
             )}
           />
         </Table>
@@ -70,4 +66,4 @@ const EducationalDetailsTable = () => {
   );
 };
 
-export default EducationalDetailsTable;
+export default CourseTable;
