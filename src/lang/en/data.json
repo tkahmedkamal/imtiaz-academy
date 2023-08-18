@@ -26,7 +26,10 @@
     "personal": "Personal",
     "group": "Group",
     "info": "Information",
-    "credit": "Credit"
+    "credit": "Credit",
+    "ltZero": "< Zero",
+    "gtZero": "> Zero",
+    "eqZero": "= Zero"
   },
   "pagination": {
     "showing": "Showing",

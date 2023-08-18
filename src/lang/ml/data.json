@@ -26,7 +26,10 @@
     "personal": "Peribadi",
     "group": "Kumpulan",
     "info": "Maklumat",
-    "credit": "Kredit"
+    "credit": "Kredit",
+    "ltZero": "< Sifar",
+    "gtZero": "> Sifar",
+    "eqZero": "= sama"
   },
   "pagination": {
     "showing": "Memaparkan",
