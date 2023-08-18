@@ -22,9 +22,10 @@ import SwitchTheme from './SwitchTheme';
 import Notification from './Notification';
 import Empty from './Empty';
 import Logo from './Logo';
-import StatusFilter from './StatusFilter.jsx';
-import GenderFilter from './GenderFilter.jsx';
-import CountryFilter from './CountryFilter.jsx';
+import StatusFilter from './StatusFilter';
+import GenderFilter from './GenderFilter';
+import CountryFilter from './CountryFilter';
+import ProgramTypeFilter from './ProgramTypeFilter';
 
 export {
   FloatButton,
@@ -54,4 +55,5 @@ export {
   StatusFilter,
   GenderFilter,
   CountryFilter,
+  ProgramTypeFilter,
 };
