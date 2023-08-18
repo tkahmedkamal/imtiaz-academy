@@ -18,6 +18,13 @@ const useStudents = () => {
     pending: false,
   };
 
+  const credit = {
+    all: null,
+    'less-than-zero': '<0',
+    'greater-than-zero': '>0',
+    'equal-zero': '0',
+  };
+
   const statusValue = searchParams.get('status') || 'all';
   const countryValue = searchParams.get('country') || 'all';
   const checkCountryValue =
@@ -25,8 +32,9 @@ const useStudents = () => {
       ? 'countryPr='
       : `countryPr=${countryValue}`;
   const searchValue = searchParams.get('search') || '';
+  const creditValue = searchParams.get('credit') || 'all';
 
-  const filterQueries = `isActive=${status[statusValue]},${checkCountryValue},namePr=${searchValue}&isGeneralSearch=true`;
+  const filterQueries = `isActive=${status[statusValue]},${checkCountryValue},namePr=${searchValue},credit=${credit[creditValue]}&isGeneralSearch=true`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['students', filterQueries, currentPage],

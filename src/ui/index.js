@@ -26,6 +26,7 @@ import StatusFilter from './StatusFilter';
 import GenderFilter from './GenderFilter';
 import CountryFilter from './CountryFilter';
 import ProgramTypeFilter from './ProgramTypeFilter';
+import CreditFilter from './CreditFilter.jsx';
 
 export {
   FloatButton,
@@ -56,4 +57,5 @@ export {
   GenderFilter,
   CountryFilter,
   ProgramTypeFilter,
+  CreditFilter,
 };

@@ -8,6 +8,7 @@ import {
 import { AddStudent, StudentsTable } from '../features/students';
 import StudentsProvider from '../context/StudentContext';
 import { withPage } from '../hocs';
+import CreditFilter from '../ui/CreditFilter.jsx';
 
 const Student = () => {
   return (
@@ -22,6 +23,7 @@ const Student = () => {
           <Filters>
             <StatusFilter />
             <CountryFilter />
+            <CreditFilter />
           </Filters>
         </TableOperational>
       </Modal>
