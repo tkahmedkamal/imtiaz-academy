@@ -17,6 +17,7 @@ const EducationalProgram = () => {
           windowName='create-educational'
           noFilter
           labelBtn='educational.buttons.add'
+          isButton
         />
       </Modal>
       <EducationalTable />

@@ -15,13 +15,16 @@ import Select from './Select';
 import Pagination from './Pagination';
 import Languages from './Languages';
 import Search from './Search';
-import Filter from './Filter';
+import Filters from './Filters.jsx';
 import ButtonMini from './ButtonMini';
 import Icon from './Icon';
 import SwitchTheme from './SwitchTheme';
 import Notification from './Notification';
 import Empty from './Empty';
 import Logo from './Logo';
+import StatusFilter from './StatusFilter.jsx';
+import GenderFilter from './GenderFilter.jsx';
+import CountryFilter from './CountryFilter.jsx';
 
 export {
   FloatButton,
@@ -41,11 +44,14 @@ export {
   Pagination,
   Languages,
   Search,
-  Filter,
+  Filters,
   ButtonMini,
   Icon,
   SwitchTheme,
   Notification,
   Empty,
   Logo,
+  StatusFilter,
+  GenderFilter,
+  CountryFilter,
 };

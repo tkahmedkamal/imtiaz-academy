@@ -7,11 +7,7 @@ const EducationalProgramDetails = () => {
   return (
     <EducationalDetailsProvider>
       <Modal>
-        <TableOperational
-          windowName='details-educational'
-          noFilter
-          labelBtn='educational.details.buttons.add'
-        />
+        <TableOperational />
       </Modal>
       <EducationalDetailsTable />
     </EducationalDetailsProvider>

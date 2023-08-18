@@ -40,7 +40,6 @@ const Window = ({ children, name }) => {
   useEffect(() => {
     const handleKey = e => {
       if (e.keyCode === 27) {
-        console.log('xxx');
         close();
       }
     };
