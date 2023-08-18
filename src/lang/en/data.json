@@ -23,7 +23,6 @@
     "loading": "Loading",
     "all": "All",
     "search": "Search",
-    "details": "Details",
     "personal": "Personal",
     "collective": "Collective"
   },
@@ -46,7 +45,8 @@
     "dashboard": "Dashboard",
     "students": "Students",
     "teachers": "Teachers",
-    "educational": "Educational Program"
+    "educational-program": "Educational Program",
+    "details": "Details"
   },
   "students": {
     "title": "Students",

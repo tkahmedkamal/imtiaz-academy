@@ -23,7 +23,6 @@
     "loading": "Memuatkan",
     "all": "Semua",
     "search": "Cari",
-    "details": "Butiran",
     "personal": "Peribadi",
     "collective": "Kolektif"
   },
@@ -46,7 +45,8 @@
     "dashboard": "Papan Pemuka",
     "students": "Pelajar",
     "teachers": "Guru",
-    "educational": "Program Pendidikan"
+    "educational-program": "Program Pendidikan",
+    "details": "Butiran"
   },
   "students": {
     "title": "Pelajar",
