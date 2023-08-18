@@ -3,14 +3,16 @@ import axiosConfig from '../config/axiosConfig';
 export const getStudents = async (page, filter) => {
   try {
     const res = await axiosConfig.get(
-      `/api/student?searchString=isArchive=false,${filter}&pageNumber=${page}`,
+      `/api/student?searchString=${filter}&pageNumber=${page}`,
       {
         headers: {
           'Content-Type': 'application/json',
         },
       },
     );
-
+    if (res.data.status === 406) {
+      return Promise.reject(Error(res.data.msg));
+    }
     return res.data;
   } catch ({ message }) {
     if (message.includes('Network Error')) {
@@ -107,6 +109,8 @@ export const addPaymentTransaction = async studentPaymentTrans => {
         },
       },
     );
+
+    console.log(data);
 
     if (data.status === 406) {
       return Promise.reject(Error(data?.msg));
