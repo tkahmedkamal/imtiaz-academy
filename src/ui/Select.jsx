@@ -6,7 +6,7 @@ const Select = ({ label, children, ...props }) => {
   const { t } = useTranslation();
 
   return (
-    <div className='md:flex-1'>
+    <div className='w-full'>
       <label
         htmlFor={props.id}
         className='mb-2 block font-publicSans text-xs font-medium capitalize text-primary-text/80 dark:text-dark-secondary-text'
