@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { LoadingButton, Input, FormControl, Select } from '../../ui';
 import { studentSchema } from './validation';
+import useStudent from './useStudent.js';
 import useEditStudent from './useEditStudent';
 
-const EditStudentForm = ({ student, closeModal }) => {
+const EditStudentForm = ({ studentId, closeModal }) => {
+  const { data, isLoading: isLoadingStudent } = useStudent(studentId);
   const { mutate, isLoading } = useEditStudent(closeModal);
   const { t } = useTranslation();
 
@@ -26,11 +28,11 @@ const EditStudentForm = ({ student, closeModal }) => {
     isMale,
     isActive,
     age,
-  } = student;
+  } = data?.student || {};
 
   const handleSubmit = values => {
     const data = {
-      ...student,
+      id: studentId,
       ...values,
       isMale: values.gender === 'male',
       isActive: values.active === 'active',
@@ -49,25 +51,26 @@ const EditStudentForm = ({ student, closeModal }) => {
 
       <Formik
         initialValues={{
-          namePr,
-          nameSc,
-          countryPr,
-          countrySc,
-          statePr,
-          stateSc,
-          email,
-          phoneNumber,
-          nationalId,
-          jobPr,
-          jobSc,
-          addressPr,
-          addressSc,
-          age,
+          namePr: namePr || '',
+          nameSc: nameSc || '',
+          countryPr: countryPr || '',
+          countrySc: countrySc || '',
+          statePr: statePr || '',
+          stateSc: stateSc || '',
+          email: email || '',
+          phoneNumber: phoneNumber || '',
+          nationalId: nationalId || '',
+          jobPr: jobPr || '',
+          jobSc: jobSc || '',
+          addressPr: addressPr || '',
+          addressSc: addressSc || '',
+          age: age || '',
           gender: isMale ? 'male' : 'female',
           active: isActive ? 'active' : 'inactive',
         }}
         validationSchema={studentSchema}
         onSubmit={handleSubmit}
+        enableReinitialize
       >
         {({ values }) => (
           <Form className='mt-10 space-y-4'>
@@ -80,6 +83,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('global.name')}-en`}
                 id='inputNamePr'
                 value={values.namePr}
+                disabled={isLoadingStudent}
               />
               <Input
                 name='nameSc'
@@ -89,6 +93,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('global.name')}-ml`}
                 id='inputNameSc'
                 value={values.nameSc}
+                disabled={isLoadingStudent}
               />
             </FormControl>
 
@@ -101,6 +106,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('global.country')}-en`}
                 id='inputCountryPr'
                 value={values.countryPr}
+                disabled={isLoadingStudent}
               />
               <Input
                 name='countrySc'
@@ -110,6 +116,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('global.country')}-ml`}
                 id='inputCountrySc'
                 value={values.countrySc}
+                disabled={isLoadingStudent}
               />
             </FormControl>
 
@@ -122,6 +129,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('students.form.state')}-en`}
                 id='inputStatePr'
                 value={values.statePr}
+                disabled={isLoadingStudent}
               />
               <Input
                 name='stateSc'
@@ -131,6 +139,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('students.form.state')}-ml`}
                 id='inputStateSc'
                 value={values.stateSc}
+                disabled={isLoadingStudent}
               />
             </FormControl>
 
@@ -141,6 +150,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={t('global.email')}
                 id='inputEmail'
                 value={values.email}
+                disabled={isLoadingStudent}
               />
               <Input
                 name='phoneNumber'
@@ -148,6 +158,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={t('global.phone')}
                 id='inputPhoneNumber'
                 value={values.phoneNumber}
+                disabled={isLoadingStudent}
               />
             </FormControl>
 
@@ -157,6 +168,7 @@ const EditStudentForm = ({ student, closeModal }) => {
               label={t('global.national')}
               id='inputNationalId'
               value={values.nationalId}
+              disabled={isLoadingStudent}
             />
 
             <FormControl>
@@ -168,6 +180,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('students.form.job')}-en`}
                 id='inputJobPr'
                 value={values.jobPr}
+                disabled={isLoadingStudent}
               />
               <Input
                 name='jobSc'
@@ -177,6 +190,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('students.form.job')}-ml`}
                 id='inputJobSc'
                 value={values.jobSc}
+                disabled={isLoadingStudent}
               />
             </FormControl>
 
@@ -189,6 +203,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('global.address')}-en`}
                 id='inputAddressPr'
                 value={values.addressPr}
+                disabled={isLoadingStudent}
               />
               <Input
                 name='addressSc'
@@ -198,6 +213,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 label={`${t('global.address')}-ml`}
                 id='inputAddressSc'
                 value={values.addressSc}
+                disabled={isLoadingStudent}
               />
             </FormControl>
 
@@ -207,6 +223,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 name='gender'
                 id='inputGender'
                 value={values.gender}
+                disabled={isLoadingStudent}
               >
                 <option value='male'>{t('global.male')}</option>
                 <option value='female'>{t('global.female')}</option>
@@ -216,6 +233,7 @@ const EditStudentForm = ({ student, closeModal }) => {
                 name='active'
                 id='inputStatus'
                 value={values.active}
+                disabled={isLoadingStudent}
               >
                 <option value='active'>{t('global.active')}</option>
                 <option value='inactive'>{t('global.inactive')}</option>
@@ -231,6 +249,7 @@ const EditStudentForm = ({ student, closeModal }) => {
               min='5'
               max='100'
               value={values.age}
+              disabled={isLoadingStudent}
             />
 
             <div className='!mt-6 '>

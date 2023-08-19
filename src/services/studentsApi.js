@@ -23,6 +23,26 @@ export const getStudents = async (page, filter) => {
   }
 };
 
+export const getStudent = async studentId => {
+  try {
+    const res = await axiosConfig.get(`/api/student/${studentId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (res.data.status === 406) {
+      return Promise.reject(Error(res.data.msg));
+    }
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+
 export const addStudent = async student => {
   try {
     const { data } = await axiosConfig.post('/api/student/add', student, {

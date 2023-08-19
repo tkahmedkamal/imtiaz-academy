@@ -95,7 +95,7 @@ const StudentRow = ({ index, student }) => {
           </Modal.Open>
 
           <Modal.Window name={`edit-student-${id}`}>
-            <EditStudentForm student={student} />
+            <EditStudentForm studentId={id} />
           </Modal.Window>
 
           <Modal.Window name={`add-student-transaction-${id}`}>
