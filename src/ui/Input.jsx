@@ -15,7 +15,7 @@ const Input = ({ label, ...props }) => {
       <input
         {...props}
         {...field}
-        className={`block w-full rounded-lg border border-divider p-3 indent-2 text-sm text-primary-text placeholder-secondary-text/50 transition-colors duration-500 focus:border-primary focus-visible:outline-none dark:border-dark-divider dark:bg-dark-paper dark:text-dark-primary-text/75 dark:placeholder:text-dark-secondary-text/50 dark:focus:border-dark-primary ${
+        className={`block w-full rounded-lg border border-divider p-3 indent-2 text-sm text-primary-text placeholder-secondary-text/50 transition-colors duration-500 focus:border-primary focus-visible:outline-none disabled:bg-disable dark:border-dark-divider dark:bg-dark-paper dark:text-dark-primary-text/75 dark:placeholder:text-dark-secondary-text/50 dark:focus:border-dark-primary dark:disabled:bg-dark-disable ${
           meta.error &&
           meta.touched &&
           '!border-common-error text-common-error focus:border-common-error'

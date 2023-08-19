@@ -15,7 +15,7 @@ const Select = ({ label, children, ...props }) => {
       </label>
 
       <select
-        className={`block w-full rounded-lg border border-divider p-2.5 indent-2 text-sm text-primary-text transition-colors duration-500 focus:border-primary focus-visible:outline-none dark:border-dark-divider dark:bg-dark-paper dark:text-dark-primary-text/75 dark:placeholder:text-dark-primary-text/50 ${
+        className={`block w-full rounded-lg border border-divider p-2.5 indent-2 text-sm text-primary-text transition-colors duration-500 focus:border-primary focus-visible:outline-none disabled:bg-disable dark:border-dark-divider dark:bg-dark-paper dark:text-dark-primary-text/75 dark:placeholder:text-dark-primary-text/50 dark:disabled:bg-dark-disable ${
           meta.error &&
           meta.touched &&
           'border-common-error text-common-error placeholder-common-error focus:border-common-error'
