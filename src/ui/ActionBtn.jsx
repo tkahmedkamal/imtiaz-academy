@@ -1,7 +1,7 @@
 const ActionBtn = ({ title, icon, status, onClick }) => {
   const variants = {
     primary: 'hover:text-common-info',
-    danger: 'hover:bg-common-error/10 text-common-error',
+    danger: 'hover:text-common-error',
     warn: 'hover:text-common-warning',
   };
 
