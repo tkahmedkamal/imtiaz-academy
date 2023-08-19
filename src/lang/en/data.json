@@ -29,7 +29,8 @@
     "credit": "Credit",
     "ltZero": "< Zero",
     "gtZero": "> Zero",
-    "eqZero": "= Zero"
+    "eqZero": "= Zero",
+    "enrollment": "Enrollment"
   },
   "pagination": {
     "showing": "Showing",
