@@ -5,6 +5,7 @@
     "country": "Country",
     "national": "NationalID",
     "email": "Email",
+    "password": "Password",
     "phone": "Phone Number",
     "gender": "Gender",
     "status": "Status",
@@ -91,6 +92,14 @@
       "buttons": {
         "add": "Add Transaction"
       }
+    },
+    "enrollment": {
+      "title": "Enroll Student to a Course",
+      "registrationCost": "Registration Cost",
+      "discountCheckbox": "Has special discount",
+      "buttons": {
+        "add": "Enrollment"
+      }
     }
   },
   "educational": {
@@ -128,6 +137,16 @@
         "add": "New course",
         "edit": "Edit course"
       }
+    }
+  },
+  "teacher": {
+    "title": "Teacher"
+  },
+  "login": {
+    "title": "Login",
+    "form": {
+      "password": "Enter your password",
+    "submit": "Login"
     }
   }
 }

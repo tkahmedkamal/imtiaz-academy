@@ -91,6 +91,14 @@
       "buttons": {
         "add": "Tambah Transaksi"
       }
+    },
+    "enrollment": {
+      "title": "Mendaftar Pelajar ke Kursus",
+      "registrationCost": "Kos Pendaftaran",
+      "discountCheckbox": "Ada diskaun istimewa",
+      "buttons": {
+        "add": "Pendaftaran"
+      }
     }
   },
   "educational": {
@@ -129,5 +137,8 @@
         "edit": "Edit butiran"
       }
     }
+  },
+  "teacher": {
+    "title": "Cikgu"
   }
 }
