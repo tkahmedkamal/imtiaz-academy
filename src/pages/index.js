@@ -4,5 +4,14 @@ import Teachers from './Teachers';
 import EducationalProgram from './EducationalProgram';
 import Course from './Course';
 import NotFound from './NotFound';
+import Login from './Login';
 
-export { Dashboard, Student, Teachers, EducationalProgram, Course, NotFound };
+export {
+  Dashboard,
+  Student,
+  Teachers,
+  EducationalProgram,
+  Course,
+  Login,
+  NotFound,
+};
