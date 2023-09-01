@@ -1,6 +1,6 @@
 const Spinner = () => {
   return (
-    <div className='absolute inset-0 flex h-full w-full items-center justify-center rounded-lg'>
+    <div className='absolute inset-0 -z-[1] flex h-full w-full items-center justify-center rounded-lg'>
       <svg
         aria-hidden='true'
         className='w-1h-12 mr-2 h-12 animate-spin'
