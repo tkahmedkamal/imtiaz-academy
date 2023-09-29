@@ -1,39 +1,29 @@
 import { useTranslation } from 'react-i18next';
 import { BiEdit } from 'react-icons/bi';
-import { LuFileArchive } from 'react-icons/lu';
+import { LuArchive } from 'react-icons/lu';
 import { MdPayment } from 'react-icons/md';
 import { TbInfoSquare } from 'react-icons/tb';
+import { TfiWrite } from 'react-icons/tfi';
 
 import { Table, ActionBtn, Modal, Tag, Confirm } from '../../ui';
 import EditStudentForm from './EditStudentForm';
-import { useConfig } from '../../context/ConfigContext';
 import useArchiveStudent from './useArchiveStudent';
-import AddPaymentTransactionForm from './AddPaymentTransactionForm.jsx';
+import AddPaymentTransactionForm from './AddPaymentTransactionForm';
+import AddEnrollmentStudentForm from './AddEnrollmentStudentForm';
 import { Archive } from '../../assets';
 
 const StudentRow = ({ index, student }) => {
   const { t } = useTranslation();
-  const { lng } = useConfig();
   const { mutate, isLoading } = useArchiveStudent();
 
-  const {
-    id,
-    namePr,
-    nameSc,
-    countryPr,
-    countrySc,
-    phoneNumber,
-    isActive,
-    statusTypePr,
-    statusTypeSc,
-    credit,
-  } = student;
+  const { id, name, country, phoneNumber, isActive, statusType, credit } =
+    student;
 
   return (
     <Table.Tr>
       <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
-      <Table.Td>{lng === 'en' ? namePr : nameSc}</Table.Td>
-      <Table.Td>{lng === 'en' ? countryPr : countrySc}</Table.Td>
+      <Table.Td>{name}</Table.Td>
+      <Table.Td>{country}</Table.Td>
       <Table.Td>{phoneNumber}</Table.Td>
       <Table.Td>
         {credit < 0 ? (
@@ -48,15 +38,9 @@ const StudentRow = ({ index, student }) => {
       </Table.Td>
       <Table.Td>
         {isActive ? (
-          <Tag
-            label={lng === 'en' ? statusTypePr : statusTypeSc}
-            status='success'
-          />
+          <Tag label={statusType} status='success' />
         ) : (
-          <Tag
-            label={lng === 'en' ? statusTypePr : statusTypeSc}
-            status='warn'
-          />
+          <Tag label={statusType} status='warn' />
         )}
       </Table.Td>
 
@@ -86,11 +70,19 @@ const StudentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
+          <Modal.Open opens={`enrollment-student-${id}`}>
+            <ActionBtn
+              title={t('global.enrollment')}
+              icon={<TfiWrite />}
+              status='primary'
+            />
+          </Modal.Open>
+
           <Modal.Open opens={`archive-student-${id}`}>
             <ActionBtn
               title={t('global.archive')}
-              icon={<LuFileArchive />}
-              status='warn'
+              icon={<LuArchive />}
+              status='danger'
             />
           </Modal.Open>
 
@@ -100,6 +92,10 @@ const StudentRow = ({ index, student }) => {
 
           <Modal.Window name={`add-student-transaction-${id}`}>
             <AddPaymentTransactionForm studentId={id} />
+          </Modal.Window>
+
+          <Modal.Window name={`enrollment-student-${id}`}>
+            <AddEnrollmentStudentForm studentId={id} />
           </Modal.Window>
 
           <Modal.Window name={`archive-student-${id}`}>

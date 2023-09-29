@@ -1,17 +1,6 @@
-import Dashboard from './Dashboard';
-import Student from './Students';
-import Teachers from './Teachers';
-import EducationalProgram from './EducationalProgram';
-import Course from './Course';
-import NotFound from './NotFound';
-import Login from './Login';
-
-export {
-  Dashboard,
-  Student,
-  Teachers,
-  EducationalProgram,
-  Course,
-  Login,
-  NotFound,
-};
+export { default as Dashboard } from './Dashboard';
+export { default as Student } from './Students';
+export { default as Teachers } from './Teachers';
+export { default as EducationalProgram } from './EducationalProgram';
+export { default as Course } from './Course';
+export { default as NotFound } from './NotFound';

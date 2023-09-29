@@ -19,8 +19,7 @@ const CreateEducationalForm = ({ closeModal }) => {
 
       <Formik
         initialValues={{
-          namePr: '',
-          nameSc: '',
+          name: '',
         }}
         validationSchema={educationalSchema}
         onSubmit={handleSubmit}
@@ -29,20 +28,10 @@ const CreateEducationalForm = ({ closeModal }) => {
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Input
-                name='namePr'
-                placeholder={`${t(
-                  'educational.form.placeholders.name',
-                )} ( English )`}
-                label={`${t('global.name')}-en`}
-                id='inputNamePr'
-              />
-              <Input
-                name='nameSc'
-                placeholder={`${t(
-                  'educational.form.placeholders.name',
-                )} ( Malaysia )`}
-                label={`${t('global.name')}-ml`}
-                id='inputNameSc'
+                name='name'
+                placeholder={`${t('educational.form.placeholders.name')}`}
+                label={`${t('global.name')}`}
+                id='inputName'
               />
             </FormControl>
 

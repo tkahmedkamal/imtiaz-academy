@@ -146,7 +146,47 @@
     "title": "Login",
     "form": {
       "password": "Enter your password",
+      "username_email": "Username Or Email",
     "submit": "Login"
+    }
+  },
+  "teacher_signup": {
+    "title": "Signup",
+    "form": {
+        "email": "Email",
+        "bankName": "Bank Name",
+        "idCardNumber": "ID-Card Number",
+        "nationalId": "National-ID",
+        "nationality": "Nationality",
+        "address": "Address",
+        "bankAccountNumber": "Bank Account Name",
+        "certificate": "Certificate",
+        "age": "Age",
+        "name": "Name",
+        "password": "Password",
+        "isAcceptedPolicies": "",
+        "phoneNumber": "Phone Number",
+        "username": "Username",
+        "gander": "Gander",
+        "iban": "IBAN",
+        "type": "Type",
+        "countryId": "Country",
+      "placeholders": {
+        "email": "Enter your email",
+        "bankName": "Enter bank name",
+        "idCardNumber": "Enter your id card number",
+        "nationalId": "Enter your national id",
+        "nationality": "Enter your nationality",
+        "address": "Enter your address",
+        "bankAccountNumber": "Enter your bank account number",
+        "certificate": "Enter certificate",
+        "age": "Enter your age",
+        "name": "Enter your name",
+        "password": "Enter your password",
+        "isAcceptedPolicies": "",
+        "phoneNumber": "Enter your phone number",
+        "username": "Enter your username"
+      }
     }
   }
 }

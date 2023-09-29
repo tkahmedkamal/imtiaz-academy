@@ -1,7 +1,7 @@
 import { useField } from 'formik';
 import { useTranslation } from 'react-i18next';
 
-const Select = ({ label, children, ...props }) => {
+const Select = ({ label, set, children, ...props }) => {
   const [field, meta] = useField(props);
   const { t } = useTranslation();
 
@@ -9,7 +9,7 @@ const Select = ({ label, children, ...props }) => {
     <div className='w-full'>
       <label
         htmlFor={props.id}
-        className='mb-2 block font-publicSans text-xs font-medium capitalize text-primary-text/80 dark:text-dark-secondary-text'
+        className='mb-2 block font-publicSans text-xs font-semibold capitalize text-primary-text/80 dark:text-dark-secondary-text'
       >
         {label}
       </label>
@@ -22,6 +22,12 @@ const Select = ({ label, children, ...props }) => {
         }`}
         {...props}
         {...field}
+        onChange={e => {
+          field.onChange(e);
+          if (set) {
+            set(e.target.value);
+          }
+        }}
       >
         <option
           value=''

@@ -10,9 +10,10 @@ import {
   Teachers,
   EducationalProgram,
   Course,
-  Login,
   NotFound,
 } from './pages';
+import { Login, TeacherSignup } from './pages/auth';
+import { ProtectedRoutes } from './ui';
 
 const App = () => {
   const navigate = useNavigate();
@@ -27,7 +28,14 @@ const App = () => {
   return (
     <div className='flex w-full'>
       <Routes>
-        <Route path='/dashboard' element={<AppLayout />}>
+        <Route
+          path='/dashboard'
+          element={
+            <ProtectedRoutes>
+              <AppLayout />
+            </ProtectedRoutes>
+          }
+        >
           <Route index element={<Dashboard />} />
           <Route path='students' element={<Student />} />
           <Route path='teachers' element={<Teachers />} />
@@ -38,6 +46,7 @@ const App = () => {
           <Route path='*' element={<NotFound />} />
         </Route>
         <Route path='/login' element={<Login />} />
+        <Route path='/employee-signup' element={<TeacherSignup />} />
       </Routes>
 
       <Toaster

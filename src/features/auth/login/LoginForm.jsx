@@ -1,13 +1,17 @@
 import { Form, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 
-import { FormControl, Input, LoadingButton } from '../../ui';
+import { FormControl, Input, LoadingButton } from '../../../ui';
 import { loginSchema } from './validation';
+import useLogin from './useLogin';
 
 const LoginForm = () => {
   const { t } = useTranslation();
+  const { login, isLoading } = useLogin();
 
-  const handleSubmit = values => {};
+  const handleSubmit = values => {
+    login(values);
+  };
 
   return (
     <div className='w-96 space-y-8 rounded-md border border-divider bg-paper p-6 shadow-md dark:border-dark-divider dark:bg-dark-paper'>
@@ -16,7 +20,7 @@ const LoginForm = () => {
       </h2>
 
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ userNamOrEmail: '', password: '' }}
         onSubmit={handleSubmit}
         validationSchema={loginSchema}
       >
@@ -24,10 +28,10 @@ const LoginForm = () => {
           <Form className='space-y-3'>
             <FormControl>
               <Input
-                type='email'
-                name='email'
-                placeholder='example@example.com'
-                label={t('global.email')}
+                type='text'
+                name='userNamOrEmail'
+                placeholder='Enter username or email'
+                label={t('login.form.username_email')}
                 id='inputEmail'
               />
             </FormControl>
@@ -44,8 +48,8 @@ const LoginForm = () => {
 
             <div className='!mt-6 '>
               <LoadingButton
-                disabled={false}
-                isLoading={false}
+                disabled={isLoading}
+                isLoading={isLoading}
                 status='success'
               >
                 {t('login.form.submit')}

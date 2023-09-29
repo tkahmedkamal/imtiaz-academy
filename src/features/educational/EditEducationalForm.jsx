@@ -9,7 +9,7 @@ const EditEducationalForm = ({ program, closeModal }) => {
   const { t } = useTranslation();
   const { mutate, isLoading } = useEditEducational(closeModal);
 
-  const { id, namePr, nameSc } = program;
+  const { id, name } = program;
   const handleSubmit = values => mutate({ ...values, id });
 
   return (
@@ -20,8 +20,7 @@ const EditEducationalForm = ({ program, closeModal }) => {
 
       <Formik
         initialValues={{
-          namePr,
-          nameSc,
+          name,
         }}
         validationSchema={educationalSchema}
         onSubmit={handleSubmit}
@@ -30,22 +29,11 @@ const EditEducationalForm = ({ program, closeModal }) => {
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Input
-                name='namePr'
-                placeholder={`${t(
-                  'educational.form.placeholders.name',
-                )} ( English )`}
-                label={`${t('global.name')}-en`}
-                value={values.namePr}
-                id='inputNamePr'
-              />
-              <Input
-                name='nameSc'
-                placeholder={`${t(
-                  'educational.form.placeholders.name',
-                )} ( Malaysia )`}
-                label={`${t('global.name')}-ml`}
-                value={values.nameSc}
-                id='inputNameSc'
+                name='name'
+                placeholder={`${t('educational.form.placeholders.name')}`}
+                label={`${t('global.name')}`}
+                value={values.name}
+                id='inputName'
               />
             </FormControl>
 

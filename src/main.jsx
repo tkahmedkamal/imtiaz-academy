@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import App from './App.jsx';
 import { enText, mlText } from './lang';
 import ConfigProvider from './context/ConfigContext';
+import { AuthProvider } from './context/authContext.jsx';
 import './index.css';
 
 const queryClient = new QueryClient({
@@ -40,7 +41,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ReactQueryDevtools initialIsOpen={false} />
       <ConfigProvider>
         <BrowserRouter>
-          <App />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </BrowserRouter>
       </ConfigProvider>
     </QueryClientProvider>
