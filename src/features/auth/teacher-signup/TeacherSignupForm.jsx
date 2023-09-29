@@ -20,13 +20,18 @@ const TeacherSignupForm = () => {
   const handleSubmit = values => {
     const data = {
       ...values,
+      userName:
+        values.userName.length === 0
+          ? String(values.phoneNumber)
+          : values.userName,
       userType: +values.userType,
       countryId: +values.countryId,
       isMale: values.gander === 'male',
+      phoneNumber: String(values.phoneNumber),
     };
     delete data.gander;
 
-    signup(values);
+    signup(data);
   };
 
   return (
