@@ -32,7 +32,8 @@
     "gtZero": "> Zero",
     "eqZero": "= Zero",
     "enrollment": "Enrollment",
-    "approve": "Approve"
+    "approve": "Approve",
+    "userType": "Employee Type"
   },
   "pagination": {
     "showing": "Showing",

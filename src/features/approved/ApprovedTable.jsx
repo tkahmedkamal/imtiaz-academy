@@ -35,6 +35,7 @@ const ApprovedTable = () => {
           <Table.Thead>
             <Table.Th>{t('global.index')}</Table.Th>
             <Table.Th>{t('global.name')}</Table.Th>
+            <Table.Th>{t('global.userType')}</Table.Th>
             <Table.Th>{t('global.actions')}</Table.Th>
           </Table.Thead>
 

@@ -3,16 +3,18 @@ import { BsCheckLg } from 'react-icons/bs';
 
 import { Table, ActionBtn, Modal } from '../../ui';
 import ApprovedForm from './ApprovedForm';
+import { ROLE } from '../../constants';
 
 const ApprovedRow = ({ index, user }) => {
   const { t } = useTranslation();
 
-  const { id, name } = user;
+  const { id, name, userType } = user;
 
   return (
     <Table.Tr>
       <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
       <Table.Td>{name}</Table.Td>
+      <Table.Td>{ROLE.get(userType)}</Table.Td>
 
       <Table.Td classes='flex item-center gap-3'>
         <Modal>
