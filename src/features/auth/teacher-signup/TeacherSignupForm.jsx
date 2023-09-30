@@ -55,9 +55,9 @@ const TeacherSignupForm = () => {
           bankAccountNumber: '',
           certificate: '',
           iban: '',
-          age: 0,
+          age: 5,
           countryId: 0,
-          userType: 1,
+          userType: 2,
           isAcceptedPolicies: true,
           gander: false,
         }}
@@ -164,7 +164,7 @@ const TeacherSignupForm = () => {
                 label={t('teacher_signup.form.type')}
                 id='inputType'
               >
-                <SelectOption value={1} label='Student' />
+                {/* <SelectOption value={1} label='Student' /> */}
                 <SelectOption value={2} label='Teacher' />
                 <SelectOption value={3} label='Accountant Agent' />
                 <SelectOption value={4} label='Enrollment Agent' />
@@ -219,7 +219,7 @@ const TeacherSignupForm = () => {
                 isLoading={isLoading}
                 status='success'
               >
-                {t('login.form.submit')}
+                {t('teacher_signup.form.submit')}
               </LoadingButton>
             </div>
           </Form>

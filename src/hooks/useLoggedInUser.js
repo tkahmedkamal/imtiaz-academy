@@ -21,7 +21,6 @@ const useLoggedInUser = () => {
     onError: ({ message }) => {
       queryClient.setQueryData(['user'], null);
       setUser(null);
-      toast.error(message);
     },
   });
 

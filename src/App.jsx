@@ -11,6 +11,7 @@ import {
   EducationalProgram,
   Course,
   NotFound,
+  Approved,
 } from './pages';
 import { Login, TeacherSignup } from './pages/auth';
 import { ProtectedRoutes } from './ui';
@@ -21,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     if (pathname === '/') {
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     }
   }, [navigate, pathname]);
 
@@ -43,6 +44,7 @@ const App = () => {
             <Route index element={<EducationalProgram />} />
             <Route path='course' element={<Course />} />
           </Route>
+          <Route path='approved' element={<Approved />} />
           <Route path='*' element={<NotFound />} />
         </Route>
         <Route path='/login' element={<Login />} />
@@ -67,6 +69,8 @@ const App = () => {
             // color: "var(--color-grey-700)",
             // backgroundColor: "var(--color-grey-0)",
           },
+          className:
+            'bg-paper dark:bg-dark-paper text-primary-text dark:text-dark-primary-text',
         }}
       />
     </div>

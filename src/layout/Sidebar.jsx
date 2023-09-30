@@ -1,17 +1,31 @@
+import { Link, useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineUsers } from 'react-icons/hi';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { HiOutlineUserGroup } from 'react-icons/hi';
 import { MdOutlineOndemandVideo } from 'react-icons/md';
+import { BiLogOut } from 'react-icons/bi';
+import { BsCheckLg } from 'react-icons/bs';
 
 import SidebarListItem from './SidebarListItem';
+import { useAuthCtx } from '../context/authContext';
 import { leftSideVariants } from '../utils/motion';
 import { Logo } from '../ui';
 
 const Sidebar = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { setUser } = useAuthCtx();
+
+  const logout = () => {
+    localStorage.removeItem('im_access_token');
+    queryClient.removeQueries();
+    setUser(null);
+    navigate('/login', { replace: true });
+  };
 
   const listItems = [
     {
@@ -38,6 +52,17 @@ const Sidebar = () => {
       label: t('sidebar.course'),
       icon: <MdOutlineOndemandVideo />,
       link: '/dashboard/educational-program/course',
+    },
+    {
+      label: t('sidebar.approved'),
+      icon: <BsCheckLg />,
+      link: '/dashboard/approved',
+    },
+    {
+      label: t('sidebar.logout'),
+      icon: <BiLogOut />,
+      noLink: true,
+      handler: logout,
     },
   ];
 

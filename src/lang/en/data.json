@@ -31,7 +31,8 @@
     "ltZero": "< Zero",
     "gtZero": "> Zero",
     "eqZero": "= Zero",
-    "enrollment": "Enrollment"
+    "enrollment": "Enrollment",
+    "approve": "Approve"
   },
   "pagination": {
     "showing": "Showing",
@@ -54,7 +55,9 @@
     "teachers": "Teachers",
     "educational-program": "Educational Program",
     "details": "Details",
-    "course": "Course"
+    "course": "Course",
+    "approved": "Approved",
+    "logout": "Logout"
   },
   "students": {
     "title": "Students",
@@ -147,7 +150,7 @@
     "form": {
       "password": "Enter your password",
       "username_email": "Username Or Email",
-    "submit": "Login"
+      "submit": "Login"
     }
   },
   "teacher_signup": {
@@ -186,7 +189,20 @@
         "isAcceptedPolicies": "",
         "phoneNumber": "Enter your phone number",
         "username": "Enter your username"
-      }
+      },
+      "submit": "Signup"
+    }
+  },
+  "approve": {
+    "title": "Approve Employee",
+    "form": {
+      "contractStartDate": "Contract Start Date",
+      "contractEndDate": "Contact End Date",
+      "salary": "Salary",
+      "placeholders": {
+      "salary": "Enter your salary"
+      },
+      "submit": "Approve"
     }
   }
 }
