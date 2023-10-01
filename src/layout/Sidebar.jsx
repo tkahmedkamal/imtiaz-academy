@@ -18,7 +18,7 @@ const Sidebar = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { setUser } = useAuthCtx();
+  const { user, setUser } = useAuthCtx();
 
   const logout = () => {
     localStorage.removeItem('im_access_token');
@@ -37,6 +37,9 @@ const Sidebar = () => {
       label: t('sidebar.students'),
       icon: <HiOutlineUsers />,
       link: '/dashboard/students',
+      show:
+        user?.roles.includes('AccountantAgent') ||
+        user.roles.includes('EnrollmentAgent'),
     },
     {
       label: t('sidebar.teachers'),
@@ -57,6 +60,7 @@ const Sidebar = () => {
       label: t('sidebar.approved'),
       icon: <BsCheckLg />,
       link: '/dashboard/approved',
+      show: user?.roles.includes('Admin'),
     },
     {
       label: t('sidebar.logout'),

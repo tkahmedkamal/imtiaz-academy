@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
-const SidebarListItem = ({ item: { label, link, icon, noLink, handler } }) => {
+const SidebarListItem = ({
+  item: { label, link, icon, noLink, handler, show = true },
+}) => {
   return (
     <>
-      {!noLink && (
+      {!noLink && show && (
         <NavLink
           to={link}
           end

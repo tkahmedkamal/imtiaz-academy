@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
   Modal,
   TableOperational,
@@ -5,12 +8,27 @@ import {
   StatusFilter,
   CountryFilter,
 } from '../ui';
-import { AddStudent, StudentsTable } from '../features/students';
+import { AddStudent } from '../features/students';
+import { StudentsAccountantTable } from '../features/students/accountant';
+import { StudentsEnrollmentTable } from '../features/students/enrollment';
 import StudentsProvider from '../context/StudentContext';
 import { withPage } from '../hocs';
 import CreditFilter from '../ui/CreditFilter.jsx';
+import { useAuthCtx } from '../context/authContext';
 
 const Student = () => {
+  const navigate = useNavigate();
+  const { user } = useAuthCtx();
+
+  useEffect(() => {
+    if (
+      !user.roles.includes('AccountantAgent') &&
+      !user.roles.includes('EnrollmentAgent')
+    ) {
+      navigate(-1);
+    }
+  }, [user, navigate]);
+
   return (
     <StudentsProvider>
       <Modal>
@@ -22,12 +40,17 @@ const Student = () => {
         >
           <Filters>
             <StatusFilter />
-            <CreditFilter />
+            {user?.roles.includes('AccountantAgent') && <CreditFilter />}
             <CountryFilter />
           </Filters>
         </TableOperational>
       </Modal>
-      <StudentsTable />
+
+      {user?.roles.includes('AccountantAgent') ? (
+        <StudentsAccountantTable />
+      ) : (
+        <StudentsEnrollmentTable />
+      )}
     </StudentsProvider>
   );
 };

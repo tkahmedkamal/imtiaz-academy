@@ -18,8 +18,27 @@ const useLogin = () => {
       navigate('/dashboard', { replace: true });
     },
     onError: ({ message }) => {
-      toast.error(message);
       setUser(null);
+
+      console.log(message);
+
+      if (message.startsWith('{') && message.endsWith('}')) {
+        const errors = JSON.parse(message);
+
+        for (const key in errors) {
+          if (errors.hasOwnProperty(key)) {
+            const array = errors[key];
+
+            array.forEach((item, index) => {
+              toast.error(item);
+            });
+          }
+        }
+
+        return;
+      }
+
+      toast.error(message);
     },
   });
 

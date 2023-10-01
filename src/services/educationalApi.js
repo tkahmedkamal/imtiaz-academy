@@ -1,12 +1,15 @@
 import axiosConfig from '../config/axiosConfig';
 
 export const getEducational = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const res = await axiosConfig.get(
       `/api/educationalProgram?searchString=${filter}&pageNumber=${page}`,
       {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
@@ -22,6 +25,8 @@ export const getEducational = async (page, filter) => {
 };
 
 export const addEducational = async program => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const { data } = await axiosConfig.post(
       '/api/educationalProgram/add',
@@ -29,6 +34,7 @@ export const addEducational = async program => {
       {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
@@ -48,6 +54,8 @@ export const addEducational = async program => {
 };
 
 export const editEducational = async program => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const { data } = await axiosConfig.post(
       '/api/educationalProgram/edit',
@@ -55,6 +63,7 @@ export const editEducational = async program => {
       {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
@@ -105,6 +114,8 @@ export const editEducational = async program => {
 // };
 
 export const archiveEducational = async id => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const { data } = await axiosConfig.post(
       `/api/educationalProgram/archiveStatus/${id}`,
@@ -112,6 +123,7 @@ export const archiveEducational = async id => {
       {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );

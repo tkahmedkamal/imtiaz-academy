@@ -5,19 +5,29 @@ import { MdPayment } from 'react-icons/md';
 import { TbInfoSquare } from 'react-icons/tb';
 import { TfiWrite } from 'react-icons/tfi';
 
-import { Table, ActionBtn, Modal, Tag, Confirm } from '../../ui';
-import EditStudentForm from './EditStudentForm';
-import useArchiveStudent from './useArchiveStudent';
-import AddPaymentTransactionForm from './AddPaymentTransactionForm';
-import AddEnrollmentStudentForm from './AddEnrollmentStudentForm';
-import { Archive } from '../../assets';
+import { Table, ActionBtn, Modal, Tag, Confirm } from '../../../ui';
+import EditStudentForm from '../EditStudentForm';
+import useArchiveStudent from '../useArchiveStudent';
+import AddPaymentTransactionForm from '../AddPaymentTransactionForm';
+import AddEnrollmentStudentForm from '../AddEnrollmentStudentForm';
+import { Archive } from '../../../assets';
 
-const StudentRow = ({ index, student }) => {
+const StudentsEnrollmentRow = ({ index, student }) => {
   const { t } = useTranslation();
   const { mutate, isLoading } = useArchiveStudent();
 
-  const { id, name, country, phoneNumber, isActive, statusType, credit } =
-    student;
+  const {
+    id,
+    name,
+    country,
+    phoneNumber,
+    age,
+    registrationDay,
+    registrationMonth,
+    registrationYear,
+    isActive,
+    state,
+  } = student;
 
   return (
     <Table.Tr>
@@ -25,22 +35,15 @@ const StudentRow = ({ index, student }) => {
       <Table.Td>{name}</Table.Td>
       <Table.Td>{country}</Table.Td>
       <Table.Td>{phoneNumber}</Table.Td>
+      <Table.Td>{age}</Table.Td>
       <Table.Td>
-        {credit < 0 ? (
-          <Tag label={credit} status='info' />
-        ) : credit === 0 ? (
-          <Tag label={credit} status='success' />
-        ) : credit > 0 ? (
-          <Tag label={credit} status='error' />
-        ) : (
-          ''
-        )}
+        {registrationDay}/{registrationMonth}/{registrationYear}
       </Table.Td>
       <Table.Td>
         {isActive ? (
-          <Tag label={statusType} status='success' />
+          <Tag label={state} status='success' />
         ) : (
-          <Tag label={statusType} status='warn' />
+          <Tag label={state} status='warn' />
         )}
       </Table.Td>
 
@@ -114,4 +117,4 @@ const StudentRow = ({ index, student }) => {
   );
 };
 
-export default StudentRow;
+export default StudentsEnrollmentRow;

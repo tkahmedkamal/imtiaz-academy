@@ -7,8 +7,9 @@ const SelectFilter = ({ options, onChange, defaultValue = 'all' }) => {
       defaultValue={defaultValue}
       onChange={onChange}
     >
-      {options?.map(({ value, label }) => (
-        <SelectOption key={value} value={value} label={label} />
+      <SelectOption key='all' value='all' label='All' />
+      {options?.map(({ id, name }) => (
+        <SelectOption key={id} value={name} label={name} />
       ))}
     </select>
   );

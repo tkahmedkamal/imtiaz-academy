@@ -7,6 +7,7 @@ export const getLoggedInUser = async () => {
     const res = await axiosConfig.get(`/api/user/getMe?userToken=${token}`, {
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -45,12 +46,15 @@ export const getCountries = async () => {
 };
 
 export const getNotApproved = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const res = await axiosConfig.get(
       `/api/user?searchString=isApproved=false,${filter}&pageNumber=${page}`,
       {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
@@ -68,6 +72,8 @@ export const getNotApproved = async (page, filter) => {
 };
 
 export const approved = async data => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const res = await axiosConfig.post(
       `/api/AdminsDashBoard/ApproveEmployee`,
@@ -75,6 +81,7 @@ export const approved = async data => {
       {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );

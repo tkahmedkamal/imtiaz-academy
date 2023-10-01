@@ -1,22 +1,33 @@
 import { Formik, Form } from 'formik';
 import { useTranslation } from 'react-i18next';
 
-import { LoadingButton, Input, FormControl, Select } from '../../ui';
+import {
+  LoadingButton,
+  Input,
+  FormControl,
+  Select,
+  SelectOption,
+} from '../../ui';
 import { studentSchema } from './validation';
 import useAddStudent from './useAddStudent';
+import { useCountries } from '../../hooks';
 
 const CreateStudentForm = ({ closeModal }) => {
   const { t } = useTranslation();
   const { mutate, isLoading } = useAddStudent(closeModal);
+  const { data } = useCountries();
 
   const handleSubmit = values => {
     const data = {
       ...values,
+      userName:
+        values.userName.length > 0 ? values.userName : values.phoneNumber,
+      age: +values.age,
+      knowAboutUs: +values.knowAboutUs,
+      countryId: +values.countryId,
       registrationDate: new Date().toISOString(),
       isMale: values.gender === 'male',
-      isActive: values.active === 'active',
     };
-    delete data.active;
     delete data.gender;
 
     mutate(data);
@@ -30,22 +41,23 @@ const CreateStudentForm = ({ closeModal }) => {
 
       <Formik
         initialValues={{
-          namePr: '',
-          nameSc: '',
-          countryPr: '',
-          countrySc: '',
-          statePr: '',
-          stateSc: '',
+          name: '',
+          userName: '',
           email: '',
-          phoneNumber: '',
+          password: '',
+          nationality: '',
           nationalId: '',
-          jobPr: '',
-          jobSc: '',
-          addressPr: '',
-          addressSc: '',
+          countryId: '',
+          phoneNumber: '',
+          state: '',
+          job: '',
           gender: '',
-          active: 'active',
-          age: '',
+          age: 5,
+          dateOfBirth: '',
+          address: '',
+          registrationDate: '',
+          knowAboutUs: '',
+          isAcceptedPolicies: true,
         }}
         validationSchema={studentSchema}
         onSubmit={handleSubmit}
@@ -53,142 +65,114 @@ const CreateStudentForm = ({ closeModal }) => {
         {() => (
           <Form className='mt-10 space-y-4'>
             <FormControl>
+              <Input name='name' label={t('global.name')} id='inputName' />
+
               <Input
-                name='namePr'
-                placeholder={`${t(
-                  'students.form.placeholders.name',
-                )} ( English )`}
-                label={`${t('global.name')}-en`}
-                id='inputNamePr'
+                name='userName'
+                label={t('global.username')}
+                id='inputUsername'
               />
+            </FormControl>
+
+            <FormControl>
+              <Input name='email' label={t('global.email')} id='inputEmail' />
+
               <Input
-                name='nameSc'
-                placeholder={`${t(
-                  'students.form.placeholders.name',
-                )} ( Malaysia )`}
-                label={`${t('global.name')}-ml`}
-                id='inputNameSc'
+                name='password'
+                label={t('global.password')}
+                id='inputPassword'
               />
             </FormControl>
 
             <FormControl>
               <Input
-                name='countryPr'
-                placeholder={`${t(
-                  'students.form.placeholders.country',
-                )} ( English )`}
-                label={`${t('global.country')}-en`}
-                id='inputCountryPr'
+                name='nationality'
+                label={t('global.nationality')}
+                id='inputNationality'
               />
+
               <Input
-                name='countrySc'
-                placeholder={`${t(
-                  'students.form.placeholders.country',
-                )} ( Malaysia )`}
-                label={`${t('global.country')}-ml`}
-                id='inputCountrySc'
+                name='nationalId'
+                label={t('global.national')}
+                id='inputNationalId'
               />
             </FormControl>
 
             <FormControl>
-              <Input
-                name='statePr'
-                placeholder={`${t(
-                  'students.form.placeholders.state',
-                )} ( English )`}
-                label={`${t('students.form.state')}-en`}
-                id='inputStatePr'
-              />
-              <Input
-                name='stateSc'
-                placeholder={`${t(
-                  'students.form.placeholders.state',
-                )} ( Malaysia )`}
-                label={`${t('students.form.state')}-ml`}
-                id='inputStateSc'
-              />
-            </FormControl>
+              <Select
+                name='countryId'
+                label={t('global.country')}
+                id='inputCountryId'
+              >
+                {data?.map(({ id, name }) => (
+                  <SelectOption key={id} value={id} label={name} />
+                ))}
+              </Select>
 
-            <FormControl>
-              <Input
-                name='email'
-                placeholder='example@example.com'
-                label={t('global.email')}
-                id='inputEmail'
-              />
               <Input
                 name='phoneNumber'
-                placeholder={t('students.form.placeholders.phone')}
                 label={t('global.phone')}
                 id='inputPhoneNumber'
               />
             </FormControl>
 
-            <Input
-              name='nationalId'
-              placeholder={t('students.form.placeholders.national')}
-              label={t('global.national')}
-              id='inputNationalId'
-            />
-
             <FormControl>
-              <Input
-                name='jobPr'
-                placeholder={`${t(
-                  'students.form.placeholders.job',
-                )} ( English )`}
-                label={`${t('students.form.job')}-en`}
-                id='inputJobPr'
-              />
-              <Input
-                name='jobSc'
-                placeholder={`${t(
-                  'students.form.placeholders.job',
-                )} ( Malaysia )`}
-                label={`${t('students.form.job')}-ml`}
-                id='inputJobSc'
-              />
-            </FormControl>
-
-            <FormControl>
-              <Input
-                name='addressPr'
-                placeholder={`${t(
-                  'students.form.placeholders.address',
-                )} ( English )`}
-                label={`${t('global.address')}-en`}
-                id='inputAddressPr'
-              />
-              <Input
-                name='addressSc'
-                placeholder={`${t(
-                  'students.form.placeholders.address',
-                )} ( Malaysia )`}
-                label={`${t('global.address')}-ml`}
-                id='inputAddressSc'
-              />
-            </FormControl>
-
-            <FormControl>
-              <Select label={t('global.gender')} name='gender' id='inputGender'>
-                <option value='male'>{t('global.male')}</option>
-                <option value='female'>{t('global.female')}</option>
+              <Select name='gender' label={t('global.gender')} id='inputGender'>
+                <SelectOption value='male' label='Male' />
+                <SelectOption value='female' label='Female' />
               </Select>
-              <Select label={t('global.status')} name='active' id='inputStatus'>
-                <option value='active'>{t('global.active')}</option>
-                <option value='inactive'>{t('global.inactive')}</option>
-              </Select>
+
+              <Input
+                type='number'
+                name='age'
+                label={t('global.age')}
+                id='inputAge'
+              />
             </FormControl>
 
-            <Input
-              name='age'
-              placeholder={t('students.form.placeholders.age')}
-              label={t('students.form.age')}
-              type='number'
-              id='inputAge'
-              min='5'
-              max='100'
-            />
+            <FormControl>
+              <Select
+                name='state'
+                label={t('students.form.state')}
+                id='inputState'
+              >
+                <SelectOption value='active' label='Active' />
+                <SelectOption value='pending' label='Pending' />
+              </Select>
+
+              <Input name='job' label={t('students.form.job')} id='inputJob' />
+            </FormControl>
+
+            <FormControl>
+              <Input
+                type='date'
+                name='dateOfBirth'
+                label={t('students.form.dateOfBirth')}
+                id='inputDateOfBirth'
+              />
+
+              <Input
+                name='address'
+                label={t('global.address')}
+                id='inputAddress'
+              />
+            </FormControl>
+
+            <FormControl>
+              <Select
+                type='text'
+                name='knowAboutUs'
+                label={t('students.form.knowAboutUs')}
+                id='inputKnowAboutUs'
+              >
+                <SelectOption value={1} label='Facebook' />
+                <SelectOption value={2} label='Instgram' />
+                <SelectOption value={3} label='Friends' />
+                <SelectOption value={4} label='Whatsapp' />
+                <SelectOption value={5} label='Telegram' />
+                <SelectOption value={6} label='Other' />
+              </Select>
+            </FormControl>
 
             <div className='!mt-6 '>
               <LoadingButton

@@ -1,4 +1,1 @@
-import AddStudent from './AddStudent';
-import StudentsTable from './StudentsTable';
-
-export { StudentsTable, AddStudent };
+export { default as AddStudent } from './AddStudent';

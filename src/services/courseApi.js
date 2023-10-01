@@ -1,12 +1,15 @@
 import axiosConfig from '../config/axiosConfig';
 
 export const getCourse = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const res = await axiosConfig.get(
       `/api/course?searchString=${filter}&pageNumber=${page}`,
       {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
@@ -22,10 +25,13 @@ export const getCourse = async (page, filter) => {
 };
 
 export const addCourse = async details => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const { data } = await axiosConfig.post('/api/course/add', details, {
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -44,10 +50,13 @@ export const addCourse = async details => {
 };
 
 export const editCourse = async details => {
+  const token = localStorage.getItem('im_access_token');
+
   try {
     const { data } = await axiosConfig.post('/api/course/edit', details, {
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     });
 

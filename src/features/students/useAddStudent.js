@@ -1,19 +1,32 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
-import { addStudent } from '../../services/studentsApi';
+import { signupStudentApi } from '../../services/authApi';
 
 const useAddStudent = closeModal => {
-  const queryClient = useQueryClient();
-
   const { mutate, isLoading } = useMutation({
-    mutationFn: newStudent => addStudent(newStudent),
+    mutationFn: data => signupStudentApi(data),
     onSuccess: ({ msg }) => {
-      queryClient.invalidateQueries({ queryKey: ['students'] });
       toast.success(msg);
       closeModal?.();
     },
     onError: ({ message }) => {
+      if (message.startsWith('{') && message.endsWith('}')) {
+        const errors = JSON.parse(message);
+
+        for (const key in errors) {
+          if (errors.hasOwnProperty(key)) {
+            const array = errors[key];
+
+            array.forEach((item, index) => {
+              toast.error(item);
+            });
+          }
+        }
+
+        return;
+      }
+
       toast.error(message);
     },
   });

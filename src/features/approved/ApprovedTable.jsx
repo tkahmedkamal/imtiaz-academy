@@ -52,9 +52,7 @@ const ApprovedTable = () => {
         results={totalRecordsFiltered}
         pageCount={totalPages}
       />
-      {!users?.length && (
-        <Empty message='There is no data for students at this time.' />
-      )}
+      {!users?.length && <Empty message='There is no data.' />}
     </div>
   );
 };

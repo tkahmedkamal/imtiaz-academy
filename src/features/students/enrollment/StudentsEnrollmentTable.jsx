@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Table, Spinner, Pagination, Empty } from '../../ui';
-import useStudents from './useStudents';
-import StudentRow from './StudentRow';
-import { useStudentsCtx } from '../../context/StudentContext';
+import { Table, Spinner, Pagination, Empty } from '../../../ui';
+import useStudents from '../useStudents';
+import StudentsEnrollmentRow from './StudentsEnrollmentRow';
+import { useStudentsCtx } from '../../../context/StudentContext';
 
-const StudentsTable = () => {
+const StudentsEnrollmentTable = () => {
   const { t } = useTranslation();
   const { data, isLoading } = useStudents();
 
@@ -37,7 +37,8 @@ const StudentsTable = () => {
             <Table.Th>{t('global.name')}</Table.Th>
             <Table.Th>{t('global.country')}</Table.Th>
             <Table.Th>{t('global.phone')}</Table.Th>
-            <Table.Th>{t('global.credit')}</Table.Th>
+            <Table.Th>{t('global.age')}</Table.Th>
+            <Table.Th>{t('global.registration_date')}</Table.Th>
             <Table.Th>{t('global.status')}</Table.Th>
             <Table.Th>{t('global.actions')}</Table.Th>
           </Table.Thead>
@@ -45,7 +46,11 @@ const StudentsTable = () => {
           <Table.Tbody
             data={students}
             render={(student, index) => (
-              <StudentRow key={student.id} student={student} index={index} />
+              <StudentsEnrollmentRow
+                key={student.userId}
+                student={student}
+                index={index}
+              />
             )}
           />
         </Table>
@@ -62,4 +67,4 @@ const StudentsTable = () => {
   );
 };
 
-export default StudentsTable;
+export default StudentsEnrollmentTable;
