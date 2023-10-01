@@ -57,14 +57,6 @@ const StudentsAccountantRow = ({ index, student }) => {
 
       <Table.Td classes='flex item-center gap-3'>
         <Modal>
-          <Modal.Open opens={`edit-student-${id}`}>
-            <ActionBtn
-              title={t('global.edit')}
-              icon={<BiEdit />}
-              status='primary'
-            />
-          </Modal.Open>
-
           <Modal.Open opens={`add-student-transaction-${id}`}>
             <ActionBtn
               title={t('students.transaction.title')}
@@ -80,15 +72,6 @@ const StudentsAccountantRow = ({ index, student }) => {
               status='primary'
             />
           </Modal.Open>
-
-          <Modal.Open opens={`enrollment-student-${id}`}>
-            <ActionBtn
-              title={t('global.enrollment')}
-              icon={<TfiWrite />}
-              status='primary'
-            />
-          </Modal.Open>
-
           <Modal.Open opens={`archive-student-${id}`}>
             <ActionBtn
               title={t('global.archive')}
@@ -97,16 +80,8 @@ const StudentsAccountantRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Window name={`edit-student-${id}`}>
-            <EditStudentForm studentId={id} />
-          </Modal.Window>
-
           <Modal.Window name={`add-student-transaction-${id}`}>
             <AddPaymentTransactionForm studentId={id} />
-          </Modal.Window>
-
-          <Modal.Window name={`enrollment-student-${id}`}>
-            <AddEnrollmentStudentForm studentId={id} />
           </Modal.Window>
 
           <Modal.Window name={`archive-student-${id}`}>

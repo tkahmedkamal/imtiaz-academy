@@ -57,14 +57,6 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Open opens={`add-student-transaction-${id}`}>
-            <ActionBtn
-              title={t('students.transaction.title')}
-              icon={<MdPayment />}
-              status='primary'
-            />
-          </Modal.Open>
-
           <Modal.Open opens={`info-student-${id}`}>
             <ActionBtn
               title={t('global.info')}
@@ -91,10 +83,6 @@ const StudentsEnrollmentRow = ({ index, student }) => {
 
           <Modal.Window name={`edit-student-${id}`}>
             <EditStudentForm studentId={id} />
-          </Modal.Window>
-
-          <Modal.Window name={`add-student-transaction-${id}`}>
-            <AddPaymentTransactionForm studentId={id} />
           </Modal.Window>
 
           <Modal.Window name={`enrollment-student-${id}`}>
