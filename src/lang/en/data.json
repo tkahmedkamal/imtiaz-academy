@@ -5,6 +5,7 @@
     "username": "Username",
     "nationality": "Nationality",
     "country": "Country",
+    "state" :"State",
     "national": "National-Id",
     "email": "Email",
     "password": "Password",

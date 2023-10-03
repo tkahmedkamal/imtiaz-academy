@@ -13,7 +13,7 @@ import {
   NotFound,
   Approved,
 } from './pages';
-import { Login, TeacherSignup } from './pages/auth';
+import { Login, StudentSignup, TeacherSignup } from './pages/auth';
 import { ProtectedRoutes } from './ui';
 
 const App = () => {
@@ -49,6 +49,7 @@ const App = () => {
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/employee-signup' element={<TeacherSignup />} />
+        <Route path='/student-signup' element={<StudentSignup />} />
       </Routes>
 
       <Toaster

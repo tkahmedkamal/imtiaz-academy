@@ -1,14 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { BiEdit } from 'react-icons/bi';
 import { LuArchive } from 'react-icons/lu';
-import { MdPayment } from 'react-icons/md';
 import { TbInfoSquare } from 'react-icons/tb';
 import { TfiWrite } from 'react-icons/tfi';
 
 import { Table, ActionBtn, Modal, Tag, Confirm } from '../../../ui';
 import EditStudentForm from '../EditStudentForm';
 import useArchiveStudent from '../useArchiveStudent';
-import AddPaymentTransactionForm from '../AddPaymentTransactionForm';
 import AddEnrollmentStudentForm from '../AddEnrollmentStudentForm';
 import { Archive } from '../../../assets';
 
@@ -17,11 +15,10 @@ const StudentsEnrollmentRow = ({ index, student }) => {
   const { mutate, isLoading } = useArchiveStudent();
 
   const {
-    id,
+    userId,
     name,
     country,
     phoneNumber,
-    age,
     registrationDay,
     registrationMonth,
     registrationYear,
@@ -35,21 +32,21 @@ const StudentsEnrollmentRow = ({ index, student }) => {
       <Table.Td>{name}</Table.Td>
       <Table.Td>{country}</Table.Td>
       <Table.Td>{phoneNumber}</Table.Td>
-      <Table.Td>{age}</Table.Td>
+      <Table.Td>{state}</Table.Td>
       <Table.Td>
         {registrationDay}/{registrationMonth}/{registrationYear}
       </Table.Td>
       <Table.Td>
         {isActive ? (
-          <Tag label={state} status='success' />
+          <Tag label={'Active'} status='success' />
         ) : (
-          <Tag label={state} status='warn' />
+          <Tag label={'Pending'} status='warn' />
         )}
       </Table.Td>
 
       <Table.Td classes='flex item-center gap-3'>
         <Modal>
-          <Modal.Open opens={`edit-student-${id}`}>
+          <Modal.Open opens={`edit-student-${userId}`}>
             <ActionBtn
               title={t('global.edit')}
               icon={<BiEdit />}
@@ -57,7 +54,7 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Open opens={`info-student-${id}`}>
+          <Modal.Open opens={`info-student-${userId}`}>
             <ActionBtn
               title={t('global.info')}
               icon={<TbInfoSquare />}
@@ -65,7 +62,7 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Open opens={`enrollment-student-${id}`}>
+          <Modal.Open opens={`enrollment-student-${userId}`}>
             <ActionBtn
               title={t('global.enrollment')}
               icon={<TfiWrite />}
@@ -73,7 +70,7 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Open opens={`archive-student-${id}`}>
+          <Modal.Open opens={`archive-student-${userId}`}>
             <ActionBtn
               title={t('global.archive')}
               icon={<LuArchive />}
@@ -81,22 +78,22 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Window name={`edit-student-${id}`}>
-            <EditStudentForm studentId={id} />
+          <Modal.Window name={`edit-student-${userId}`}>
+            <EditStudentForm studentId={userId} />
           </Modal.Window>
 
-          <Modal.Window name={`enrollment-student-${id}`}>
-            <AddEnrollmentStudentForm studentId={id} />
+          <Modal.Window name={`enrollment-student-${userId}`}>
+            <AddEnrollmentStudentForm studentId={userId} />
           </Modal.Window>
 
-          <Modal.Window name={`archive-student-${id}`}>
+          <Modal.Window name={`archive-student-${userId}`}>
             <Confirm
               label={t('archive.label')}
               message={t('archive.message')}
               statusBtn='warn'
               icon={Archive}
               isLoading={isLoading}
-              handleConfirm={() => mutate(id)}
+              handleConfirm={() => mutate(userId)}
             />
           </Modal.Window>
         </Modal>

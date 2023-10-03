@@ -7,12 +7,12 @@ import {
   FormControl,
   Select,
   SelectOption,
-} from '../../ui';
-import { studentSchema } from './validation';
-import useAddStudent from './useAddStudent';
-import { useCountries } from '../../hooks';
+} from '../../../ui';
+import { studentSchema } from '../../students/validation';
+import useAddStudent from '../../students/useAddStudent';
+import { useCountries } from '../../../hooks';
 
-const CreateStudentForm = ({ closeModal }) => {
+const StudentSignupForm = ({ closeModal }) => {
   const { t } = useTranslation();
   const { mutate, isLoading } = useAddStudent(closeModal);
   const { data } = useCountries();
@@ -36,7 +36,7 @@ const CreateStudentForm = ({ closeModal }) => {
   return (
     <>
       <h2 className='font-publicSans text-xl font-medium text-primary-text dark:text-dark-primary-text/75'>
-        {t('students.addTitle')}
+        {t('teacher_signup.title')}
       </h2>
 
       <Formik
@@ -44,7 +44,7 @@ const CreateStudentForm = ({ closeModal }) => {
           name: '',
           userName: '',
           email: '',
-          password: 'ImtiazAcademy',
+          password: '',
           nationality: '',
           nationalId: '',
           countryId: '',
@@ -78,9 +78,9 @@ const CreateStudentForm = ({ closeModal }) => {
               <Input name='email' label={t('global.email')} id='inputEmail' />
 
               <Input
-                name='phoneNumber'
-                label={t('global.phone')}
-                id='inputPhoneNumber'
+                name='password'
+                label={t('global.password')}
+                id='inputPassword'
               />
             </FormControl>
 
@@ -109,8 +109,11 @@ const CreateStudentForm = ({ closeModal }) => {
                 ))}
               </Select>
 
-              <Input name='state' label={t('students.form.state')} id='inputState' />
-
+              <Input
+                name='phoneNumber'
+                label={t('global.phone')}
+                id='inputPhoneNumber'
+              />
             </FormControl>
 
             <FormControl>
@@ -177,7 +180,7 @@ const CreateStudentForm = ({ closeModal }) => {
                 isLoading={isLoading}
                 status='success'
               >
-                {t('students.buttons.add')}
+                {t('teacher_signup.title')}
               </LoadingButton>
             </div>
           </Form>
@@ -187,4 +190,4 @@ const CreateStudentForm = ({ closeModal }) => {
   );
 };
 
-export default CreateStudentForm;
+export default StudentSignupForm;

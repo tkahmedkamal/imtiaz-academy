@@ -11,7 +11,22 @@ const EditStudentForm = ({ studentId, closeModal }) => {
   const { mutate, isLoading } = useEditStudent(closeModal);
   const { t } = useTranslation();
 
-  const { name, country, phoneNumber, isActive } = data?.student || {};
+  const { name, country, phoneNumber, isActive ,
+  userName,
+  email,
+  password,
+  nationality,
+  nationalId,
+  countryId,
+  state,
+  job,
+  gender,
+  age,
+  dateOfBirth,
+  address,
+  registrationDate,
+  knowAboutUs,
+   } = data?.student || {};
 
   const handleSubmit = values => {
     const data = {
@@ -36,6 +51,21 @@ const EditStudentForm = ({ studentId, closeModal }) => {
           country: country || '',
           phoneNumber: phoneNumber || '',
           active: isActive ? 'active' : 'inactive',
+          userName: userName || '',
+          email: email || '',
+          password: password ||  '',
+          nationality: nationality ||  '',
+          nationalId: nationalId ||  '',
+          countryId: countryId ||  '',
+          state: state || '',
+          job: job || '',
+          gender: gender || '',
+          age: age || 5,
+          dateOfBirth: dateOfBirth || '',
+          address: address || '',
+          registrationDate: registrationDate || '',
+          knowAboutUs: knowAboutUs || '',
+          isAcceptedPolicies: true,
         }}
         validationSchema={studentSchema}
         onSubmit={handleSubmit}
