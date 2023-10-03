@@ -131,14 +131,7 @@ const StudentSignupForm = ({ closeModal }) => {
             </FormControl>
 
             <FormControl>
-              <Select
-                name='state'
-                label={t('students.form.state')}
-                id='inputState'
-              >
-                <SelectOption value='active' label='Active' />
-                <SelectOption value='pending' label='Pending' />
-              </Select>
+            
 
               <Input name='job' label={t('students.form.job')} id='inputJob' />
             </FormControl>
