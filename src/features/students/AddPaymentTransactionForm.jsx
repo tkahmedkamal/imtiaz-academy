@@ -27,6 +27,7 @@ const AddPaymentTransactionForm = ({ studentId, closeModal }) => {
 
       <Formik
         initialValues={{
+          studentId:studentId,
           amountPaid: '',
           paidTime: '',
           referencePaidNumber: '',

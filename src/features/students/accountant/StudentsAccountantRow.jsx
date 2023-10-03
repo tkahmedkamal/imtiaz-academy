@@ -1,15 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { BiEdit } from 'react-icons/bi';
 import { LuArchive } from 'react-icons/lu';
 import { MdPayment } from 'react-icons/md';
 import { TbInfoSquare } from 'react-icons/tb';
-import { TfiWrite } from 'react-icons/tfi';
 
 import { Table, ActionBtn, Modal, Tag, Confirm } from '../../../ui';
-import EditStudentForm from '../EditStudentForm';
 import useArchiveStudent from '../useArchiveStudent';
 import AddPaymentTransactionForm from '../AddPaymentTransactionForm';
-import AddEnrollmentStudentForm from '../AddEnrollmentStudentForm';
 import { Archive } from '../../../assets';
 
 const StudentsAccountantRow = ({ index, student }) => {
