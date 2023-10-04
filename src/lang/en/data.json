@@ -108,7 +108,13 @@
     "enrollment": {
       "title": "Enroll Student to a Course",
       "registrationCost": "Registration Cost",
+      "totalRegistrationCost" : "Total Registration Cost",
+      "classDurationPerMinuets":"class duration per minuets",
       "discountCheckbox": "Has special discount",
+      "registrationCostPerClass"  : "registration cost per class",
+      "numberOfMeetingsPerMonth": "number of meetings per month",
+      "isPersonal": "Personal",
+      "Group":"Group",
       "buttons": {
         "add": "Enrollment"
       }

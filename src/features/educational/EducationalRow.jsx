@@ -16,12 +16,12 @@ const EducationalRow = ({ index, program }) => {
   const { lng } = useConfig();
   const { mutate, isLoading } = useArchiveEducational();
 
-  const { id, namePr, nameSc } = program;
+  const { id, name } = program;
 
   return (
     <Table.Tr>
       <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
-      <Table.Td>{lng === 'en' ? namePr : nameSc}</Table.Td>
+      <Table.Td>{name}</Table.Td>
       <Table.Td classes='flex item-center gap-3'>
         <div className='flex w-full justify-center'>
           <Modal>

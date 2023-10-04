@@ -16,17 +16,15 @@ const CourseRow = ({ index, detail }) => {
     programCost,
     discount,
     programCostAfterDiscount,
-    namePr,
-    nameSc,
-    programTypePr,
-    programTypeSc,
+    name,
+    programType,
     programTypeId,
   } = detail;
 
   return (
     <Table.Tr>
       <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
-      <Table.Td>{lng === 'en' ? namePr : nameSc}</Table.Td>
+      <Table.Td>{name}</Table.Td>
       <Table.Td>{numberOfClasses}</Table.Td>
       <Table.Td>{numberOfHours}</Table.Td>
       <Table.Td>{`${programCost} MYR`}</Table.Td>
@@ -37,12 +35,12 @@ const CourseRow = ({ index, detail }) => {
       <Table.Td>
         {programTypeId ? (
           <Tag
-            label={lng === 'en' ? programTypePr : programTypeSc}
+            label={programType}
             status='warn'
           />
         ) : (
           <Tag
-            label={lng === 'en' ? programTypePr : programTypeSc}
+            label={programType}
             status='info'
           />
         )}

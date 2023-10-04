@@ -5,9 +5,9 @@ import { LoadingButton, Input, FormControl } from '../../ui';
 import useAddPaymentTransaction from './useAddPaymentTransaction.js';
 import { paymentTransactionSchema } from './validation';
 
+
 const AddPaymentTransactionForm = ({ studentId, closeModal }) => {
   const { t } = useTranslation();
-
   const { mutate, isLoading } = useAddPaymentTransaction(closeModal);
 
   const handleSubmit = values => {
