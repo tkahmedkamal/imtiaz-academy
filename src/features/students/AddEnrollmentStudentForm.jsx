@@ -9,6 +9,7 @@ import { useTeachersDialog } from '../../hooks';
 const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
   const [isSpecialDiscount, setIsSpecialDiscount] = useState(false);
   const [isPersonal, setIsPersonal] = useState(false);
+  const [isFullTimeSpecialCost, setIsFullTimeSpecialCost] = useState(false);
   const [courseId, setCourseId] = useState('0');
   const [teacherId, setTeacherId] = useState('1');
   const { t } = useTranslation();
@@ -80,7 +81,7 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 {t('students.enrollment.isPersonal')}
               </label>
             </div>
-            {(isPersonal && !isSpecialDiscount) && (
+            {isPersonal && !isSpecialDiscount && (
               <FormControl>
                 <Input
                   name='numberOfMeetingsPerMonth'
@@ -94,12 +95,10 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                   placeholder='min 10 minuets'
                   label={t('students.enrollment.classDurationPerMinuets')}
                   id='inputClassDurationPerMinuets'
-                  
                 />
-              
               </FormControl>
             )}
-            {(isPersonal && isSpecialDiscount) && (
+            {isPersonal && isSpecialDiscount && (
               <FormControl>
                 <Input
                   name='numberOfMeetingsPerMonth'
@@ -113,9 +112,7 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                   placeholder='min 10 minuets'
                   label={t('students.enrollment.classDurationPerMinuets')}
                   id='inputClassDurationPerMinuets'
-                  
                 />
-              
               </FormControl>
             )}
 
@@ -132,7 +129,7 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 {t('students.enrollment.discountCheckbox')}
               </label>
             </div>
-            {(isSpecialDiscount && !isPersonal) && (
+            {isSpecialDiscount && !isPersonal && (
               <FormControl>
                 <Input
                   name='registrationCost'
@@ -141,9 +138,25 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                   id='inputRegistrationCost'
                   autoFocus
                 />
+                <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
+                  <input
+                    type='checkbox'
+                    id='isFullTimeSpecialCost'
+                    onChange={e => {
+                      const isChecked = e.target.checked;
+                      setIsFullTimeSpecialCost(isChecked);
+                      if (isChecked) {
+                        alert('This cost will be apply for all student lessons until end program!!');
+                      }
+                    }}
+                  />
+                  <label htmlFor='isFullTimeSpecialCost'>
+                    {t('students.enrollment.isFullTimeSpecialCost')}
+                  </label>
+                </div>
               </FormControl>
             )}
-            {(isSpecialDiscount && isPersonal) && (
+            {isSpecialDiscount && isPersonal && (
               <FormControl>
                 <Input
                   name='registrationCost'
@@ -152,9 +165,21 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                   id='inputRegistrationCost'
                   autoFocus
                 />
+                <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
+                  <input
+                    type='checkbox'
+                    id='isFullTimeSpecialCost'
+                    onChange={e => {
+                      const isChecked = e.target.checked;
+                      setIsFullTimeSpecialCost(isChecked);
+                    }}
+                  />
+                  <label htmlFor='isFullTimeSpecialCost'>
+                    {t('students.enrollment.isFullTimeSpecialCost')}
+                  </label>
+                </div>
               </FormControl>
             )}
-
 
             <div className='!mt-6 '>
               <LoadingButton

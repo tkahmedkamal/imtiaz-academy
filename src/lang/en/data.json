@@ -113,6 +113,7 @@
       "discountCheckbox": "Has special discount",
       "registrationCostPerClass"  : "registration cost per class",
       "numberOfMeetingsPerMonth": "number of meetings per month",
+      "isFullTimeSpecialCost" : "full time discount",
       "isPersonal": "Personal",
       "Group":"Group",
       "buttons": {
