@@ -30,6 +30,8 @@ const StudentsAccountantRow = ({ index, student }) => {
       <Table.Td>{name}</Table.Td>
       <Table.Td>{country}</Table.Td>
       <Table.Td>{phoneNumber}</Table.Td>
+      <Table.Td>{totalEnrollmentCost}</Table.Td>
+      <Table.Td>{totalPaidAmount}</Table.Td>
       <Table.Td>
         {credit < 0 ? (
           <Tag label={credit} status='info' />
@@ -41,8 +43,6 @@ const StudentsAccountantRow = ({ index, student }) => {
           ''
         )}
       </Table.Td>
-      <Table.Td>{totalPaidAmount}</Table.Td>
-      <Table.Td>{totalEnrollmentCost}</Table.Td>
       <Table.Td>
         {isActive ? (
           <Tag label={statusType} status='success' />
