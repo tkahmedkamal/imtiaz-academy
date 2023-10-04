@@ -101,3 +101,40 @@ export const approved = async data => {
     throw Error(response?.data);
   }
 };
+
+//#region  Dialogs
+export const getCoursesDialog = async () => {
+  try {
+    const res = await axiosConfig.get('/api/Course/GetDialog', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+export const getTeachersDialog = async () => {
+  try {
+    const res = await axiosConfig.get('/api/Teacher/GetDialog', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+//#endregion

@@ -3,22 +3,19 @@ import { Formik, Form } from 'formik';
 import { useTranslation } from 'react-i18next';
 
 import { LoadingButton, Input, FormControl, Select } from '../../ui';
-import useCourse from '../course/useCourse';
-import useTeachers from '../teachers/useTeachers';
-import { useConfig } from '../../context/ConfigContext';
+import { useCoursesDialog } from '../../hooks';
+import { useTeachersDialog } from '../../hooks';
 
 const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
   const [isSpecialDiscount, setIsSpecialDiscount] = useState(false);
+  const [isPersonal, setIsPersonal] = useState(false);
   const [courseId, setCourseId] = useState('0');
+  const [teacherId, setTeacherId] = useState('1');
   const { t } = useTranslation();
-  const { lng } = useConfig();
 
-  const { data: coursesResponse, isLoading: isLoadingCourses } = useCourse();
-  const { data: teachersResponse, isLoading: isLoadingTeachers } =
-    useTeachers();
+  const { data: teachers, isTeachersLoading } = useTeachersDialog();
 
-  const courses = coursesResponse?.pagedResponse?.data || [];
-  const teachers = teachersResponse?.pagedResponse?.data || [];
+  const { data: courses, isCoursesLoading } = useCoursesDialog();
 
   const handleSubmit = values => {};
 
@@ -45,12 +42,12 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 label={t('educational.course.title')}
                 type='number'
                 id='inputCourseId'
-                disabled={isLoadingCourses}
                 set={setCourseId}
+                onChange={e => setCourseId(e.target.value)}
               >
-                {courses?.map(({ id, namePr, nameSc }) => (
-                  <option value={id} key={id}>
-                    {lng === 'en' ? namePr : nameSc}
+                {courses?.map(({ courseId, courseName }) => (
+                  <option value={courseId} key={courseId}>
+                    {courseName}
                   </option>
                 ))}
               </Select>
@@ -59,25 +56,66 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 label={t('teacher.title')}
                 type='number'
                 id='inputTeacherId'
-                disabled={isLoadingTeachers}
+                set={setTeacherId}
+                onChange={e => setTeacherId(e.target.value)}
               >
-                {teachers?.map(({ id, namePr, nameSc }) => (
-                  <option value={id} key={id}>
-                    {lng === 'en' ? namePr : nameSc}
+                {teachers?.map(({ teacherId, teacherName }) => (
+                  <option value={teacherId} key={teacherId}>
+                    {teacherName}
                   </option>
                 ))}
               </Select>
             </FormControl>
 
-            {isSpecialDiscount && (
+            <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
+              <input
+                type='checkbox'
+                id='inputIsPersonal'
+                onChange={e => {
+                  const isChecked = e.target.checked;
+                  setIsPersonal(isChecked);
+                }}
+              />
+              <label htmlFor='inputIsPersonal'>
+                {t('students.enrollment.isPersonal')}
+              </label>
+            </div>
+            {(isPersonal && !isSpecialDiscount) && (
               <FormControl>
                 <Input
-                  name='registrationCost'
-                  placeholder='0'
-                  label={t('students.enrollment.registrationCost')}
-                  id='inputRegistrationCost'
+                  name='numberOfMeetingsPerMonth'
+                  placeholder='min 4 max 31'
+                  label={t('students.enrollment.numberOfMeetingsPerMonth')}
+                  id='inputNumberOfMeetingsPerMonth'
                   autoFocus
                 />
+                <Input
+                  name='classDurationPerMinuets'
+                  placeholder='min 10 minuets'
+                  label={t('students.enrollment.classDurationPerMinuets')}
+                  id='inputClassDurationPerMinuets'
+                  
+                />
+              
+              </FormControl>
+            )}
+            {(isPersonal && isSpecialDiscount) && (
+              <FormControl>
+                <Input
+                  name='numberOfMeetingsPerMonth'
+                  placeholder='min 4 max 31'
+                  label={t('students.enrollment.numberOfMeetingsPerMonth')}
+                  id='inputNumberOfMeetingsPerMonth'
+                  autoFocus
+                />
+                <Input
+                  name='classDurationPerMinuets'
+                  placeholder='min 10 minuets'
+                  label={t('students.enrollment.classDurationPerMinuets')}
+                  id='inputClassDurationPerMinuets'
+                  
+                />
+              
               </FormControl>
             )}
 
@@ -94,6 +132,29 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 {t('students.enrollment.discountCheckbox')}
               </label>
             </div>
+            {(isSpecialDiscount && !isPersonal) && (
+              <FormControl>
+                <Input
+                  name='registrationCost'
+                  placeholder='0'
+                  label={t('students.enrollment.totalRegistrationCost')}
+                  id='inputRegistrationCost'
+                  autoFocus
+                />
+              </FormControl>
+            )}
+            {(isSpecialDiscount && isPersonal) && (
+              <FormControl>
+                <Input
+                  name='registrationCost'
+                  placeholder='0'
+                  label={t('students.enrollment.registrationCostPerClass')}
+                  id='inputRegistrationCost'
+                  autoFocus
+                />
+              </FormControl>
+            )}
+
 
             <div className='!mt-6 '>
               <LoadingButton
