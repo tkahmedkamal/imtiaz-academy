@@ -6,6 +6,8 @@
     "nationality": "Nationality",
     "country": "Country",
     "state" :"State",
+    "city":"City",
+    "postCode":"Post Code",
     "national": "National-Id",
     "email": "Email",
     "password": "Password",

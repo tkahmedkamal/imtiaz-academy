@@ -45,7 +45,8 @@ const CreateStudentForm = ({ closeModal }) => {
           userName: '',
           email: '',
           password: 'ImtiazAcademy',
-          nationality: '',
+          city: '',
+          postcode: '',
           nationalId: '',
           countryId: '',
           phoneNumber: '',
@@ -86,19 +87,34 @@ const CreateStudentForm = ({ closeModal }) => {
 
             <FormControl>
               <Input
-                name='nationality'
-                label={t('global.nationality')}
-                id='inputNationality'
-              />
-
-              <Input
                 name='nationalId'
                 label={t('global.national')}
                 id='inputNationalId'
               />
             </FormControl>
+            <FormControl>
+              <Input
+                name='address'
+                label={t('global.address')}
+                id='inputAddress'
+              />
+            </FormControl>
 
             <FormControl>
+              <Input
+                name='postCode'
+                label={t('global.postCode')}
+                id='inputPostCode'
+              />
+              <Input name='city' label={t('global.city')} id='inputCity' />
+            </FormControl>
+
+            <FormControl>
+              <Input
+                name='state'
+                label={t('students.form.state')}
+                id='inputState'
+              />
               <Select
                 name='countryId'
                 label={t('global.country')}
@@ -108,9 +124,6 @@ const CreateStudentForm = ({ closeModal }) => {
                   <SelectOption key={id} value={id} label={name} />
                 ))}
               </Select>
-
-              <Input name='state' label={t('students.form.state')} id='inputState' />
-
             </FormControl>
 
             <FormControl>
@@ -128,32 +141,16 @@ const CreateStudentForm = ({ closeModal }) => {
             </FormControl>
 
             <FormControl>
-              <Select
-                name='state'
-                label={t('students.form.state')}
-                id='inputState'
-              >
-                <SelectOption value='active' label='Active' />
-                <SelectOption value='pending' label='Pending' />
-              </Select>
-
               <Input name='job' label={t('students.form.job')} id='inputJob' />
-            </FormControl>
-
-            <FormControl>
               <Input
                 type='date'
                 name='dateOfBirth'
                 label={t('students.form.dateOfBirth')}
                 id='inputDateOfBirth'
               />
-
-              <Input
-                name='address'
-                label={t('global.address')}
-                id='inputAddress'
-              />
             </FormControl>
+
+            <FormControl></FormControl>
 
             <FormControl>
               <Select

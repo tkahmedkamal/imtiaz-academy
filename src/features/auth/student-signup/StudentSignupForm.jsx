@@ -45,7 +45,8 @@ const StudentSignupForm = ({ closeModal }) => {
           userName: '',
           email: '',
           password: '',
-          nationality: '',
+          city: '',
+          postcode: '',
           nationalId: '',
           countryId: '',
           phoneNumber: '',
@@ -83,22 +84,36 @@ const StudentSignupForm = ({ closeModal }) => {
                 id='inputPassword'
               />
             </FormControl>
-
             <FormControl>
-              <Input
-                name='nationality'
-                label={t('global.nationality')}
-                id='inputNationality'
-              />
-
               <Input
                 name='nationalId'
                 label={t('global.national')}
                 id='inputNationalId'
               />
             </FormControl>
+            <FormControl>
+              <Input
+                name='address'
+                label={t('global.address')}
+                id='inputAddress'
+              />
+            </FormControl>
 
             <FormControl>
+              <Input
+                name='postCode'
+                label={t('global.postCode')}
+                id='inputPostCode'
+              />
+              <Input name='city' label={t('global.city')} id='inputCity' />
+            </FormControl>
+
+            <FormControl>
+              <Input
+                name='state'
+                label={t('students.form.state')}
+                id='inputState'
+              />
               <Select
                 name='countryId'
                 label={t('global.country')}
@@ -108,12 +123,6 @@ const StudentSignupForm = ({ closeModal }) => {
                   <SelectOption key={id} value={id} label={name} />
                 ))}
               </Select>
-
-              <Input
-                name='phoneNumber'
-                label={t('global.phone')}
-                id='inputPhoneNumber'
-              />
             </FormControl>
 
             <FormControl>
@@ -131,25 +140,16 @@ const StudentSignupForm = ({ closeModal }) => {
             </FormControl>
 
             <FormControl>
-            
-
               <Input name='job' label={t('students.form.job')} id='inputJob' />
-            </FormControl>
-
-            <FormControl>
               <Input
                 type='date'
                 name='dateOfBirth'
                 label={t('students.form.dateOfBirth')}
                 id='inputDateOfBirth'
               />
-
-              <Input
-                name='address'
-                label={t('global.address')}
-                id='inputAddress'
-              />
             </FormControl>
+
+            <FormControl></FormControl>
 
             <FormControl>
               <Select
@@ -166,7 +166,6 @@ const StudentSignupForm = ({ closeModal }) => {
                 <SelectOption value={6} label='Other' />
               </Select>
             </FormControl>
-
             <div className='!mt-6 '>
               <LoadingButton
                 disabled={isLoading}
