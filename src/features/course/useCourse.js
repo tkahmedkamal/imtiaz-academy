@@ -18,7 +18,7 @@ const useCourse = () => {
   const currentPage = +searchParams.get('page') || 1;
   const searchValue = searchParams.get('search') || '';
   const programType = searchParams.get('programType') || 'all';
-  const filterQueries = `namePr=${searchValue},programTypeId=${programTypeStatus[programType]}&isGeneralSearch=true`;
+  const filterQueries = `name=${searchValue},isPersonal=${programTypeStatus[programType]}&isGeneralSearch=true`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['educational-details', currentPage, filterQueries],

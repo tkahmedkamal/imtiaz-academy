@@ -7,18 +7,16 @@ import { useConfig } from '../../context/ConfigContext';
 
 const CourseRow = ({ index, detail }) => {
   const { t } = useTranslation();
-  const { lng } = useConfig();
-
   const {
     id,
     numberOfClasses,
-    numberOfHours,
-    programCost,
+    classDurationInMinutes,
+    cost,
     discount,
-    programCostAfterDiscount,
+    costAfterDiscount,
     name,
     programType,
-    programTypeId,
+    isPersonal,
   } = detail;
 
   return (
@@ -26,14 +24,14 @@ const CourseRow = ({ index, detail }) => {
       <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
       <Table.Td>{name}</Table.Td>
       <Table.Td>{numberOfClasses}</Table.Td>
-      <Table.Td>{numberOfHours}</Table.Td>
-      <Table.Td>{`${programCost} MYR`}</Table.Td>
+      <Table.Td>{classDurationInMinutes}</Table.Td>
+      <Table.Td>{`${cost} MYR`}</Table.Td>
       <Table.Td>
         {discount > 0 ? `${discount}%` : <span>&mdash;</span>}
       </Table.Td>
-      <Table.Td>{`${programCostAfterDiscount} MYR`}</Table.Td>
+      <Table.Td>{`${costAfterDiscount} MYR`}</Table.Td>
       <Table.Td>
-        {programTypeId ? (
+        {isPersonal ? (
           <Tag
             label={programType}
             status='warn'

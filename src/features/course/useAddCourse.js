@@ -9,8 +9,11 @@ const useAddCourse = closeModal => {
   const { mutate, isLoading } = useMutation({
     mutationFn: details => addCourse(details),
     onSuccess: () => {
-      // TODO: Fix this message => return from API
-      queryClient.invalidateQueries({ queryKey: ['educational-details'] });
+      if (Response.data && Response.data.success) {
+        toast.success(Response.msg); // Use the success message from the API response.
+      } else {
+        toast.success('Course successfully added.');
+      }      queryClient.invalidateQueries({ queryKey: ['educational-details'] });
       toast.success('Course successfully added.');
       closeModal?.();
     },

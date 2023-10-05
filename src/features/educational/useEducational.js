@@ -11,7 +11,7 @@ const useEducational = () => {
 
   const currentPage = +searchParams.get('page') || 1;
   const searchValue = searchParams.get('search') || '';
-  const filterQueries = `namePr=${searchValue}&isGeneralSearch=true`;
+  const filterQueries = `name=${searchValue}&isGeneralSearch=true`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['educational', currentPage, filterQueries],

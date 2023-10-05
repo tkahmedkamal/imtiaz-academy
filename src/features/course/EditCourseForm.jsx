@@ -11,22 +11,21 @@ const EditCourseForm = ({ detail, closeModal }) => {
 
   const {
     id,
-    namePr,
-    nameSc,
+    name,
     numberOfClasses,
     classDurationInMinutes,
-    programCost,
+    cost,
     discount,
-    programTypeId,
+    isPersonal,
     educationalProgramId,
   } = detail;
   const handleSubmit = values => {
     const data = {
-      ...values,
       id,
-      programTypeId: values.programTypeId === 'true',
+      ...values,
+      isPersonal: values.personal === 'Personal',
     };
-
+    delete data.personal;
     mutate(data);
   };
 
@@ -38,13 +37,12 @@ const EditCourseForm = ({ detail, closeModal }) => {
 
       <Formik
         initialValues={{
-          namePr,
-          nameSc,
-          numberOfClasses,
+          name: name || '',
+          numberOfClasses: numberOfClasses || '',
           classDurationInMinutes,
-          programCost,
+          cost,
           discount,
-          programTypeId,
+          personal: isPersonal ? 'Personal' : 'Group',
           educationalProgramId,
         }}
         validationSchema={courseSchema}
@@ -54,22 +52,13 @@ const EditCourseForm = ({ detail, closeModal }) => {
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Input
-                name='namePr'
+                name='name'
                 placeholder={`${t(
                   'educational.course.form.placeholders.name',
                 )} ( English )`}
-                label={`${t('educational.course.texts.name')}-en`}
-                value={values.subProgramNamePr}
-                id='inputNamePr'
-              />
-              <Input
-                name='nameSc'
-                placeholder={`${t(
-                  'educational.course.form.placeholders.name',
-                )} ( Malaysia )`}
-                label={`${t('educational.course.texts.name')}-ml`}
-                value={values.subProgramNameSc}
-                id='inputNameSc'
+                label={`${t('educational.course.texts.name')}`}
+                value={values.name}
+                id='inputName'
               />
             </FormControl>
 
@@ -94,16 +83,16 @@ const EditCourseForm = ({ detail, closeModal }) => {
 
             <FormControl>
               <Input
-                name='programCost'
-                placeholder='0'
+                name='cost'
+                placeholder={cost}
                 label={`${t('educational.course.texts.cost')}`}
                 type='number'
-                value={values.programCost}
-                id='inputProgramCost'
+                value={values.cost}
+                id='inputCost'
               />
               <Input
                 name='discount'
-                placeholder='0'
+                placeholder={discount}
                 label={`${t('educational.course.texts.discount')}`}
                 type='number'
                 value={values.discount}
@@ -114,12 +103,12 @@ const EditCourseForm = ({ detail, closeModal }) => {
             <FormControl>
               <Select
                 label={t('educational.course.texts.programType')}
-                name='programTypeId'
-                value={values.programTypeId}
-                id='inputProgramTypeId'
+                name='personal'
+                value={values.personal}
+                id='inputPersonal'
               >
-                <option value={true}>{t('global.personal')}</option>
-                <option value={false}>{t('global.group')}</option>
+                <option value='Personal'>{t('global.personal')}</option>
+                <option value='Group'>{t('global.group')}</option>
               </Select>
             </FormControl>
 

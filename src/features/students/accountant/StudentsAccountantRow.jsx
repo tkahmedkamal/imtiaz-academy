@@ -34,7 +34,7 @@ const StudentsAccountantRow = ({ index, student }) => {
       <Table.Td>{totalPaidAmount}</Table.Td>
       <Table.Td>
         {credit < 0 ? (
-          <Tag label={credit} status='info' />
+          <Tag label={credit} status='warn' />
         ) : credit === 0 ? (
           <Tag label={credit} status='success' />
         ) : credit > 0 ? (

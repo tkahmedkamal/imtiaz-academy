@@ -12,7 +12,7 @@ const CreateCourseForm = ({ programId, closeModal }) => {
   const handleSubmit = values => {
     const data = {
       ...values,
-      programTypeId: values.programTypeId === 'true',
+      isPersonal: values.isPersonal === 'true',
     };
 
     mutate(data);
@@ -26,13 +26,12 @@ const CreateCourseForm = ({ programId, closeModal }) => {
 
       <Formik
         initialValues={{
-          namePr: '',
-          nameSc: '',
+          name: '',
           numberOfClasses: '',
           classDurationInMinutes: '',
-          programCost: '',
+          cost: '',
           discount: '0',
-          programTypeId: '',
+          isPersonal: '',
           educationalProgramId: programId,
         }}
         validationSchema={courseSchema}
@@ -42,34 +41,26 @@ const CreateCourseForm = ({ programId, closeModal }) => {
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Input
-                name='namePr'
+                name='name'
                 placeholder={`${t(
                   'educational.course.form.placeholders.name',
                 )} ( English )`}
-                label={`${t('educational.course.texts.name')}-en`}
-                id='inputNamePr'
-              />
-              <Input
-                name='nameSc'
-                placeholder={`${t(
-                  'educational.course.form.placeholders.name',
-                )} ( Malaysia )`}
-                label={`${t('educational.course.texts.name')}-ml`}
-                id='inputSNameSc'
+                label={`${t('educational.course.texts.name')}`}
+                id='inputName'
               />
             </FormControl>
 
             <FormControl>
               <Input
                 name='numberOfClasses'
-                placeholder='0'
+                placeholder='min 1 max 30'
                 label={`${t('educational.course.texts.numOfClasses')}`}
                 type='number'
                 id='inputNumberOfClasses'
               />
               <Input
                 name='classDurationInMinutes'
-                placeholder='0'
+                placeholder='min 10 max 180'
                 label={`${t('educational.course.texts.minutes')}`}
                 type='number'
                 id='inputClassDurationInMinutes'
@@ -78,11 +69,11 @@ const CreateCourseForm = ({ programId, closeModal }) => {
 
             <FormControl>
               <Input
-                name='programCost'
+                name='cost'
                 placeholder='0'
                 label={`${t('educational.course.texts.cost')}`}
                 type='number'
-                id='inputProgramCost'
+                id='inputCost'
               />
               <Input
                 name='discount'
@@ -96,8 +87,8 @@ const CreateCourseForm = ({ programId, closeModal }) => {
             <FormControl>
               <Select
                 label={t('educational.course.texts.programType')}
-                name='programTypeId'
-                id='inputProgramTypeId'
+                name='isPersonal'
+                id='inputIsPersonal'
               >
                 <option value='true'>{t('global.personal')}</option>
                 <option value='false'>{t('global.group')}</option>

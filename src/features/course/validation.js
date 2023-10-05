@@ -1,10 +1,7 @@
 import { object, string, number, ref } from 'yup';
 
 const courseSchema = object().shape({
-  namePr: string()
-    .min(3, 'Sub program name must be three or more letters')
-    .required('Sub program name is a required field'),
-  nameSc: string()
+  name: string()
     .min(3, 'Sub program name must be three or more letters')
     .required('Sub program name is a required field'),
   numberOfClasses: number()
@@ -12,20 +9,20 @@ const courseSchema = object().shape({
     .min(1, 'The minimum number of classes is (1)')
     .required('Number of classes is a required field'),
   classDurationInMinutes: number()
-    .min(60, 'Minimum 60 minutes')
+    .min(10, 'Minimum 10 minutes')
     .required('Classes duration in minutes is a required field'),
-  programCost: number()
+  cost: number()
     .min(50, 'Less cost 50')
     .required('Program cost is a required field'),
   discount: number()
     .min(0, 'Minimum 0')
     .max(
-      ref('programCost'),
+      ref('cost'),
       'Discount must be less than or equal to program cost',
     )
     .required('Discount is a required field'),
-  programTypeId: string()
-    .oneOf(['true', 'false'], 'The Program type must')
+  personal: string()
+    .oneOf(['Personal', 'Group'], 'The Program type must')
     .required('Program type is a required field'),
 });
 
