@@ -1,5 +1,5 @@
 {
-  "global":{
+  "global": {
     "index": "Indeks",
     "name": "Nama",
     "country": "Negara",
@@ -127,9 +127,9 @@
         "costAfterDiscount": "Kos Selepas Diskaun",
         "programType": "Jenis Program"
       },
-      "form":{
+      "form": {
         "placeholders": {
-            "name": "Masukkan Nama"
+          "name": "പേര് നൽകുക"
         }
       },
       "buttons": {
