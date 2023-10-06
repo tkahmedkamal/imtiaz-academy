@@ -23,9 +23,9 @@ const EditCourseForm = ({ detail, closeModal }) => {
     const data = {
       id,
       ...values,
-      isPersonal: values.personal === 'Personal',
+      isPersonal: values.courseType === 'Personal',
     };
-    delete data.personal;
+    delete data.courseType;
     mutate(data);
   };
 
@@ -42,7 +42,7 @@ const EditCourseForm = ({ detail, closeModal }) => {
           classDurationInMinutes,
           cost,
           discount,
-          personal: isPersonal ? 'Personal' : 'Group',
+          courseType: isPersonal ? 'Personal' : 'Group',
           educationalProgramId,
         }}
         validationSchema={courseSchema}
@@ -103,9 +103,9 @@ const EditCourseForm = ({ detail, closeModal }) => {
             <FormControl>
               <Select
                 label={t('educational.course.texts.programType')}
-                name='personal'
-                value={values.personal}
-                id='inputPersonal'
+                name='courseType'
+                value={values.courseType}
+                id='inputCourseType'
               >
                 <option value='Personal'>{t('global.personal')}</option>
                 <option value='Group'>{t('global.group')}</option>

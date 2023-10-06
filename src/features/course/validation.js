@@ -21,7 +21,7 @@ const courseSchema = object().shape({
       'Discount must be less than or equal to program cost',
     )
     .required('Discount is a required field'),
-  personal: string()
+    courseType: string()
     .oneOf(['Personal', 'Group'], 'The Program type must')
     .required('Program type is a required field'),
 });

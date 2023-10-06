@@ -12,7 +12,7 @@ const CreateCourseForm = ({ programId, closeModal }) => {
   const handleSubmit = values => {
     const data = {
       ...values,
-      isPersonal: values.isPersonal === 'true',
+      isPersonal: values.courseType === 'Personal',
     };
 
     mutate(data);
@@ -31,7 +31,7 @@ const CreateCourseForm = ({ programId, closeModal }) => {
           classDurationInMinutes: '',
           cost: '',
           discount: '0',
-          isPersonal: '',
+          courseType: '',
           educationalProgramId: programId,
         }}
         validationSchema={courseSchema}
@@ -87,11 +87,11 @@ const CreateCourseForm = ({ programId, closeModal }) => {
             <FormControl>
               <Select
                 label={t('educational.course.texts.programType')}
-                name='isPersonal'
-                id='inputIsPersonal'
+                name='courseType'
+                id='inputCourseType'
               >
-                <option value='true'>{t('global.personal')}</option>
-                <option value='false'>{t('global.group')}</option>
+                <option value='Personal'>{t('global.personal')}</option>
+                <option value='Group'>{t('global.group')}</option>
               </Select>
             </FormControl>
 
