@@ -16,9 +16,8 @@ const courseSchema = object().shape({
     .required('Program cost is a required field'),
   discount: number()
     .min(0, 'Minimum 0')
-    .max(
-      ref('cost'),
-      'Discount must be less than or equal to program cost',
+    .max(100,
+      'Discount must be less than or equal to 100%',
     )
     .required('Discount is a required field'),
     courseType: string()
