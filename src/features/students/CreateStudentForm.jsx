@@ -1,5 +1,6 @@
 import { Formik, Form } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 import {
   LoadingButton,
@@ -13,9 +14,11 @@ import useAddStudent from './useAddStudent';
 import { useCountries } from '../../hooks';
 
 const CreateStudentForm = ({ closeModal }) => {
+  const [withCustomRegistrationCost, setWithCustomRegistrationCost] = useState(false);
   const { t } = useTranslation();
   const { mutate, isLoading } = useAddStudent(closeModal);
   const { data } = useCountries();
+
 
   const handleSubmit = values => {
     const data = {
@@ -59,6 +62,7 @@ const CreateStudentForm = ({ closeModal }) => {
           registrationDate: '',
           knowAboutUs: '',
           isAcceptedPolicies: true,
+          customRegistrationCost: 0.0,
         }}
         validationSchema={studentSchema}
         onSubmit={handleSubmit}
@@ -149,9 +153,6 @@ const CreateStudentForm = ({ closeModal }) => {
                 id='inputDateOfBirth'
               />
             </FormControl>
-
-            <FormControl></FormControl>
-
             <FormControl>
               <Select
                 type='text'
@@ -167,6 +168,33 @@ const CreateStudentForm = ({ closeModal }) => {
                 <SelectOption value={6} label='Other' />
               </Select>
             </FormControl>
+            <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
+                  <input
+                    type='checkbox'
+                    id='withCustomRegistrationCost'
+                    onChange={e => {
+                      const isChecked = e.target.checked;
+                      setWithCustomRegistrationCost(isChecked);
+                    }}
+                  />
+                  <label htmlFor='withCustomRegistrationCost'>
+                    {t('students.customRegistrationCost')}
+                  </label>
+                </div>
+            {withCustomRegistrationCost &&(
+              <FormControl>
+                <Input
+                  name='customRegistrationCost'
+                  placeholder='0'
+                  label={t('students.enrollment.registrationCost')}
+                  id='inputCustomRegistrationCost'
+                  autoFocus
+                />
+              
+              </FormControl>
+            )}
+
+
 
             <div className='!mt-6 '>
               <LoadingButton

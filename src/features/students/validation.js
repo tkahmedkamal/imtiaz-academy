@@ -16,15 +16,11 @@ const studentSchema = object().shape({
       256,
       'The field Password must be a string with a maximum length of 256.',
     )
-    .required('Phone number is a required field'),
+    .required('Password is a required field'),
   phoneNumber: string().required('Phone number is a required field'),
   nationalId: string().max(
     100,
     'The field National-Id must be a string with a maximum length of 100.',
-  ),
-  nationality: string().max(
-    50,
-    'The field Nationality must be a string with a maximum length of 50.',
   ),
   age: number()
     .min(5, 'The minimum age is 5')

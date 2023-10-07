@@ -12,10 +12,12 @@ import { studentSchema } from '../../students/validation';
 import useAddStudent from '../../students/useAddStudent';
 import { useCountries } from '../../../hooks';
 
+
 const StudentSignupForm = ({ closeModal }) => {
   const { t } = useTranslation();
   const { mutate, isLoading } = useAddStudent(closeModal);
   const { data } = useCountries();
+
 
   const handleSubmit = values => {
     const data = {
@@ -36,7 +38,7 @@ const StudentSignupForm = ({ closeModal }) => {
   return (
     <>
       <h2 className='font-publicSans text-xl font-medium text-primary-text dark:text-dark-primary-text/75'>
-        {t('teacher_signup.title')}
+        {t('students.addTitle')}
       </h2>
 
       <Formik
@@ -44,7 +46,7 @@ const StudentSignupForm = ({ closeModal }) => {
           name: '',
           userName: '',
           email: '',
-          password: '',
+          password: 'ImtiazAcademy',
           city: '',
           postcode: '',
           nationalId: '',
@@ -59,6 +61,7 @@ const StudentSignupForm = ({ closeModal }) => {
           registrationDate: '',
           knowAboutUs: '',
           isAcceptedPolicies: true,
+          customRegistrationCost: 0.0,
         }}
         validationSchema={studentSchema}
         onSubmit={handleSubmit}
@@ -79,11 +82,12 @@ const StudentSignupForm = ({ closeModal }) => {
               <Input name='email' label={t('global.email')} id='inputEmail' />
 
               <Input
-                name='password'
-                label={t('global.password')}
-                id='inputPassword'
+                name='phoneNumber'
+                label={t('global.phone')}
+                id='inputPhoneNumber'
               />
             </FormControl>
+
             <FormControl>
               <Input
                 name='nationalId'
@@ -148,9 +152,6 @@ const StudentSignupForm = ({ closeModal }) => {
                 id='inputDateOfBirth'
               />
             </FormControl>
-
-            <FormControl></FormControl>
-
             <FormControl>
               <Select
                 type='text'
@@ -172,7 +173,7 @@ const StudentSignupForm = ({ closeModal }) => {
                 isLoading={isLoading}
                 status='success'
               >
-                {t('teacher_signup.title')}
+                {t('teacher_signup.form.submit')}
               </LoadingButton>
             </div>
           </Form>

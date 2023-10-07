@@ -89,6 +89,8 @@
         "age": "Enter your age"
       }
     },
+    "customRegistrationCost":"Custom Registration Cost",
+    "registrationCost":"Registration Cost",
     "buttons": {
       "add": "New student",
       "edit": "Edit Student"
