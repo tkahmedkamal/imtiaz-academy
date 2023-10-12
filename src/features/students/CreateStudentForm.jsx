@@ -14,11 +14,11 @@ import useAddStudent from './useAddStudent';
 import { useCountries } from '../../hooks';
 
 const CreateStudentForm = ({ closeModal }) => {
-  const [withCustomRegistrationCost, setWithCustomRegistrationCost] = useState(false);
+  const [withCustomRegistrationCost, setWithCustomRegistrationCost] =
+    useState(false);
   const { t } = useTranslation();
   const { mutate, isLoading } = useAddStudent(closeModal);
   const { data } = useCountries();
-
 
   const handleSubmit = values => {
     const data = {
@@ -95,6 +95,7 @@ const CreateStudentForm = ({ closeModal }) => {
                 label={t('global.national')}
                 id='inputNationalId'
               />
+              <Input name='job' label={t('students.form.job')} id='inputJob' />
             </FormControl>
             <FormControl>
               <Input
@@ -143,17 +144,13 @@ const CreateStudentForm = ({ closeModal }) => {
                 id='inputAge'
               />
             </FormControl>
-
             <FormControl>
-              <Input name='job' label={t('students.form.job')} id='inputJob' />
               <Input
                 type='date'
                 name='dateOfBirth'
                 label={t('students.form.dateOfBirth')}
                 id='inputDateOfBirth'
               />
-            </FormControl>
-            <FormControl>
               <Select
                 type='text'
                 name='knowAboutUs'
@@ -169,19 +166,19 @@ const CreateStudentForm = ({ closeModal }) => {
               </Select>
             </FormControl>
             <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
-                  <input
-                    type='checkbox'
-                    id='withCustomRegistrationCost'
-                    onChange={e => {
-                      const isChecked = e.target.checked;
-                      setWithCustomRegistrationCost(isChecked);
-                    }}
-                  />
-                  <label htmlFor='withCustomRegistrationCost'>
-                    {t('students.customRegistrationCost')}
-                  </label>
-                </div>
-            {withCustomRegistrationCost &&(
+              <input
+                type='checkbox'
+                id='withCustomRegistrationCost'
+                onChange={e => {
+                  const isChecked = e.target.checked;
+                  setWithCustomRegistrationCost(isChecked);
+                }}
+              />
+              <label htmlFor='withCustomRegistrationCost'>
+                {t('students.customRegistrationCost')}
+              </label>
+            </div>
+            {withCustomRegistrationCost && (
               <FormControl>
                 <Input
                   name='customRegistrationCost'
@@ -190,11 +187,8 @@ const CreateStudentForm = ({ closeModal }) => {
                   id='inputCustomRegistrationCost'
                   autoFocus
                 />
-              
               </FormControl>
             )}
-
-
 
             <div className='!mt-6 '>
               <LoadingButton

@@ -94,6 +94,8 @@ const StudentSignupForm = ({ closeModal }) => {
                 label={t('global.national')}
                 id='inputNationalId'
               />
+              <Input name='job' label={t('students.form.job')} id='inputJob' />
+
             </FormControl>
             <FormControl>
               <Input
@@ -144,16 +146,12 @@ const StudentSignupForm = ({ closeModal }) => {
             </FormControl>
 
             <FormControl>
-              <Input name='job' label={t('students.form.job')} id='inputJob' />
               <Input
                 type='date'
                 name='dateOfBirth'
                 label={t('students.form.dateOfBirth')}
                 id='inputDateOfBirth'
-              />
-            </FormControl>
-            <FormControl>
-              <Select
+              /><Select
                 type='text'
                 name='knowAboutUs'
                 label={t('students.form.knowAboutUs')}
