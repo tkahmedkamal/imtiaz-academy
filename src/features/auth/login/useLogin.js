@@ -20,8 +20,6 @@ const useLogin = () => {
     onError: ({ message }) => {
       setUser(null);
 
-      console.log(message);
-
       if (message.startsWith('{') && message.endsWith('}')) {
         const errors = JSON.parse(message);
 

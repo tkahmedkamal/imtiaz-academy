@@ -47,7 +47,7 @@ const StudentsEnrollmentTable = () => {
             data={students}
             render={(student, index) => (
               <StudentsEnrollmentRow
-                key={student.userId}
+                key={student.id}
                 student={student}
                 index={index}
               />

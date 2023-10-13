@@ -14,6 +14,22 @@ const useEditStudent = closeModal => {
       closeModal?.();
     },
     onError: ({ message }) => {
+      if (message.startsWith('{') && message.endsWith('}')) {
+        const errors = JSON.parse(message);
+
+        for (const key in errors) {
+          if (errors.hasOwnProperty(key)) {
+            const array = errors[key];
+
+            array.forEach((item, index) => {
+              toast.error(item);
+            });
+          }
+        }
+
+        return;
+      }
+
       toast.error(message);
     },
   });

@@ -5,20 +5,32 @@ import { useTranslation } from 'react-i18next';
 import { LoadingButton, Input, FormControl, Select } from '../../ui';
 import { useCoursesDialog } from '../../hooks';
 import { useTeachersDialog } from '../../hooks';
+import useAddStudentEnrollment from './useAddStudentEnrollment';
+import { enrollStudentSchema } from './validation';
 
 const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
   const [isSpecialDiscount, setIsSpecialDiscount] = useState(false);
   const [isPersonal, setIsPersonal] = useState(false);
   const [isFullTimeSpecialCost, setIsFullTimeSpecialCost] = useState(false);
-  const [courseId, setCourseId] = useState('0');
-  const [teacherId, setTeacherId] = useState('1');
   const { t } = useTranslation();
 
-  const { data: teachers, isTeachersLoading } = useTeachersDialog();
+  const { data: teachers, isLoading: isTeachersLoading } = useTeachersDialog();
+  const { data: courses, isLoading: isCoursesLoading } = useCoursesDialog();
+  const { mutate, isLoading: isAdding } = useAddStudentEnrollment(closeModal);
 
-  const { data: courses, isCoursesLoading } = useCoursesDialog();
-
-  const handleSubmit = values => {};
+  const handleSubmit = values => {
+    const data = {
+      ...values,
+      studentId,
+      courseId: +values.courseId,
+      enrollmentDate: new Date().toISOString(),
+      studyStartDate: new Date(values.studyStartDate).toISOString(),
+      studyEndDate: new Date(values.studyEndDate).toISOString(),
+      CostIsMonthlyPerClass: isPersonal,
+      isFullTimeSpecialCost,
+    };
+    mutate(data);
+  };
 
   return (
     <>
@@ -30,19 +42,16 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
         initialValues={{
           teacherId: '',
           courseId: '',
-          registrationCost: '',
-          enrollmentDate: '',
           enrollmentCost: 0,
-          numberOfClasses: 30,
-          costIsMonthly: true,
-          isFullTimeSpecialCost: true,
+          numberOfClasses: 4,
+          classDuration: 10,
           studyStartDate: '',
-          studyEndDate: ''
+          studyEndDate: '',
         }}
-        // validationSchema={paymentTransactionSchema}
+        validationSchema={enrollStudentSchema}
         onSubmit={handleSubmit}
       >
-        {({ handleChange }) => (
+        {() => (
           <Form className='mt-10 space-y-4'>
             <FormControl>
               <Select
@@ -50,8 +59,7 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 label={t('educational.course.title')}
                 type='number'
                 id='inputCourseId'
-                set={setCourseId}
-                onChange={e => setCourseId(e.target.value)}
+                disabled={isCoursesLoading}
               >
                 {courses?.map(({ courseId, courseName }) => (
                   <option value={courseId} key={courseId}>
@@ -59,13 +67,13 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                   </option>
                 ))}
               </Select>
+
               <Select
                 name='teacherId'
                 label={t('teacher.title')}
                 type='number'
                 id='inputTeacherId'
-                set={setTeacherId}
-                onChange={e => setTeacherId(e.target.value)}
+                disabled={isTeachersLoading}
               >
                 {teachers?.map(({ teacherId, teacherName }) => (
                   <option value={teacherId} key={teacherId}>
@@ -73,6 +81,22 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                   </option>
                 ))}
               </Select>
+            </FormControl>
+
+            <FormControl>
+              <Input
+                type='date'
+                name='studyStartDate'
+                label={t('global.from')}
+                id='inputStartDate'
+              />
+
+              <Input
+                type='date'
+                name='studyEndDate'
+                label={t('global.to')}
+                id='inputEndDate'
+              />
             </FormControl>
 
             <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
@@ -88,34 +112,21 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 {t('students.enrollment.isPersonal')}
               </label>
             </div>
-            {isPersonal && !isSpecialDiscount && (
+
+            {isPersonal && (
               <FormControl>
                 <Input
-                  name='numberOfMeetingsPerMonth'
+                  type='number'
+                  name='numberOfClasses'
                   placeholder='min 4 max 31'
                   label={t('students.enrollment.numberOfMeetingsPerMonth')}
                   id='inputNumberOfMeetingsPerMonth'
                   autoFocus
                 />
+
                 <Input
-                  name='classDurationPerMinuets'
-                  placeholder='min 10 minuets'
-                  label={t('students.enrollment.classDurationPerMinuets')}
-                  id='inputClassDurationPerMinuets'
-                />
-              </FormControl>
-            )}
-            {isPersonal && isSpecialDiscount && (
-              <FormControl>
-                <Input
-                  name='numberOfMeetingsPerMonth'
-                  placeholder='min 4 max 31'
-                  label={t('students.enrollment.numberOfMeetingsPerMonth')}
-                  id='inputNumberOfMeetingsPerMonth'
-                  autoFocus
-                />
-                <Input
-                  name='classDurationPerMinuets'
+                  type='number'
+                  name='classDuration'
                   placeholder='min 10 minuets'
                   label={t('students.enrollment.classDurationPerMinuets')}
                   id='inputClassDurationPerMinuets'
@@ -130,25 +141,29 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 onChange={e => {
                   const isChecked = e.target.checked;
                   setIsSpecialDiscount(isChecked);
+                  setIsFullTimeSpecialCost(false);
                 }}
               />
               <label htmlFor='inputSpecialDiscount'>
                 {t('students.enrollment.discountCheckbox')}
               </label>
             </div>
-            {isSpecialDiscount && !isPersonal && (
+
+            {isSpecialDiscount && (
               <FormControl>
                 <Input
-                  name='registrationCost'
+                  type='number'
+                  name='enrollmentCost'
                   placeholder='0'
                   label={t('students.enrollment.totalRegistrationCost')}
                   id='inputRegistrationCost'
                   autoFocus
+                  value={0}
                 />
                 <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
                   <input
                     type='checkbox'
-                    id='isFullTimeSpecialCost'
+                    id='inputIsFullTimeSpecialCost'
                     onChange={e => {
                       const isChecked = e.target.checked;
                       setIsFullTimeSpecialCost(isChecked);
@@ -159,31 +174,7 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                       }
                     }}
                   />
-                  <label htmlFor='isFullTimeSpecialCost'>
-                    {t('students.enrollment.isFullTimeSpecialCost')}
-                  </label>
-                </div>
-              </FormControl>
-            )}
-            {isSpecialDiscount && isPersonal && (
-              <FormControl>
-                <Input
-                  name='registrationCost'
-                  placeholder='0'
-                  label={t('students.enrollment.registrationCostPerClass')}
-                  id='inputRegistrationCost'
-                  autoFocus
-                />
-                <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
-                  <input
-                    type='checkbox'
-                    id='isFullTimeSpecialCost'
-                    onChange={e => {
-                      const isChecked = e.target.checked;
-                      setIsFullTimeSpecialCost(isChecked);
-                    }}
-                  />
-                  <label htmlFor='isFullTimeSpecialCost'>
+                  <label htmlFor='inputIsFullTimeSpecialCost'>
                     {t('students.enrollment.isFullTimeSpecialCost')}
                   </label>
                 </div>
@@ -192,8 +183,8 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
 
             <div className='!mt-6 '>
               <LoadingButton
-                disabled={false}
-                isLoading={false}
+                disabled={isAdding}
+                isLoading={isAdding}
                 status='success'
               >
                 {t('students.enrollment.buttons.add')}

@@ -91,12 +91,19 @@ export const editStudent = async student => {
     }
 
     return data;
-  } catch (err) {
-    if (err.message.includes('Network Error')) {
+  } catch (error) {
+    const { message, response } = error;
+
+    if (message.includes('Network Error')) {
       throw Error('Something went wrong, please try again');
     }
 
-    throw Error(err.message);
+    const errors =
+      response?.data?.errors instanceof Object
+        ? JSON.stringify(response?.data?.errors)
+        : response?.data;
+
+    throw new Error(errors);
   }
 };
 
@@ -131,6 +138,42 @@ export const deleteStudent = async id => {
     }
 
     throw Error(message);
+  }
+};
+
+export const addStudentEnrollment = async enrollmentData => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const { data } = await axiosConfig.post(
+      '/api/studentEnrollments/add',
+      enrollmentData,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    if (data.status === 406) {
+      return Promise.reject(Error(data?.msg));
+    }
+
+    return data;
+  } catch (error) {
+    const { message, response } = error;
+
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    const errors =
+      response?.data?.errors instanceof Object
+        ? JSON.stringify(response?.data?.errors)
+        : response?.data;
+
+    throw new Error(errors);
   }
 };
 

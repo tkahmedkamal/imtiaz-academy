@@ -8,6 +8,7 @@ const useStudent = studentId => {
     queryKey: ['students', studentId],
     queryFn: () => getStudent(studentId),
     cacheTime: 0,
+
     onError: ({ msg }) => {
       toast.success(msg);
     },

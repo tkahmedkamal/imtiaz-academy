@@ -33,27 +33,23 @@ const Student = () => {
     <StudentsProvider>
       <Modal>
         <AddStudent />
-        {user?.roles.includes('AccountantAgent') && <TableOperational
-          windowName='create-student'
-          labelBtn='students.buttons.add'
-          false
-        >
-          <Filters>
-            <StatusFilter />
-             <CreditFilter />
-            <CountryFilter />
-          </Filters>
-        </TableOperational>}
-        {user?.roles.includes('EnrollmentAgent') && <TableOperational
-          windowName='create-student'
-          labelBtn='students.buttons.add'
-          isButton
-        >
-          <Filters>
-            <StatusFilter />
-            <CountryFilter />
-          </Filters>
-        </TableOperational>}
+        {user?.roles.includes('AccountantAgent') && (
+          <TableOperational windowName='create-student' false>
+            <Filters>
+              <StatusFilter />
+              <CreditFilter />
+              <CountryFilter />
+            </Filters>
+          </TableOperational>
+        )}
+        {user?.roles.includes('EnrollmentAgent') && (
+          <TableOperational windowName='create-student' isButton>
+            <Filters>
+              <StatusFilter />
+              <CountryFilter />
+            </Filters>
+          </TableOperational>
+        )}
       </Modal>
 
       {user?.roles.includes('AccountantAgent') ? (

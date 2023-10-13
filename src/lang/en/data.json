@@ -42,7 +42,9 @@
     "userType": "Employee Type",
     "registration_date": "Registration Date",
     "totalPaidAmount": "Total Paid Amount",
-    "totalEnrollmentCost": "Total Enrollment Cost"
+    "totalEnrollmentCost": "Total Enrollment Cost",
+    "from": "From",
+    "to": "To"
   },
   "pagination": {
     "showing": "Showing",

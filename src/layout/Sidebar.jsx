@@ -71,7 +71,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className='w-64 flex-shrink-0 overflow-hidden xs:fixed xs:z-20 md:static md:z-0'>
+    <aside className='w-64 flex-shrink-0 overflow-hidden xs:fixed xs:z-20 md:static md:z-20'>
       <motion.div
         variants={leftSideVariants}
         initial='hidden'

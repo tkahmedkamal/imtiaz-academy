@@ -15,7 +15,7 @@ const StudentsEnrollmentRow = ({ index, student }) => {
   const { mutate, isLoading } = useArchiveStudent();
 
   const {
-    Id,
+    id,
     name,
     country,
     phoneNumber,
@@ -46,7 +46,7 @@ const StudentsEnrollmentRow = ({ index, student }) => {
 
       <Table.Td classes='flex item-center gap-3'>
         <Modal>
-          <Modal.Open opens={`edit-student-$'{Id}'`}>
+          <Modal.Open opens={`edit-student-${id}`}>
             <ActionBtn
               title={t('global.edit')}
               icon={<BiEdit />}
@@ -54,7 +54,7 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Open opens={`info-student-${Id}`}>
+          <Modal.Open opens={`info-student-${id}`}>
             <ActionBtn
               title={t('global.info')}
               icon={<TbInfoSquare />}
@@ -62,7 +62,7 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Open opens={`enrollment-student-${Id}`}>
+          <Modal.Open opens={`enrollment-student-${id}`}>
             <ActionBtn
               title={t('global.enrollment')}
               icon={<TfiWrite />}
@@ -70,7 +70,7 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Open opens={`archive-student-${Id}`}>
+          <Modal.Open opens={`archive-student-${id}`}>
             <ActionBtn
               title={t('global.archive')}
               icon={<LuArchive />}
@@ -78,22 +78,22 @@ const StudentsEnrollmentRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Window name={`edit-student-${Id}`}>
-            <EditStudentForm studentId={Id} />
+          <Modal.Window name={`edit-student-${id}`}>
+            <EditStudentForm studentId={id} />
           </Modal.Window>
 
-          <Modal.Window name={`enrollment-student-${Id}`}>
-            <AddEnrollmentStudentForm studentId={Id} />
+          <Modal.Window name={`enrollment-student-${id}`}>
+            <AddEnrollmentStudentForm studentId={id} />
           </Modal.Window>
 
-          <Modal.Window name={`archive-student-${Id}`}>
+          <Modal.Window name={`archive-student-${id}`}>
             <Confirm
               label={t('archive.label')}
               message={t('archive.message')}
               statusBtn='warn'
               icon={Archive}
               isLoading={isLoading}
-              handleConfirm={() => mutate(Id)}
+              handleConfirm={() => mutate(id)}
             />
           </Modal.Window>
         </Modal>
