@@ -31,6 +31,13 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
           teacherId: '',
           courseId: '',
           registrationCost: '',
+          enrollmentDate: '',
+          enrollmentCost: 0,
+          numberOfClasses: 30,
+          costIsMonthly: true,
+          isFullTimeSpecialCost: true,
+          studyStartDate: '',
+          studyEndDate: ''
         }}
         // validationSchema={paymentTransactionSchema}
         onSubmit={handleSubmit}
@@ -146,7 +153,9 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                       const isChecked = e.target.checked;
                       setIsFullTimeSpecialCost(isChecked);
                       if (isChecked) {
-                        alert('This cost will be apply for all student lessons until end program!!');
+                        alert(
+                          'This cost will be apply for all student lessons until end program!!',
+                        );
                       }
                     }}
                   />

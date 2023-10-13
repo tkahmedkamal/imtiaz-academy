@@ -1,7 +1,14 @@
 import { Formik, Form } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { useCountries } from '../../hooks';
 
-import { LoadingButton, Input, FormControl, Select } from '../../ui';
+import {
+  LoadingButton,
+  Input,
+  FormControl,
+  Select,
+  SelectOption,
+} from '../../ui';
 import { studentSchema } from './validation';
 import useStudent from './useStudent.js';
 import useEditStudent from './useEditStudent';
@@ -10,27 +17,52 @@ const EditStudentForm = ({ studentId, closeModal }) => {
   const { data, isLoading: isLoadingStudent } = useStudent(studentId);
   const { mutate, isLoading } = useEditStudent(closeModal);
   const { t } = useTranslation();
-
   const {
-    name,
-    country,
-    phoneNumber,
-    isActive,
-    userName,
-    email,
-    password,
-    nationality,
-    nationalId,
-    countryId,
+    id,
+    userId,
     state,
+    city,
+    postCode,
     job,
-    gender,
-    age,
-    dateOfBirth,
-    address,
     registrationDate,
+    isCompleteStudy,
     knowAboutUs,
+    applicationUser: {
+      name,
+      isMale,
+      age,
+      address,
+      nationalId,
+      isActive,
+      isApproved,
+      isArchive,
+      profileImagePath,
+      dateOfBirth,
+      isAcceptedPolicies,
+      countryId,
+      nationality,
+      userType,
+      theme,
+      userLanguage,
+      statusType,
+      gender,
+      userName,
+      normalizedUserName,
+      email,
+      normalizedEmail,
+      emailConfirmed,
+      passwordHash,
+      securityStamp,
+      concurrencyStamp,
+      phoneNumber,
+      phoneNumberConfirmed,
+      twoFactorEnabled,
+      lockoutEnd,
+      lockoutEnabled,
+      accessFailedCount,
+    },
   } = data?.student || {};
+  const { countries, isLoadingCountries } = useCountries();
 
   const handleSubmit = values => {
     const data = {
@@ -51,25 +83,41 @@ const EditStudentForm = ({ studentId, closeModal }) => {
 
       <Formik
         initialValues={{
-          name: name || '',
-          country: country || '',
-          phoneNumber: phoneNumber || '',
-          active: isActive ? 'active' : 'inactive',
-          userName: userName || '',
-          email: email || '',
-          password: password || '',
-          nationality: nationality || '',
-          nationalId: nationalId || '',
-          countryId: countryId || '',
+          userId: userId || '',
           state: state || '',
+          city: city || '',
+          postCode: postCode || '',
           job: job || '',
-          gender: gender || '',
-          age: age || 5,
-          dateOfBirth: dateOfBirth || '',
-          address: address || '',
-          registrationDate: registrationDate || '',
+          registrationDate: registrationDate,
+          isCompleteStudy: isCompleteStudy,
           knowAboutUs: knowAboutUs || '',
-          isAcceptedPolicies: true,
+          id: id || '',
+          userName: userName || '',
+          normalizedUserName: normalizedUserName || '',
+          email: email || '',
+          normalizedEmail: normalizedEmail || '',
+          emailConfirmed: emailConfirmed,
+          passwordHash: passwordHash,
+          securityStamp: securityStamp,
+          concurrencyStamp: concurrencyStamp,
+          phoneNumber: phoneNumber,
+          phoneNumberConfirmed: phoneNumberConfirmed,
+          twoFactorEnabled: twoFactorEnabled,
+          lockoutEnd: lockoutEnd,
+          lockoutEnabled: lockoutEnabled,
+          accessFailedCount: accessFailedCount,
+          name: name || '',
+          isMale: isMale,
+          age: age || '',
+          address: address || '',
+          nationalId: nationalId || '',
+          isActive: isActive,
+          isApproved: isApproved,
+          isArchive: isArchive,
+          profileImagePath: profileImagePath || '',
+          dateOfBirth: dateOfBirth || '2023-10-12T13:15:27.094Z',
+          isAcceptedPolicies: isAcceptedPolicies,
+          countryId: countryId || 0,
         }}
         validationSchema={studentSchema}
         onSubmit={handleSubmit}
@@ -78,46 +126,101 @@ const EditStudentForm = ({ studentId, closeModal }) => {
         {({ values }) => (
           <Form className='mt-10 space-y-4'>
             <FormControl>
+              <Input name='name' label={t('global.name')} id='inputName' />
+
               <Input
-                name='name'
-                placeholder={`${t('students.form.placeholders.name')}`}
-                label={`${t('global.name')}`}
-                id='inputName'
-                value={values.name}
-                disabled={isLoadingStudent}
+                name='userName'
+                label={t('global.username')}
+                id='inputUsername'
               />
+            </FormControl>
+
+            <FormControl>
+              <Input name='email' label={t('global.email')} id='inputEmail' />
+
               <Input
-                name='country'
-                placeholder={`${t('students.form.placeholders.country')}`}
-                label={`${t('global.country')}`}
-                id='inputCountry'
-                value={values.country}
-                disabled={isLoadingStudent}
+                name='phoneNumber'
+                label={t('global.phone')}
+                id='inputPhoneNumber'
               />
             </FormControl>
 
             <FormControl>
               <Input
-                name='phoneNumber'
-                placeholder={t('students.form.placeholders.phone')}
-                label={t('global.phone')}
-                id='inputPhoneNumber'
-                value={values.phoneNumber}
-                disabled={isLoadingStudent}
+                name='nationalId'
+                label={t('global.national')}
+                id='inputNationalId'
               />
+              <Input name='job' label={t('students.form.job')} id='inputJob' />
+            </FormControl>
+            <FormControl>
+              <Input
+                name='address'
+                label={t('global.address')}
+                id='inputAddress'
+              />
+            </FormControl>
 
+            <FormControl>
+              <Input
+                name='postCode'
+                label={t('global.postCode')}
+                id='inputPostCode'
+              />
+              <Input name='city' label={t('global.city')} id='inputCity' />
+            </FormControl>
+
+            <FormControl>
+              <Input
+                name='state'
+                label={t('students.form.state')}
+                id='inputState'
+              />
               <Select
-                label={t('global.status')}
-                name='active'
-                id='inputStatus'
-                value={values.active}
-                disabled={isLoadingStudent}
+                name='countryId'
+                label={t('global.country')}
+                id='inputCountryId'
               >
-                <option value='active'>{t('global.active')}</option>
-                <option value='inactive'>{t('global.inactive')}</option>
+                {countries?.map(({ id, name }) => (
+                  <SelectOption key={id} value={id} label={name} />
+                ))}
               </Select>
             </FormControl>
 
+            <FormControl>
+              <Select name='gender' label={t('global.gender')} id='inputGender'>
+                <SelectOption value='male' label='Male' />
+                <SelectOption value='female' label='Female' />
+              </Select>
+
+              <Input
+                type='number'
+                name='age'
+                label={t('global.age')}
+                id='inputAge'
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                type='date'
+                name='dateOfBirth'
+                label={t('students.form.dateOfBirth')}
+                id='inputDateOfBirth'
+              />
+              <Select
+                type='text'
+                name='knowAboutUs'
+                label={t('students.form.knowAboutUs')}
+                id='inputKnowAboutUs'
+              >
+                <SelectOption value={1} label='Facebook' />
+                <SelectOption value={2} label='Instgram' />
+                <SelectOption value={3} label='Friends' />
+                <SelectOption value={4} label='Whatsapp' />
+                <SelectOption value={5} label='Telegram' />
+                <SelectOption value={6} label='Other' />
+              </Select>
+            </FormControl>
             <div className='!mt-6 '>
               <LoadingButton
                 disabled={isLoading}
