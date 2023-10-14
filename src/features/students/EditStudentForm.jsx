@@ -67,6 +67,15 @@ const EditStudentForm = ({ studentId, closeModal }) => {
         isArchive: applicationUser?.isArchive,
         profileImagePath: applicationUser?.profileImagePath,
         isAcceptedPolicies: applicationUser?.isAcceptedPolicies,
+        address: applicationUser?.address,
+        nationalId:applicationUser?.nationalId,
+        nationality: applicationUser?.nationality,
+        userType: applicationUser?.userType,
+        theme: applicationUser?.theme,
+        userLanguage: applicationUser?.userLanguage,
+        id: applicationUser?.id,
+        email: applicationUser?.email,
+        phoneNumber: applicationUser?.phoneNumber, 
       },
     };
     delete data.applicationUser.active;
