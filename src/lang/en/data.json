@@ -103,6 +103,9 @@
         "amount": "Amount Paid",
         "paidTime": "Paid Time",
         "refPaidNum": "Reference Paid Number",
+        "refNotes": "Notes",
+        "periodStartDate":"Period Start Date",
+        "periodEndDate":"Period End Date",
         "placeholders": {
           "refPaidNum": "Enter Reference Paid Number"
         }
@@ -120,6 +123,9 @@
       "registrationCostPerClass"  : "registration cost per class",
       "numberOfMeetingsPerMonth": "number of meetings per month",
       "isFullTimeSpecialCost" : "full time discount",
+      "studyStartDate" : "Study Start Date",
+      "studyEndDate" : "Study End Date",
+      "courseName" : "Course Name",
       "isPersonal": "Personal",
       "Group":"Group",
       "buttons": {

@@ -39,7 +39,8 @@ const Sidebar = () => {
       link: '/dashboard/students',
       show:
         user?.roles.includes('AccountantAgent') ||
-        user.roles.includes('EnrollmentAgent'),
+        user.roles.includes('EnrollmentAgent') ||
+        user.roles.includes('Teacher')
     },
     {
       label: t('sidebar.teachers'),

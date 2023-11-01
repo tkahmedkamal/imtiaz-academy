@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import {
   getStudentsEnrollment,
   getStudentsAccountant,
+  getTeacherStudents,
 } from '../../services/studentsApi';
 import { useStudentsCtx } from '../../context/StudentContext';
 import { useAuthCtx } from '../../context/authContext';
@@ -18,7 +19,7 @@ const useStudents = () => {
   let handler =
     user && user?.roles.includes('EnrollmentAgent')
       ? getStudentsEnrollment
-      : getStudentsAccountant;
+      : ( user && user?.roles.includes('AccountantAgent') ? getStudentsAccountant : getTeacherStudents);
   const currentPage = +searchParams.get('page') || 1;
 
   const status = {

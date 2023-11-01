@@ -11,6 +11,7 @@ import {
 import { AddStudent } from '../features/students';
 import { StudentsAccountantTable } from '../features/students/accountant';
 import { StudentsEnrollmentTable } from '../features/students/enrollment';
+import { StudentsTeacherTable } from '../features/students/teacher';
 import StudentsProvider from '../context/StudentContext';
 import { withPage } from '../hocs';
 import CreditFilter from '../ui/CreditFilter.jsx';
@@ -23,6 +24,7 @@ const Student = () => {
   useEffect(() => {
     if (
       !user.roles.includes('AccountantAgent') &&
+      !user.roles.includes('Teacher') &&
       !user.roles.includes('EnrollmentAgent')
     ) {
       navigate(-1);
@@ -42,6 +44,14 @@ const Student = () => {
             </Filters>
           </TableOperational>
         )}
+        {user?.roles.includes('Teacher') && (
+          <TableOperational windowName='create-student' false>
+            <Filters>
+              <StatusFilter />
+              <CountryFilter />
+            </Filters>
+          </TableOperational>
+        )}
         {user?.roles.includes('EnrollmentAgent') && (
           <TableOperational windowName='create-student' isButton>
             <Filters>
@@ -54,6 +64,8 @@ const Student = () => {
 
       {user?.roles.includes('AccountantAgent') ? (
         <StudentsAccountantTable />
+      ) : user?.roles.includes('Teacher') ? (
+        <StudentsTeacherTable />
       ) : (
         <StudentsEnrollmentTable />
       )}
