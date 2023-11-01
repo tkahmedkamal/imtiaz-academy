@@ -275,7 +275,7 @@ const EditStudentForm = ({ studentId, closeModal }) => {
                 disabled={isLoadingStudent}
               >
                 <SelectOption value='active' label='Active' />
-                <SelectOption value='inactive' label='Inactive' />
+                <SelectOption value='inactive' label='Pending' />
               </Select>
             </FormControl>
 
