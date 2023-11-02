@@ -3,9 +3,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
 import {
-  getEmployeeUsers,
-  getUsersAccountant,
-  getTeacherUsers,
+  getEmployeeUsers
 } from '../../services/usersApi';
 import { useUsersCtx } from '../../context/UserContext';
 import { useAuthCtx } from '../../context/authContext';
@@ -16,10 +14,7 @@ const useUsers = () => {
   const { pageCount } = useUsersCtx();
   const { user } = useAuthCtx();
 
-  let handler =
-    user && user?.roles.includes('EnrollmentAgent')
-      ? getEmployeeUsers
-      : ( user && user?.roles.includes('AccountantAgent') ? getUsersAccountant : getTeacherUsers);
+  let handler = getEmployeeUsers;
   const currentPage = +searchParams.get('page') || 1;
 
   const status = {
