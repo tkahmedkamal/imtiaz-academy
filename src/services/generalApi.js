@@ -4,7 +4,7 @@ export const getLoggedInUser = async () => {
   const token = localStorage.getItem('im_access_token');
 
   try {
-    const res = await axiosConfig.get(`/api/user/getMe?userToken=${token}`, {
+    const res = await axiosConfig.get(`/api/user/getMe`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
