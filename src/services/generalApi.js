@@ -70,6 +70,31 @@ export const getNotApproved = async (page, filter) => {
     throw Error(response?.data);
   }
 };
+export const getUsers = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const res = await axiosConfig.get(
+      `/api/user?${filter}&pageNumber=${page}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    return res.data;
+  } catch (error) {
+    const { message, response } = error;
+
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(response?.data);
+  }
+};
 
 export const approved = async data => {
   const token = localStorage.getItem('im_access_token');

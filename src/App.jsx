@@ -12,6 +12,7 @@ import {
   Course,
   NotFound,
   Approved,
+  Users
 } from './pages';
 import { Login, StudentSignup, TeacherSignup } from './pages/auth';
 import { ProtectedRoutes } from './ui';
@@ -45,6 +46,7 @@ const App = () => {
             <Route path='course' element={<Course />} />
           </Route>
           <Route path='approved' element={<Approved />} />
+          <Route path='user-management' element={<Users />} />
           <Route path='*' element={<NotFound />} />
         </Route>
         <Route path='/login' element={<Login />} />

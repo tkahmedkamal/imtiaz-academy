@@ -5,3 +5,4 @@ export { default as EducationalProgram } from './EducationalProgram';
 export { default as Course } from './Course';
 export { default as NotFound } from './NotFound';
 export { default as Approved } from './Approved';
+export { default as Users } from './Users';

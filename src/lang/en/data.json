@@ -69,6 +69,7 @@
     "details": "Details",
     "course": "Course",
     "approved": "Approved",
+    "userManagement": "User Management",
     "logout": "Logout"
   },
   "students": {

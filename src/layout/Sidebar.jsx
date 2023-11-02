@@ -64,6 +64,12 @@ const Sidebar = () => {
       show: user?.roles.includes('Admin'),
     },
     {
+      label: t('sidebar.userManagement'),
+      icon: <HiOutlineUsers />,
+      link: '/dashboard/user-management',
+      show: user?.roles.includes('Admin'),
+    },
+    {
       label: t('sidebar.logout'),
       icon: <BiLogOut />,
       noLink: true,
