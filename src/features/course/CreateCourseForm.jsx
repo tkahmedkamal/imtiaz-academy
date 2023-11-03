@@ -33,6 +33,9 @@ const CreateCourseForm = ({ programId, closeModal }) => {
           discount: '0',
           courseType: '',
           educationalProgramId: programId,
+          teacherSalaryPerHour: 0,
+          isPersonal: true,
+          costPerClass: 0
         }}
         validationSchema={courseSchema}
         onSubmit={handleSubmit}
@@ -82,9 +85,17 @@ const CreateCourseForm = ({ programId, closeModal }) => {
                 type='number'
                 id='inputDiscount'
               />
+              
             </FormControl>
 
             <FormControl>
+              <Input
+                name='costPerClass'
+                placeholder='0'
+                label={`${t('educational.course.texts.costPerClass')}`}
+                type='number'
+                id='inputCostPerClass'
+              />
               <Select
                 label={t('educational.course.texts.programType')}
                 name='courseType'

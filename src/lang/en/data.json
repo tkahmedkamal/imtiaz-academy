@@ -157,6 +157,7 @@
         "numOfHours": "Number of Hours",
         "cost": "Program Cost",
         "discount": "Discount",
+        "costPerClass": "Cost Per Class",
         "costAfterDiscount": "Cost After Discount",
         "programType": "Program Type"
       },
