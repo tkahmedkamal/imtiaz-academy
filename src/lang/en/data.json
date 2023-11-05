@@ -234,5 +234,10 @@
       },
       "submit": "Approve"
     }
+  },
+  "studentEnr": {
+    "teacher": "Teacher",
+    "program": "Program",
+    "cost": "Cost"
   }
 }

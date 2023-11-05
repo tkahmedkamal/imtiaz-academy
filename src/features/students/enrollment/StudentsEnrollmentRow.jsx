@@ -9,6 +9,7 @@ import EditStudentForm from '../EditStudentForm';
 import useArchiveStudent from '../useArchiveStudent';
 import AddEnrollmentStudentForm from '../AddEnrollmentStudentForm';
 import { Archive } from '../../../assets';
+import StudentDetails from '../details/StudentDetails';
 
 const StudentsEnrollmentRow = ({ index, student }) => {
   const { t } = useTranslation();
@@ -80,6 +81,10 @@ const StudentsEnrollmentRow = ({ index, student }) => {
 
           <Modal.Window name={`edit-student-${id}`}>
             <EditStudentForm studentId={id} />
+          </Modal.Window>
+
+          <Modal.Window name={`info-student-${id}`} large>
+            <StudentDetails studentId={id} />
           </Modal.Window>
 
           <Modal.Window name={`enrollment-student-${id}`}>

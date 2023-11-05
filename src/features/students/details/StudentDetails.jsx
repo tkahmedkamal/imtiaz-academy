@@ -1,0 +1,35 @@
+import { Spinner } from '../../../ui';
+import StudentDetailsEnrollment from './StudentDetailsEnrollment';
+import StudentTabDetailsItem from './StudentTabDetailsItem';
+import useStudentDetails from './useStudentDetails';
+
+const StudentDetails = ({ studentId }) => {
+  const { data, isLoading } = useStudentDetails(studentId);
+
+  const {
+    studentPersonalInformation: info,
+    studentEnrollmentInformation: enrollments,
+  } = data || {};
+
+  return (
+    <>
+      <header className='border-b border-divider pb-4 text-xl font-bold text-primary-text dark:border-dark-divider dark:text-dark-primary-text'>
+        <h2 className='font-publicSans'>{info?.name}</h2>
+      </header>
+
+      {isLoading ? (
+        <div className='relative py-16'>
+          <Spinner />
+        </div>
+      ) : (
+        <StudentTabDetailsItem info={info} />
+      )}
+
+      <div className='mt-6 font-publicSans'>
+        <StudentDetailsEnrollment enrollments={enrollments} />
+      </div>
+    </>
+  );
+};
+
+export default StudentDetails;

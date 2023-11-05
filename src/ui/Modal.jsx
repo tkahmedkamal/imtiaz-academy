@@ -33,7 +33,7 @@ const Open = ({ children, opens }) => {
   return cloneElement(children, { onClick: () => open(opens) });
 };
 
-const Window = ({ children, name }) => {
+const Window = ({ children, name, large }) => {
   const { openModal, close } = useContext(ModalContext);
   const ref = useOutsideClick(close);
 
@@ -60,7 +60,11 @@ const Window = ({ children, name }) => {
         initial='hidden'
         animate='visible'
         exit='exit'
-        className='fixed left-1/2 right-1/2 top-1/2 max-h-[calc(100vh-50px)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl bg-common-white p-6 dark:bg-dark-paper xs:w-[calc(100vw-50px)] sm:w-[650px]'
+        className={`fixed left-1/2 right-1/2 top-1/2 max-h-[calc(100vh-50px)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl bg-common-white p-6 dark:bg-dark-paper ${
+          large
+            ? 'xs:w-[calc(100vw-50px)] sm:w-[1200px]'
+            : 'xs:w-[calc(100vw-50px)] sm:w-[650px]'
+        }`}
         ref={ref}
       >
         <div className='flex justify-end'>
