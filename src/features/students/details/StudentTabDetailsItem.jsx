@@ -1,8 +1,17 @@
 import { useState } from 'react';
 import StudentDetailsTabs from './StudentDetailsTabs';
 import { formatIsoDate } from '../../../utils/formatDate';
+import StudentDetailsEnrollment from './StudentDetailsEnrollment';
 
-const StudentTabDetailsItem = ({ info }) => {
+const knowAboutUs = new Map();
+knowAboutUs.set(1, 'Facebook');
+knowAboutUs.set(2, 'Instagram');
+knowAboutUs.set(3, 'Friends');
+knowAboutUs.set(4, 'Whatsapp');
+knowAboutUs.set(5, 'Telegram');
+knowAboutUs.set(6, 'Other');
+
+const StudentTabDetailsItem = ({ info, enrollments }) => {
   const [tab, setTab] = useState('info');
 
   if (!info) {
@@ -22,7 +31,7 @@ const StudentTabDetailsItem = ({ info }) => {
     { label: 'Age', value: info.age ? info.age : '—' },
     { label: 'Gender', value: info.isMale ? 'Male' : 'Female' },
     { label: 'job', value: info.job ? info.job : '—' },
-    { label: 'Know About Us', value: info.knowAboutUs },
+    { label: 'Know About Us', value: knowAboutUs.get(info.knowAboutUs) },
   ];
 
   const contactData = [
@@ -53,6 +62,14 @@ const StudentTabDetailsItem = ({ info }) => {
           <span className='text-end'>{value}</span>
         </li>
       ));
+      break;
+
+    case 'enrollment':
+      studentInfo = (
+        <li>
+          <StudentDetailsEnrollment enrollments={enrollments} />
+        </li>
+      );
       break;
 
     default:

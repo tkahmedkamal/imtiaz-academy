@@ -1,5 +1,4 @@
 import { Spinner } from '../../../ui';
-import StudentDetailsEnrollment from './StudentDetailsEnrollment';
 import StudentTabDetailsItem from './StudentTabDetailsItem';
 import useStudentDetails from './useStudentDetails';
 
@@ -22,12 +21,8 @@ const StudentDetails = ({ studentId }) => {
           <Spinner />
         </div>
       ) : (
-        <StudentTabDetailsItem info={info} />
+        <StudentTabDetailsItem info={info} enrollments={enrollments} />
       )}
-
-      <div className='mt-6 font-publicSans'>
-        <StudentDetailsEnrollment enrollments={enrollments} />
-      </div>
     </>
   );
 };

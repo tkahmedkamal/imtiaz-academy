@@ -5,6 +5,9 @@ const tabs = [
   {
     label: 'Contact',
   },
+  {
+    label: 'Enrollment',
+  },
 ];
 
 const StudentDetailsTabs = ({ tab, setTab }) => {

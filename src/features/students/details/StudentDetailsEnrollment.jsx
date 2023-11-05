@@ -11,11 +11,7 @@ const StudentDetailsEnrollment = ({ enrollments }) => {
 
   return (
     <>
-      <h4 className='font-medium text-primary-text dark:text-dark-primary-text'>
-        Enrollment Details
-      </h4>
-
-      <div className='mt-4 h-[200px] overflow-auto'>
+      <div className='h-[500px] overflow-auto'>
         {enrollments.length > 1 && (
           <Table>
             <Table.Thead>

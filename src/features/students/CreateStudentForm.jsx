@@ -158,7 +158,7 @@ const CreateStudentForm = ({ closeModal }) => {
                 id='inputKnowAboutUs'
               >
                 <SelectOption value={1} label='Facebook' />
-                <SelectOption value={2} label='Instgram' />
+                <SelectOption value={2} label='Instagram' />
                 <SelectOption value={3} label='Friends' />
                 <SelectOption value={4} label='Whatsapp' />
                 <SelectOption value={5} label='Telegram' />
