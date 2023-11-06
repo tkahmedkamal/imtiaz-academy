@@ -35,12 +35,12 @@ const StudentsTeacherTable = () => {
           <Table.Thead>
             <Table.Th>{t('global.index')}</Table.Th>
             <Table.Th>{t('global.name')}</Table.Th>
-            <Table.Th>{t('global.country')}</Table.Th>
             <Table.Th>{t('global.phone')}</Table.Th>
             <Table.Th>{t('global.email')}</Table.Th>
             <Table.Th>{t('students.enrollment.studyStartDate')}</Table.Th>
             <Table.Th>{t('students.enrollment.studyEndDate')}</Table.Th>
             <Table.Th>{t('students.enrollment.courseName')}</Table.Th>
+            <Table.Th>{t('global.status')}</Table.Th>
             <Table.Th>{t('global.actions')}</Table.Th>
           </Table.Thead>
 

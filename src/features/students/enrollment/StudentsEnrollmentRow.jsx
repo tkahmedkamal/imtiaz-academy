@@ -9,7 +9,7 @@ import EditStudentForm from '../EditStudentForm';
 import useArchiveStudent from '../useArchiveStudent';
 import AddEnrollmentStudentForm from '../AddEnrollmentStudentForm';
 import { Archive } from '../../../assets';
-import StudentDetails from '../details/StudentDetails';
+import StudentDetails from '../details/enrollment/StudentDetails';
 
 const StudentsEnrollmentRow = ({ index, student }) => {
   const { t } = useTranslation();

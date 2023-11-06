@@ -237,6 +237,7 @@
   },
   "studentEnr": {
     "teacher": "Teacher",
+    "course": "course",
     "program": "Program",
     "cost": "Cost"
   }

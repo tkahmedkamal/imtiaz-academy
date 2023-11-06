@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { LuArchive } from 'react-icons/lu';
 import { MdPayment } from 'react-icons/md';
 import { TbInfoSquare } from 'react-icons/tb';
 
-import { Table, ActionBtn, Modal, Tag, Confirm } from '../../../ui';
+import { Table, ActionBtn, Modal, Tag} from '../../../ui';
 import useArchiveStudent from '../useArchiveStudent';
 import AddPaymentTransactionForm from '../AddPaymentTransactionForm';
-import { Archive } from '../../../assets';
+import StudentDetails from '../details/accountant/StudentDetails';
+
 
 const StudentsAccountantRow = ({ index, student }) => {
   const { t } = useTranslation();
@@ -68,28 +68,17 @@ const StudentsAccountantRow = ({ index, student }) => {
               status='primary'
             />
           </Modal.Open>
-          <Modal.Open opens={`archive-student-${id}`}>
-            <ActionBtn
-              title={t('global.archive')}
-              icon={<LuArchive />}
-              status='danger'
-            />
-          </Modal.Open>
+
 
           <Modal.Window name={`add-student-transaction-${id}`}>
             <AddPaymentTransactionForm studentId={id} />
           </Modal.Window>
 
-          <Modal.Window name={`archive-student-${id}`}>
-            <Confirm
-              label={t('archive.label')}
-              message={t('archive.message')}
-              statusBtn='warn'
-              icon={Archive}
-              isLoading={isLoading}
-              handleConfirm={() => mutate(id)}
-            />
+          <Modal.Window name={`info-student-${id}`} large>
+            <StudentDetails studentId={id} />
           </Modal.Window>
+
+
         </Modal>
       </Table.Td>
     </Table.Tr>
