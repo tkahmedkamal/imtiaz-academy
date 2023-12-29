@@ -33,11 +33,11 @@ const StudentsAccountantRow = ({ index, student }) => {
       <Table.Td>{totalEnrollmentCost}</Table.Td>
       <Table.Td>{totalPaidAmount}</Table.Td>
       <Table.Td>
-        {credit < 0 ? (
+        {credit > 0 ? (
           <Tag label={credit} status='warn' />
         ) : credit === 0 ? (
           <Tag label={credit} status='success' />
-        ) : credit > 0 ? (
+        ) : credit < 0 ? (
           <Tag label={credit} status='error' />
         ) : (
           ''

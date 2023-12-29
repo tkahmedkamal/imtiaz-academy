@@ -32,6 +32,9 @@ const Sidebar = () => {
       label: t('sidebar.dashboard'),
       icon: <AiOutlineDashboard />,
       link: '/dashboard',
+      show:
+      user?.roles.includes('EnrollmentAgent') ||
+      user.roles.includes('Admin')
     },
     {
       label: t('sidebar.students'),
@@ -46,16 +49,25 @@ const Sidebar = () => {
       label: t('sidebar.teachers'),
       icon: <HiOutlineUserGroup />,
       link: '/dashboard/teachers',
+      show:
+      user?.roles.includes('EnrollmentAgent') ||
+      user.roles.includes('Admin')
     },
     {
       label: t('sidebar.educational-program'),
       icon: <HiOutlineUserGroup />,
       link: '/dashboard/educational-program',
+      show:
+      user?.roles.includes('EnrollmentAgent') ||
+      user.roles.includes('Admin')
     },
     {
       label: t('sidebar.course'),
       icon: <MdOutlineOndemandVideo />,
       link: '/dashboard/educational-program/course',
+      show:
+      user?.roles.includes('EnrollmentAgent') ||
+      user.roles.includes('Admin')
     },
     {
       label: t('sidebar.approved'),
