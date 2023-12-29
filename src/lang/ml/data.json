@@ -26,11 +26,13 @@
     "personal": "Peribadi",
     "group": "Kumpulan",
     "info": "Maklumat",
-    "credit": "Kredit",
+    "credit": "Pelajar Kredit",
     "ltZero": "< Sifar",
     "gtZero": "> Sifar",
     "eqZero": "= sama",
-    "enrollment": "Pendaftaran"
+    "enrollment": "Pendaftaran",
+    "totalEnrollmentCost": "Jumlah Kos Pendaftaran",
+    "totalPaidAmount": "Jumlah Amaun Dibayar"
   },
   "pagination": {
     "showing": "Memaparkan",
@@ -86,7 +88,8 @@
         "refPaidNum": "Nombor Dibayar Rujukan",
         "placeholders": {
           "refPaidNum": "Masukkan Nombor Rujukan Dibayar"
-        }
+        },
+        "refNotes": "Nota"
       },
       "buttons": {
         "add": "Tambah Transaksi"

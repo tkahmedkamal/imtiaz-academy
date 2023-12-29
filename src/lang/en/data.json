@@ -1,13 +1,13 @@
 {
-  "global":{
+  "global": {
     "index": "Index",
     "name": "Name",
     "username": "Username",
     "nationality": "Nationality",
     "country": "Country",
-    "state" :"State",
-    "city":"City",
-    "postCode":"Post Code",
+    "state": "State",
+    "city": "City",
+    "postCode": "Post Code",
     "national": "National-Id",
     "email": "Email",
     "password": "Password",
@@ -33,7 +33,7 @@
     "personal": "Personal",
     "group": "Group",
     "info": "Information",
-    "credit": "Credit",
+    "credit": "Student Credit",
     "ltZero": "< Zero",
     "gtZero": "> Zero",
     "eqZero": "= Zero",
@@ -92,8 +92,8 @@
         "age": "Enter your age"
       }
     },
-    "customRegistrationCost":"Custom Registration Cost",
-    "registrationCost":"Registration Cost",
+    "customRegistrationCost": "Custom Registration Cost",
+    "registrationCost": "Registration Cost",
     "buttons": {
       "add": "New student",
       "edit": "Edit Student"
@@ -105,8 +105,8 @@
         "paidTime": "Paid Time",
         "refPaidNum": "Reference Paid Number",
         "refNotes": "Notes",
-        "periodStartDate":"Period Start Date",
-        "periodEndDate":"Period End Date",
+        "periodStartDate": "Period Start Date",
+        "periodEndDate": "Period End Date",
         "placeholders": {
           "refPaidNum": "Enter Reference Paid Number"
         }
@@ -118,17 +118,17 @@
     "enrollment": {
       "title": "Enroll Student to a Course",
       "registrationCost": "Registration Cost",
-      "totalRegistrationCost" : "Total Registration Cost",
-      "classDurationPerMinuets":"class duration per minuets",
+      "totalRegistrationCost": "Total Registration Cost",
+      "classDurationPerMinuets": "class duration per minuets",
       "discountCheckbox": "Has special discount",
-      "registrationCostPerClass"  : "registration cost per class",
+      "registrationCostPerClass": "registration cost per class",
       "numberOfMeetingsPerMonth": "number of meetings per month",
-      "isFullTimeSpecialCost" : "full time discount",
-      "studyStartDate" : "Study Start Date",
-      "studyEndDate" : "Study End Date",
-      "courseName" : "Course Name",
+      "isFullTimeSpecialCost": "full time discount",
+      "studyStartDate": "Study Start Date",
+      "studyEndDate": "Study End Date",
+      "courseName": "Course Name",
       "isPersonal": "Personal",
-      "Group":"Group",
+      "Group": "Group",
       "buttons": {
         "add": "Enrollment"
       }
@@ -161,9 +161,9 @@
         "costAfterDiscount": "Cost After Discount",
         "programType": "Program Type"
       },
-      "form":{
+      "form": {
         "placeholders": {
-            "name": "Enter Name"
+          "name": "Enter Name"
         }
       },
       "buttons": {
@@ -186,24 +186,24 @@
   "teacher_signup": {
     "title": "Signup",
     "form": {
-        "email": "Email",
-        "bankName": "Bank Name",
-        "idCardNumber": "ID-Card Number",
-        "nationalId": "National-ID",
-        "nationality": "Nationality",
-        "address": "Address",
-        "bankAccountNumber": "Bank Account Name",
-        "certificate": "Certificate",
-        "age": "Age",
-        "name": "Name",
-        "password": "Password",
-        "isAcceptedPolicies": "",
-        "phoneNumber": "Phone Number",
-        "username": "Username",
-        "gander": "Gander",
-        "iban": "IBAN",
-        "type": "Type",
-        "countryId": "Country",
+      "email": "Email",
+      "bankName": "Bank Name",
+      "idCardNumber": "ID-Card Number",
+      "nationalId": "National-ID",
+      "nationality": "Nationality",
+      "address": "Address",
+      "bankAccountNumber": "Bank Account Name",
+      "certificate": "Certificate",
+      "age": "Age",
+      "name": "Name",
+      "password": "Password",
+      "isAcceptedPolicies": "",
+      "phoneNumber": "Phone Number",
+      "username": "Username",
+      "gander": "Gander",
+      "iban": "IBAN",
+      "type": "Type",
+      "countryId": "Country",
       "placeholders": {
         "email": "Enter your email",
         "bankName": "Enter bank name",
@@ -230,7 +230,7 @@
       "contractEndDate": "Contact End Date",
       "salary": "Salary",
       "placeholders": {
-      "salary": "Enter your salary"
+        "salary": "Enter your salary"
       },
       "submit": "Approve"
     }
