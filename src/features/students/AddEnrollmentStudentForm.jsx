@@ -109,7 +109,7 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 }}
               />
               <label htmlFor='inputIsPersonal'>
-                {t('students.enrollment.isPersonal')}
+                {t('students.enrollment.changeNumberOfClasses')}
               </label>
             </div>
 
