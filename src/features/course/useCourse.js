@@ -7,7 +7,7 @@ import { useCourseCtx } from '../../context/CourseContext';
 const useCourse = () => {
   const [searchParams] = useSearchParams();
   const { pageCount } = useCourseCtx();
-  const { prefetchQuery } = useQueryClient();
+  const  queryClient  = useQueryClient();
 
   const programTypeStatus = {
     all: '',
@@ -25,15 +25,29 @@ const useCourse = () => {
     queryFn: () => getCourse(currentPage, filterQueries),
   });
 
+  // if (currentPage < pageCount) {
+  //   queryClient.prefetchQuery({
+  //     queryKey: ['educational', currentPage + 1, filterQueries],
+  //     queryFn: () => getEducational(currentPage + 1, filterQueries),
+  //   });
+  // }
+
+  // if (currentPage > 1) {
+  //   queryClient.prefetchQuery({
+  //     queryKey: ['educational', currentPage - 1, filterQueries],
+  //     queryFn: () => getEducational(currentPage - 1, filterQueries),
+  //   });
+  // }
+
   if (currentPage < pageCount) {
-    prefetchQuery({
+    queryClient.prefetchQuery({
       queryKey: ['educational-details', currentPage + 1, filterQueries],
       queryFn: () => getCourse(currentPage + 1, filterQueries),
     });
   }
 
   if (currentPage > 1) {
-    prefetchQuery({
+    queryClient.prefetchQuery({
       queryKey: ['educational-details', currentPage - 1, filterQueries],
       queryFn: () => getCourse(currentPage - 1, filterQueries),
     });

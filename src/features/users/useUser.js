@@ -13,7 +13,7 @@ const useUser = () => {
   const currentPage = +searchParams.get('page') || 1;
   const searchValue = searchParams.get('search') || '';
 
-  const filterQueries = `name=${searchValue}&isGeneralSearch=true`;
+  const filterQueries = `name=${searchValue}&isGeneralSearch=true,isArchive=false`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['user', currentPage, filterQueries],

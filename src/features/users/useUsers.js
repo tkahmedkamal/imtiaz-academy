@@ -38,7 +38,7 @@ const useUsers = () => {
   const searchValue = searchParams.get('search') || '';
   const creditValue = searchParams.get('credit') || 'all';
 
-  const filters = `isActive=${status[statusValue]},${checkCountryValue},name=${searchValue}`;
+  const filters = `isActive=${status[statusValue]},isArchive=false,${checkCountryValue},name=${searchValue}`;
   const filterQueries =
     user && user?.roles.includes('AccountantAgent')
       ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true`

@@ -36,7 +36,7 @@ const CourseTable = () => {
             <Table.Th>{t('global.index')}</Table.Th>
             <Table.Th>{t('educational.course.texts.name')}</Table.Th>
             <Table.Th>{t('educational.course.texts.numOfClasses')}</Table.Th>
-            <Table.Th>{t('educational.course.texts.numOfHours')}</Table.Th>
+            <Table.Th>{t('educational.course.texts.minutes')}</Table.Th>
             <Table.Th>{t('educational.course.texts.cost')}</Table.Th>
             <Table.Th>{t('educational.course.texts.discount')}</Table.Th>
             <Table.Th>

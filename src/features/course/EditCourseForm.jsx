@@ -18,6 +18,7 @@ const EditCourseForm = ({ detail, closeModal }) => {
     discount,
     isPersonal,
     educationalProgramId,
+    costPerClass,
   } = detail;
   const handleSubmit = values => {
     const data = {
@@ -44,6 +45,7 @@ const EditCourseForm = ({ detail, closeModal }) => {
           discount,
           courseType: isPersonal ? 'Personal' : 'Group',
           educationalProgramId,
+          costPerClass
         }}
         validationSchema={courseSchema}
         onSubmit={handleSubmit}
@@ -110,6 +112,14 @@ const EditCourseForm = ({ detail, closeModal }) => {
                 <option value='Personal'>{t('global.personal')}</option>
                 <option value='Group'>{t('global.group')}</option>
               </Select>
+              <Input
+                name='costPerClass'
+                placeholder='0'
+                label={`${t('educational.course.texts.costPerClass')}`}
+                type='number'
+                value = {values.costPerClass}
+                id='inputCostPerClass'
+              />
             </FormControl>
 
             <div className='!mt-6 '>
