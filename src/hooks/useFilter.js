@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 
-const useFilter = (key, select, defaultValue = 'all') => {
+const useFilter = (key, select, defaultValue = 'active') => {
   const [searchParams, setSearchParams] = useSearchParams();
   const term = searchParams.get(key) || defaultValue;
 

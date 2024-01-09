@@ -44,7 +44,7 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
           courseId: '',
           enrollmentCost: 0,
           numberOfClasses: 4,
-          classDuration: 10,
+          // classDuration: 10,
           studyStartDate: '',
           studyEndDate: '',
         }}
@@ -124,13 +124,13 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                   autoFocus
                 />
 
-                <Input
+                {/* <Input
                   type='number'
                   name='classDuration'
                   placeholder='min 10 minuets'
                   label={t('students.enrollment.classDurationPerMinuets')}
                   id='inputClassDurationPerMinuets'
-                />
+                /> */}
               </FormControl>
             )}
 

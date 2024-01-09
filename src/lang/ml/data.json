@@ -31,7 +31,7 @@
     "gtZero": "> Sifar",
     "eqZero": "= sama",
     "enrollment": "Pendaftaran",
-    "totalEnrollmentCost": "Jumlah Kos Pendaftaran",
+    "totalEnrollmentCost": "Yuran penuh",
     "totalPaidAmount": "Jumlah Amaun Dibayar"
   },
   "pagination": {
@@ -85,6 +85,8 @@
       "form": {
         "amount": "Amaun yang dibayar",
         "paidTime": "Masa Berbayar",
+        "periodStartDate": "Tarikh mula bayar",
+        "periodEndDate": "Tarikah tamat bayar",
         "refPaidNum": "Nombor Dibayar Rujukan",
         "placeholders": {
           "refPaidNum": "Masukkan Nombor Rujukan Dibayar"
