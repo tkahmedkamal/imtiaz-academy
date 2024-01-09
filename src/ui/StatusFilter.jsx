@@ -9,9 +9,7 @@ const StatusFilter = () => {
 
   return (
     <div className='flex items-center rounded-md border border-divider bg-light-gray p-1.5 dark:border-dark-divider dark:bg-dark-light-gray'>
-      <ButtonMini active={status === 'all'} status='all' onClick={handleClick}>
-        {t('global.all')}
-      </ButtonMini>
+      
       <ButtonMini
         active={status === 'active'}
         status='active'
@@ -25,6 +23,9 @@ const StatusFilter = () => {
         onClick={handleClick}
       >
         {t('global.pending')}
+      </ButtonMini>
+      <ButtonMini active={status === 'all'} status='all' onClick={handleClick}>
+        {t('global.all')}
       </ButtonMini>
     </div>
   );
