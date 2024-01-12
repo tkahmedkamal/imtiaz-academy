@@ -28,7 +28,7 @@ const Pagination = ({ limit, results, pageCount }) => {
   }
 
   return (
-    <div className='flex items-center border-b border-l border-r border-divider bg-default px-6 py-4 dark:border-dark-divider dark:bg-dark-default xs:flex-wrap xs:justify-center sm:flex-nowrap sm:justify-between'>
+    <div className=' flex items-center border-b border-l border-r border-divider bg-default px-6 py-4 dark:border-dark-divider dark:bg-dark-default xs:flex-wrap xs:justify-center sm:flex-nowrap sm:justify-between'>
       <div className='font-publicSans text-sm text-primary-text dark:text-dark-secondary-text'>
         {t('pagination.showing')}{' '}
         <span className='font-publicSans font-semibold text-primary-text dark:text-dark-secondary-text'>

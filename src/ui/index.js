@@ -25,6 +25,7 @@ export { default as Logo } from './Logo';
 export { default as StatusFilter } from './StatusFilter';
 export { default as GenderFilter } from './GenderFilter';
 export { default as CountryFilter } from './CountryFilter';
+export { default as CourseFilter } from './CourseFilter';
 export { default as ProgramTypeFilter } from './ProgramTypeFilter';
 export { default as CreditFilter } from './CreditFilter.jsx';
 export { default as SelectOption } from './SelectOption';

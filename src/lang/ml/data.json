@@ -32,7 +32,8 @@
     "eqZero": "= sama",
     "enrollment": "Pendaftaran",
     "totalEnrollmentCost": "Yuran penuh",
-    "totalPaidAmount": "Jumlah Amaun Dibayar"
+    "totalPaidAmount": "Jumlah Amaun Dibayar",
+    "courseName": ""
   },
   "pagination": {
     "showing": "Memaparkan",

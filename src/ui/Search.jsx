@@ -9,7 +9,7 @@ const Search = () => {
 
   return (
     <div>
-      <div className='relative mt-3 w-full'>
+      <div className='relative mt-0 w-full'>
         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-primary-text dark:text-dark-secondary-text'>
           <BiSearch />
         </div>

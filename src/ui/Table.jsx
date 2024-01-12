@@ -1,6 +1,6 @@
 const Th = ({ children }) => {
   return (
-    <th scope='col' className='px-6 py-5 text-center'>
+    <th scope='col' className='px-4 py-2 text-center'>
       {children}
     </th>
   );
@@ -17,7 +17,7 @@ export const Tr = ({ children }) => {
 export const Td = ({ classes, children }) => {
   return (
     <td
-      className={`px-6 py-4 text-center text-sm font-medium text-primary-text dark:text-dark-secondary-text ${classes}`}
+      className={`px-2 py-2 text-center text-sm font-medium text-primary-text dark:text-dark-secondary-text ${classes}`}
     >
       {children}
     </td>

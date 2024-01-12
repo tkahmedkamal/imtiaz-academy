@@ -16,6 +16,7 @@ import {
 } from './pages';
 import { Login, StudentSignup, TeacherSignup } from './pages/auth';
 import { ProtectedRoutes } from './ui';
+import StudentsEnrollments from './pages/StudentsEnrollments';
 
 const App = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const App = () => {
           <Route index element={<Dashboard />} />
           <Route path='students' element={<Student />} />
           <Route path='teachers' element={<Teachers />} />
+          <Route path='students-enrollments' element={<StudentsEnrollments />} />
           <Route path='educational-program'>
             <Route index element={<EducationalProgram />} />
             <Route path='course' element={<Course />} />

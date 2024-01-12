@@ -13,6 +13,7 @@ import SidebarListItem from './SidebarListItem';
 import { useAuthCtx } from '../context/authContext';
 import { leftSideVariants } from '../utils/motion';
 import { Logo } from '../ui';
+import TopBar from './TopBar';
 
 const Sidebar = () => {
   const { t } = useTranslation();
@@ -40,6 +41,15 @@ const Sidebar = () => {
       label: t('sidebar.students'),
       icon: <HiOutlineUsers />,
       link: '/dashboard/students',
+      show:
+        user?.roles.includes('AccountantAgent') ||
+        user.roles.includes('EnrollmentAgent') ||
+        user.roles.includes('Teacher')
+    },
+    {
+      label: t('sidebar.students-enrollments'),
+      icon: <HiOutlineUsers />,
+      link: '/dashboard/students-enrollments',
       show:
         user?.roles.includes('AccountantAgent') ||
         user.roles.includes('EnrollmentAgent') ||
@@ -101,6 +111,7 @@ const Sidebar = () => {
         <Link to='/' className='block items-center gap-3 px-6'>
           <Logo />
         </Link>
+                <TopBar></TopBar>
 
         <div className='mt-8 pt-5'>
           <ul className='space-y-4'>

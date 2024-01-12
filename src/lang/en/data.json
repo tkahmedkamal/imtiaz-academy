@@ -44,7 +44,8 @@
     "totalPaidAmount": "Total Paid Amount",
     "totalEnrollmentCost": "Total Enrollment Cost",
     "from": "From",
-    "to": "To"
+    "to": "To",
+    "courseName": "Course Name"
   },
   "pagination": {
     "showing": "Showing",
@@ -64,6 +65,7 @@
   "sidebar": {
     "dashboard": "Dashboard",
     "students": "Students",
+    "students-enrollments": "Students Enrollments",
     "teachers": "Teachers",
     "educational-program": "Educational Program",
     "details": "Details",
@@ -240,6 +242,8 @@
     "teacher": "Teacher",
     "course": "course",
     "program": "Program",
-    "cost": "Cost"
+    "cost": "Cost",
+    "startDate": "Start Date",
+    "endDate": "End Date"
   }
 }

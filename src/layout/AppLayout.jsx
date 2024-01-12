@@ -26,7 +26,7 @@ const AppLayout = () => {
 
   return (
     <>
-      <TopBar toggle={toggle} />
+      {/* <TopBar toggle={toggle} /> */}
       <AnimatePresence>{toggle && <Sidebar />}</AnimatePresence>
 
       <button
@@ -44,13 +44,13 @@ const AppLayout = () => {
           </FloatButton>
         )}
       </button>
-      <main className='w-[calc(100%-256px)] flex-grow p-6'>
+      <main className='w-[calc(100%-256px)] flex-grow p-2'>
         <motion.div
           variants={opacityVariants}
           initial='hidden'
           animate='visible'
           exit='exit'
-          className='m-auto mt-24 max-w-[1440px]'
+          className='m-auto  max-w-[1440px]'
         >
           <Outlet />
         </motion.div>

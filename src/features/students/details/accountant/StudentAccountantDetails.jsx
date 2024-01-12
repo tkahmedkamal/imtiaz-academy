@@ -17,7 +17,7 @@ const StudentAccountantDetails = ({ enrollments }) => {
             <Table.Thead>
               <Table.Th>{t('global.index')}</Table.Th>
               <Table.Th>{t('studentEnr.teacher')}</Table.Th>
-              <Table.Th>{t('studentEnr.teacher')}</Table.Th>
+              <Table.Th>{t('studentEnr.course')}</Table.Th>
               <Table.Th>{t('global.status')}</Table.Th>
             </Table.Thead>
 
