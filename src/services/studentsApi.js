@@ -151,6 +151,30 @@ export const getStudent = async studentId => {
   }
 };
 
+
+export const getStudentEnrollmentById = async EnrollmentId => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const res = await axiosConfig.get(`/api/StudentEnrollments/StudentEnrollmentById/${EnrollmentId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (res.data.status === 406) {
+      return Promise.reject(Error(res.data.msg));
+    }
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+
 export const getEnrollmentStudentDetailsInfo = async studentId => {
   const token = localStorage.getItem('im_access_token');
 
@@ -202,6 +226,38 @@ export const editStudent = async student => {
 
   try {
     const { data } = await axiosConfig.post('/api/student/edit', student, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (data.status === 406) {
+      return Promise.reject(Error(data?.msg));
+    }
+
+    return data;
+  } catch (error) {
+    const { message, response } = error;
+
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    const errors =
+      response?.data?.errors instanceof Object
+        ? JSON.stringify(response?.data?.errors)
+        : response?.data;
+
+    throw new Error(errors);
+  }
+};
+
+export const editStudentEnrollment = async studentEnrollment => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const { data } = await axiosConfig.post('/api/StudentEnrollments/UpdateStudentEnrollment', studentEnrollment, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,

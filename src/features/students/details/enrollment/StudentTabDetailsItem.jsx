@@ -35,12 +35,13 @@ const StudentTabDetailsItem = ({ info, enrollments }) => {
   ];
 
   const contactData = [
-    { label: 'Address', value: info.address ? info.address : '—' },
-    { label: 'City', value: info.city ? info.city : '—' },
-    { label: 'Email', value: info.email },
     { label: 'Phone Number', value: info.phoneNumber ? info.phoneNumber : '—' },
-    { label: 'State', value: info.state ? info.state : '—' },
+    { label: 'Email', value: info.email },
+    { label: 'Address', value: info.address ? info.address : '—' },
     { label: 'Post Code', value: info.postCode ? info.postCode : '—' },
+    { label: 'City', value: info.city ? info.city : '—' },
+    { label: 'State', value: info.state ? info.state : '—' },
+    { label: 'Country', value: info.country ? info.country : '—' },
   ];
 
   let studentInfo;

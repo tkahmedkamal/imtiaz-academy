@@ -23,7 +23,7 @@ const StudentsTeacherRow = ({ index, student }) => {
 
   return (
     <Table.Tr>
-      <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
+      <Table.Td classes='font-bold'>{index + 1}</Table.Td>
       <Table.Td>{name}</Table.Td>
       <Table.Td>{phoneNumber}</Table.Td>
       <Table.Td>{email}</Table.Td>

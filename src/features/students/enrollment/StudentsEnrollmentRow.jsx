@@ -29,14 +29,14 @@ const StudentsEnrollmentRow = ({ index, student }) => {
 
   return (
     <Table.Tr>
-      <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
+      <Table.Td classes='font-bold'>{index + 1}</Table.Td>
       <Table.Td>{name}</Table.Td>
       <Table.Td>{country}</Table.Td>
       <Table.Td>{phoneNumber}</Table.Td>
-      <Table.Td>{state}</Table.Td>
-      <Table.Td>
+      {/* <Table.Td>{state}</Table.Td> */}
+      {/* <Table.Td>
         {registrationDay}/{registrationMonth}/{registrationYear}
-      </Table.Td>
+      </Table.Td> */}
       <Table.Td>
         {isActive ? (
           <Tag label={'Active'} status='success' />

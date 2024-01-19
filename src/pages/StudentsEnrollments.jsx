@@ -5,7 +5,7 @@ import {
   Modal,
   TableOperational,
   Filters,
-  StatusFilter,
+  StudyStatusFilter,
   CountryFilter,
 } from '../ui/index.js';
 import { StudentsEnrollmentsTable } from '../features/studentsEnrollments/index.js';
@@ -35,7 +35,7 @@ const Student = () => {
         {user?.roles.includes('AccountantAgent') && (
           <TableOperational windowName='create-student' false>
             <Filters>
-              <StatusFilter />
+              <StudyStatusFilter />
               <CreditFilter />
               <CountryFilter />
             </Filters>
@@ -44,7 +44,7 @@ const Student = () => {
         {user?.roles.includes('EnrollmentAgent') && (
           <TableOperational windowName='create-student' false>
             <Filters>
-              <StatusFilter />
+              <StudyStatusFilter />
               <CourseFilter />
             </Filters>
           </TableOperational>

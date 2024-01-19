@@ -6,6 +6,7 @@ import {
   getStudentsEnrollmentsEnrollment,
   getStudentsAccountant,
   getTeacherStudents,
+  getStudentEnrollmentById,
 } from '../../services/studentsApi';
 import { useStudentsCtx } from '../../context/StudentContext';
 import { useAuthCtx } from '../../context/authContext';
@@ -43,7 +44,7 @@ const useStudentsEnrollments = () => {
   const searchValue = searchParams.get('search') || '';
   const creditValue = searchParams.get('credit') || 'all';
 
-  const filters = `isCompleted=${status[statusValue]},${checkCountryValue},StudentName=${searchValue}`;
+  const filters = `isActive=${status[statusValue]},${checkCountryValue},isCompleted=false,StudentName=${searchValue}`;
   const filterQueries =
     user && user?.roles.includes('AccountantAgent')
       ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true`
@@ -76,6 +77,24 @@ const useStudentsEnrollments = () => {
       },
     });
   }
+
+  return {
+    data,
+    isLoading,
+  };
+};
+
+
+const useStudentEnrollment = studentId => {
+  const { data, isLoading } = useQuery({
+    queryKey: ['students', studentId],
+    queryFn: () => getStudentEnrollmentById(studentId),
+    cacheTime: 0,
+
+    onError: ({ msg }) => {
+      toast.success(msg);
+    },
+  });
 
   return {
     data,

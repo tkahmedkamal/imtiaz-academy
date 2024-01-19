@@ -35,8 +35,8 @@ const StudentsAccountantTable = () => {
           <Table.Thead>
             <Table.Th>{t('global.index')}</Table.Th>
             <Table.Th>{t('global.name')}</Table.Th>
-            <Table.Th>{t('global.country')}</Table.Th>
             <Table.Th>{t('global.phone')}</Table.Th>
+            <Table.Th>{t('global.country')}</Table.Th>
             <Table.Th>{t('global.totalEnrollmentCost')}</Table.Th>
             <Table.Th>{t('global.totalPaidAmount')}</Table.Th>
             <Table.Th>{t('global.credit')}</Table.Th>

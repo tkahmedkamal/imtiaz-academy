@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { BiEdit } from 'react-icons/bi';
-import { LuArchive } from 'react-icons/lu';
+import { LuArchive, LuDelete } from 'react-icons/lu';
 import { TbInfoSquare } from 'react-icons/tb';
 import { TfiWrite } from 'react-icons/tfi';
 
@@ -17,12 +17,11 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
     studentId,
     studentName,
     studentPhoneNumber,
-    enrollmentDate,
-    isCompleted,
+    isActive,
     teacherName,
     courseName,
     teacherId,
-    studentEnrollmentsId,
+    studentEnrollmentId,
     courseId,
     studyStartDate,
     studyEndDate,
@@ -42,19 +41,18 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
       <Table.Td>{studentName}</Table.Td>
       <Table.Td>{courseName}</Table.Td>
       <Table.Td>{numberOfClasses}</Table.Td>
-      {/* <Table.Td>{teacherName}</Table.Td> */}
       <Table.Td>
-        {isCompleted ? (
-          <Tag label={'Completed'} status='success' />
+        {isActive ? (
+          <Tag label={'Active'} status='success' />
         ) : (
-          <Tag label={'Active'} status='warn' />
+          <Tag label={'Pending..'} status='warn' />
         )}
       </Table.Td>
       <Table.Td>{studentPhoneNumber}</Table.Td>
 
       <Table.Td classes='flex item-center gap-3'>
         <Modal>
-          <Modal.Open opens={`edit-student-${studentId}`}>
+          <Modal.Open opens={`edit-student-${studentEnrollmentId}`}>
             <ActionBtn
               title={t('global.edit')}
               icon={<BiEdit />}
@@ -62,7 +60,7 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
             />
           </Modal.Open>
 
-          <Modal.Open opens={`info-student-${studentId}`}>
+          {/* <Modal.Open opens={`info-student-${studentId}`}>
             <ActionBtn
               title={t('global.info')}
               icon={<TbInfoSquare />}
@@ -80,14 +78,14 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
 
           <Modal.Open opens={`archive-student-${studentId}`}>
             <ActionBtn
-              title={t('global.archive')}
-              icon={<LuArchive />}
+              title={t('global.delete')}
+              icon={<LuDelete />}
               status='danger'
             />
-          </Modal.Open>
+          </Modal.Open> */}
 
-          <Modal.Window name={`edit-student-${studentId}`}>
-            <EditStudentEnrollmentForm studentId={studentId} />
+          <Modal.Window name={`edit-student-${studentEnrollmentId}`}>
+            <EditStudentEnrollmentForm enrollmentId={studentEnrollmentId} studentName={ studentName}/>
           </Modal.Window>
 
           <Modal.Window name={`archive-student-${studentId}`}>

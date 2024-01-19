@@ -1,3 +1,6 @@
+import React from 'react';
+import { useState } from 'react';
+
 import { Formik, Form } from 'formik';
 import { useTranslation } from 'react-i18next';
 
@@ -8,78 +11,74 @@ import {
   Select,
   SelectOption,
 } from '../../ui/index.js';
-import { editStudentSchema } from '../students/validation';
-import useStudent from '../students/useStudent.js';
-import useEditStudent from '../students/useEditStudent';
-import { formatIsoDate } from '../../utils/formatDate.js';
-import { useCountries } from '../../hooks/index.js';
 
-const EditStudentEnrollmentForm = ({ studentId, closeModal }) => {
-  const { data, isLoading: isLoadingStudent } = useStudent(studentId);
+import { enrollStudentSchema } from '../students/validation';
+import useStudentEnrollment from './useStudentEnrollment.js';
+import useEditStudentEnrollment from './useEditStudentEnrollment.js';
+import { useTeachersDialog } from '../../hooks/index.js';
+import { useCoursesDialog } from '../../hooks/index.js';
 
-  const { mutate, isLoading } = useEditStudent(closeModal);
+const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => {
+
+  
+  const { data, isLoading: isLoadingStudent } = useStudentEnrollment(enrollmentId);
+  const { mutate, isLoading } = useEditStudentEnrollment(closeModal);
+
+  // const [isSpecialDiscount, setIsSpecialDiscount] = useState(false);
+  // const [isPersonal, setIsPersonal] = useState(false);
+  const [isFullTimeSpecialCost, setIsFullTimeSpecialCost] = useState(false);
+  const [isSpecialDiscount, setIsSpecialDiscount] = useState(false);
+
   const { t } = useTranslation();
+
   const {
     id,
-    userId,
-    state,
-    city,
-    postCode,
-    job,
-    registrationDate,
-    isCompleteStudy,
-    knowAboutUs,
-    applicationUser,
-  } = data?.student || {};
-  const { data: countries, isLoadingCountries } = useCountries();
+    numberOfClasses,
+    enrollmentDate,
+    enrollmentCost,
+    year,
+    month,
+    studentId,
+    courseId,
+    teacherId,
+    quarterId,
+    costIsMonthlyPerClass,
+    isCompleted,
+    isActive,
+    studyStartDate,
+    studyEndDate,
+    createdBy,
+    updatedBy,
+  } = data?.data || {};
+
+
+  const { data: teachers, isLoading: isTeachersLoading } = useTeachersDialog();
+  const { data: courses, isLoading: isCoursesLoading } = useCoursesDialog();
 
   const handleSubmit = values => {
+
     const data = {
-      id,
-      userId,
-      registrationDate: registrationDate,
-      isCompleteStudy: isCompleteStudy,
-      ...values,
-      knowAboutUs: +values.knowAboutUs,
-      applicationUser: {
-        ...values.applicationUser,
-        userName:
-          values.applicationUser.userName.length > 0
-            ? values.applicationUser.userName
-            : values.applicationUser.phoneNumber,
-        age: +values.applicationUser.age,
-        isMale: values.applicationUser.gender === 'male',
-        isActive: values.applicationUser.active === 'active',
-        countryId: +values.applicationUser.countryId,
-        dateOfBirth: new Date(values.applicationUser.dateOfBirth).toISOString(),
-        normalizedUserName: applicationUser?.normalizedUserName,
-        normalizedEmail: applicationUser?.normalizedEmail,
-        passwordHash: applicationUser?.passwordHash,
-        securityStamp: applicationUser?.securityStamp,
-        concurrencyStamp: applicationUser?.concurrencyStamp,
-        phoneNumberConfirmed: applicationUser?.phoneNumberConfirmed,
-        twoFactorEnabled: applicationUser?.twoFactorEnabled,
-        lockoutEnd: applicationUser?.lockoutEnd,
-        lockoutEnabled: applicationUser?.lockoutEnabled,
-        accessFailedCount: applicationUser?.accessFailedCount,
-        emailConfirmed: applicationUser?.emailConfirmed,
-        isApproved: applicationUser?.isApproved,
-        isArchive: applicationUser?.isArchive,
-        profileImagePath: applicationUser?.profileImagePath,
-        isAcceptedPolicies: applicationUser?.isAcceptedPolicies,
-        address: applicationUser?.address,
-        nationalId:applicationUser?.nationalId,
-        nationality: applicationUser?.nationality,
-        userType: applicationUser?.userType,
-        theme: applicationUser?.theme,
-        userLanguage: applicationUser?.userLanguage,
-        id: applicationUser?.id,
-        email: applicationUser?.email,
-        phoneNumber: applicationUser?.phoneNumber, 
-      },
+      id:values.id,
+      numberOfClasses: values.numberOfClasses,
+      enrollmentDate: values.enrollmentDate,
+      enrollmentCost: values.enrollmentCost,
+      year: values.year,
+      month: values.month,
+      studentId: values.studentId,
+      courseId: values.courseId,
+      teacherId: values.teacherId,
+      quarterId: values.quarterId,
+      costIsMonthlyPerClass: values.costIsMonthlyPerClass,
+      isCompleted: values.programStatus === 'Completed',
+      isActive: values.studyStatus === 'Active',
+      isFullTimeSpecialCost: values.isFullTimeSpecialCost,
+      createdBy: values.createdBy,
+      updatedBy: values.updatedBy,
+      studyStartDate: new Date(values.studyStartDate).toISOString().split('T')[0],//new Date(newStudyStartDate).toISOString(),
+      studyEndDate:new Date(values.studyEndDate).toISOString().split('T')[0] ,//new Date(newStudyEndDate).toISOString()
     };
-    delete data.applicationUser.active;
-    delete data.applicationUser.gender;
+
+    // Additional cleanup or modifications if needed
 
     mutate(data);
   };
@@ -87,199 +86,168 @@ const EditStudentEnrollmentForm = ({ studentId, closeModal }) => {
   return (
     <>
       <h2 className='font-publicSans text-xl font-medium text-primary-text dark:text-dark-primary-text/75'>
-        {t('students.editTitle')}
+        {t('studentEnr.title')} : {studentName}
       </h2>
 
       <Formik
         initialValues={{
-          job: job || '',
-          postCode: postCode || '',
-          city: city || '',
-          state: state || '',
-          knowAboutUs: knowAboutUs || '',
-          applicationUser: {
-            name: applicationUser?.name || '',
-            userName: applicationUser?.userName || '',
-            email: applicationUser?.email || '',
-            phoneNumber: applicationUser?.phoneNumber || '',
-            nationalId: applicationUser?.nationalId || '',
-            address: applicationUser?.address || '',
-            countryId: applicationUser?.countryId || 0,
-            gender: applicationUser?.isMale ? 'male' : 'female',
-            age: applicationUser?.age || '',
-            dateOfBirth: formatIsoDate(applicationUser?.dateOfBirth),
-            active: applicationUser?.isActive ? 'active' : 'inactive',
-          },
+          id: id ||'',
+          numberOfClasses: numberOfClasses || '',
+          enrollmentDate: enrollmentDate || '',
+          enrollmentCost: enrollmentCost || '',
+          year: year || '',
+          month: month || '',
+          studentId: studentId || '',
+          courseId: courseId || '',
+          teacherId: teacherId || '',
+          quarterId: quarterId || '',
+          costIsMonthlyPerClass: costIsMonthlyPerClass,
+          isActive: isActive,
+          isFullTimeSpecialCost: isFullTimeSpecialCost,
+          studyStartDate: data?.data?.studyStartDate ? new Date(data.data.studyStartDate).toISOString().split('T')[0] : '',
+          studyEndDate: data?.data?.studyEndDate ? new Date(data.data.studyEndDate).toISOString().split('T')[0] : '',
+          createdBy: createdBy || '',
+          updatedBy: updatedBy || '',
+          studyStatus : isActive ? 'Active' : 'Pending..',
+          programStatus: isCompleted ? 'Completed' : 'In Study'
         }}
-        validationSchema={editStudentSchema}
+        validationSchema={enrollStudentSchema}
         onSubmit={handleSubmit}
         enableReinitialize
       >
         {({ values }) => (
           <Form className='mt-10 space-y-4'>
             <FormControl>
-              <Input
-                name='applicationUser.name'
-                label={t('global.name')}
-                id='inputName'
-                value={values.applicationUser.name}
-                disabled={isLoadingStudent}
-              />
-
-              <Input
-                name='applicationUser.userName'
-                label={t('global.username')}
-                id='inputUsername'
-                value={values.applicationUser.userName}
-                disabled={isLoadingStudent}
-              />
-            </FormControl>
-
-            <FormControl>
-              <Input
-                name='applicationUser.email'
-                label={t('global.email')}
-                id='inputEmail'
-                value={values.applicationUser.email}
-                disabled={isLoadingStudent}
-              />
-
-              <Input
-                name='applicationUser.phoneNumber'
-                label={t('global.phone')}
-                id='inputPhoneNumber'
-                value={values.applicationUser.phoneNumber}
-                disabled={isLoadingStudent}
-              />
-            </FormControl>
-
-            <FormControl>
-              <Input
-                name='applicationUser.nationalId'
-                label={t('global.national')}
-                id='inputNationalId'
-                value={values.applicationUser.nationalId}
-                disabled={isLoadingStudent}
-              />
-              <Input
-                name='job'
-                label={t('students.form.job')}
-                id='inputJob'
-                value={values.job}
-                disabled={isLoadingStudent}
-              />
-            </FormControl>
-
-            <FormControl>
-              <Input
-                name='applicationUser.address'
-                label={t('global.address')}
-                id='inputAddress'
-                value={values.applicationUser.address}
-                disabled={isLoadingStudent}
-              />
-            </FormControl>
-
-            <FormControl>
-              <Input
-                name='postCode'
-                label={t('global.postCode')}
-                id='inputPostCode'
-                value={values.postCode}
-                disabled={isLoadingStudent}
-              />
-              <Input
-                name='city'
-                label={t('global.city')}
-                id='inputCity'
-                value={values.city}
-                disabled={isLoadingStudent}
-              />
-            </FormControl>
-
-            <FormControl>
-              <Input
-                name='state'
-                label={t('students.form.state')}
-                id='inputState'
-                value={values.state}
-                disabled={isLoadingStudent}
-              />
               <Select
-                name='applicationUser.countryId'
-                label={t('global.country')}
-                id='inputCountryId'
-                selected={values.applicationUser.countryId}
-                disabled={isLoadingCountries}
+                name='courseId'
+                label={t('educational.course.title')}
+                type='number'
+                id='inputCourseId'
+                selected={values.courseId}
+                disabled={isCoursesLoading}
               >
-                {countries?.map(({ id, name }) => (
-                  <SelectOption key={id} value={id} label={name} />
+                {courses?.map(({ id, name }) => (
+                  <option value={id} key={name}>
+                    {name}
+                  </option>
+                ))}
+              </Select>
+
+              <Select
+                name='teacherId'
+                label={t('teacher.title')}
+                type='number'
+                id='inputTeacherId'
+                selected={values.teacherId}
+                disabled={isTeachersLoading}
+              >
+                {teachers?.map(({ teacherId, teacherName }) => (
+                  <option value={teacherId} key={teacherId}>
+                    {teacherName}
+                  </option>
                 ))}
               </Select>
             </FormControl>
 
             <FormControl>
-              <Select
-                name='applicationUser.gender'
-                label={t('global.gender')}
-                id='inputGender'
-                selected={values.applicationUser.gender}
-                disabled={isLoadingStudent}
-              >
-                <SelectOption value='male' label='Male' />
-                <SelectOption value='female' label='Female' />
-              </Select>
-
               <Input
-                type='number'
-                name='applicationUser.age'
-                label={t('global.age')}
-                id='inputAge'
-                value={values.applicationUser.age}
+                name='numberOfClasses'
+                label={t('students.enrollment.numberOfMeetingsPerMonth')}
+                id='inputNumberOfClasses'
+                value={values.numberOfClasses}
                 disabled={isLoadingStudent}
               />
             </FormControl>
 
             <FormControl>
               <Input
-                type='date'
-                name='applicationUser.dateOfBirth'
-                label={t('students.form.dateOfBirth')}
-                id='inputDateOfBirth'
-                value={values.applicationUser.dateOfBirth}
-                disabled={isLoadingStudent}
+                value={values.studyStartDate}
+                type = 'date'
+                name='studyStartDate'
+                label={t('global.from')}
+                id='inputStudyStartDate'
+                // disabled={true}
               />
-              <Select
-                type='text'
-                name='knowAboutUs'
-                label={t('students.form.knowAboutUs')}
-                id='inputKnowAboutUs'
-                selected={values.knowAboutUs}
-                disabled={isLoadingStudent}
-              >
-                <SelectOption value={1} label='Facebook' />
-                <SelectOption value={2} label='Instagram' />
-                <SelectOption value={3} label='Friends' />
-                <SelectOption value={4} label='Whatsapp' />
-                <SelectOption value={5} label='Telegram' />
-                <SelectOption value={6} label='Other' />
-              </Select>
+              <Input
+              value={values.studyEndDate}
+              type = 'date'
+                name='studyEndDate'
+                label={t('global.to')}
+                id='inputStudyEndDate'
+              />
             </FormControl>
 
             <FormControl>
               <Select
-                name='applicationUser.active'
-                label={t('global.status')}
-                id='inputActive'
-                selected={values.applicationUser.active}
+                name='studyStatus'
+                label={t('global.studyStatus')}
+                id='inputIsActive'
+                selected={values.studyStatus}
                 disabled={isLoadingStudent}
               >
-                <SelectOption value='active' label='Active' />
-                <SelectOption value='inactive' label='Pending' />
+                <SelectOption value='Active' label='Active' />
+                <SelectOption value='Pending..' label='Pending..' />
+              </Select>
+              <Select
+                name='programStatus'
+                label={t('global.programStatus')}
+                id='inputIsActive'
+                selected={values.programStatus}
+                disabled={isLoadingStudent}
+              >
+                <SelectOption value='Completed' label='Completed' />
+                <SelectOption value='In Study' label='In Study' />
               </Select>
             </FormControl>
 
-            <div className='!mt-6 '>
+            <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
+              <input
+                type='checkbox'
+                id='inputSpecialDiscount'
+                onChange={e => {
+                  const isChecked = e.target.checked;
+                  setIsSpecialDiscount(isChecked);
+                  setIsFullTimeSpecialCost(false);
+                }}
+              />
+              <label htmlFor='inputSpecialDiscount'>
+                {t('students.enrollment.discountCheckbox')}
+              </label>
+            </div>
+            {isSpecialDiscount && (
+              <FormControl>
+                <Input
+                  type='number'
+                  name='enrollmentCost'
+                  placeholder='0'
+                  label={t('students.enrollment.totalRegistrationCost')}
+                  id='inputRegistrationCost'
+                  autoFocus
+                  value={0}
+                />
+                <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
+                  <input
+                    type='checkbox'
+                    id='inputIsFullTimeSpecialCost'
+                    onChange={e => {
+                      const isChecked = e.target.checked;
+                      setIsFullTimeSpecialCost(isChecked);
+                      if (isChecked) {
+                        alert(
+                          'This cost will be apply for all student lessons until end program!!',
+                        );
+                      }
+                    }}
+                  />
+                  <label htmlFor='inputIsFullTimeSpecialCost'>
+                    {t('students.enrollment.isFullTimeSpecialCost')}
+                  </label>
+                </div>
+              </FormControl>
+            )}
+
+
+            <div className='!mt-6'>
               <LoadingButton
                 disabled={isLoading}
                 isLoading={isLoading}

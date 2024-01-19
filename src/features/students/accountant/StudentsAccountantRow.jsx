@@ -28,8 +28,8 @@ const StudentsAccountantRow = ({ index, student }) => {
     <Table.Tr>
       <Table.Td classes='font-bold'>#{index + 1}</Table.Td>
       <Table.Td>{name}</Table.Td>
-      <Table.Td>{country}</Table.Td>
       <Table.Td>{phoneNumber}</Table.Td>
+      <Table.Td>{country}</Table.Td>
       <Table.Td>{totalEnrollmentCost}</Table.Td>
       <Table.Td>{totalPaidAmount}</Table.Td>
       <Table.Td>

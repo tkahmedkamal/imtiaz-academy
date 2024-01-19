@@ -61,9 +61,9 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 id='inputCourseId'
                 disabled={isCoursesLoading}
               >
-                {courses?.map(({ courseId, courseName }) => (
-                  <option value={courseId} key={courseId}>
-                    {courseName}
+                {courses?.map(({ id, name }) => (
+                  <option value={id} key={id}>
+                    {name}
                   </option>
                 ))}
               </Select>

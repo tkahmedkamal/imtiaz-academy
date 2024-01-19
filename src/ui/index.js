@@ -23,6 +23,7 @@ export { default as Notification } from './Notification';
 export { default as Empty } from './Empty';
 export { default as Logo } from './Logo';
 export { default as StatusFilter } from './StatusFilter';
+export { default as StudyStatusFilter } from './StudyStatusFilter';
 export { default as GenderFilter } from './GenderFilter';
 export { default as CountryFilter } from './CountryFilter';
 export { default as CourseFilter } from './CourseFilter';

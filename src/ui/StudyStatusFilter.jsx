@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import ButtonMini from './ButtonMini';
 import useFilter from '../hooks/useFilter';
 
-const StatusFilter = () => {
+const StudyStatusFilter = () => {
   const { t } = useTranslation();
   const { term: status, handler: handleClick } = useFilter('status');
 
@@ -31,4 +31,4 @@ const StatusFilter = () => {
   );
 };
 
-export default StatusFilter;
+export default StudyStatusFilter;

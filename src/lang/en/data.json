@@ -15,6 +15,8 @@
     "gender": "Gender",
     "age": "Age",
     "status": "Status",
+    "studyStatus": "Study status",
+    "programStatus": "Program status",
     "active": "Active",
     "inactive": "Inactive",
     "actions": "Actions",
@@ -123,6 +125,7 @@
       "totalRegistrationCost": "Total Registration Cost",
       "classDurationPerMinuets": "class duration per minuets",
       "discountCheckbox": "Has special discount",
+      "isCompleteCheckbox": "Completed",
       "registrationCostPerClass": "registration cost per class",
       "numberOfMeetingsPerMonth": "number of meetings per month",
       "isFullTimeSpecialCost": "full time discount",
@@ -244,6 +247,7 @@
     "program": "Program",
     "cost": "Cost",
     "startDate": "Start Date",
-    "endDate": "End Date"
+    "endDate": "End Date",
+    "title":"Edit student enrollment"
   }
 }
