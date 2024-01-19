@@ -33,7 +33,8 @@
     "enrollment": "Pendaftaran",
     "totalEnrollmentCost": "Yuran penuh",
     "totalPaidAmount": "Jumlah Amaun Dibayar",
-    "courseName": ""
+    "courseName": "",
+    "allTeachers": "എല്ലാ അധ്യാപകരും"
   },
   "pagination": {
     "showing": "Memaparkan",

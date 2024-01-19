@@ -2,10 +2,10 @@ import SelectFilter from './SelectFilter';
 import useFilter from '../hooks/useFilter';
 import { useTranslation } from 'react-i18next';
 
-import {useCoursesDialog} from '../hooks'
-const CourseFilter = () => {
-  const { term, handler: handleChange } = useFilter('courseName', true);
-  const { data } = useCoursesDialog();
+import {useTeachersDialog} from '../hooks'
+const TeacherFilter = () => {
+  const { term, handler: handleChange } = useFilter('teacherName', true);
+  const { data } = useTeachersDialog();
   const { t } = useTranslation();
 
   return (
@@ -14,10 +14,10 @@ const CourseFilter = () => {
         options={data}
         onChange={handleChange}
         defaultValue={term}
-        filterFor={t('global.allCourses')}
+        filterFor={t('global.allTeachers')}
       />
     </div>
   );
 };
 
-export default CourseFilter;
+export default TeacherFilter;

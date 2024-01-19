@@ -47,7 +47,10 @@
     "totalEnrollmentCost": "Total Enrollment Cost",
     "from": "From",
     "to": "To",
-    "courseName": "Course Name"
+    "courseName": "Course Name",
+    "allTeachers": "All Teachers",
+    "allCountries": "All Countries",
+    "allCourses": "All Courses"
   },
   "pagination": {
     "showing": "Showing",
@@ -248,6 +251,6 @@
     "cost": "Cost",
     "startDate": "Start Date",
     "endDate": "End Date",
-    "title":"Edit student enrollment"
+    "title": "Edit student enrollment"
   }
 }

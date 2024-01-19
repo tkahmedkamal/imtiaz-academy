@@ -1,8 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { BiEdit } from 'react-icons/bi';
-import { LuArchive, LuDelete } from 'react-icons/lu';
-import { TbInfoSquare } from 'react-icons/tb';
-import { TfiWrite } from 'react-icons/tfi';
 
 import { Table, ActionBtn, Modal, Tag, Confirm } from '../../ui';
 import EditStudentEnrollmentForm from './EditStudentEnrollmentForm';

@@ -37,14 +37,20 @@ const useStudentsEnrollments = () => {
 
   const statusValue = searchParams.get('status') || 'all';
   const courseValue = searchParams.get('courseName') || 'all';
-  const checkCountryValue =
+  const teacherValue = searchParams.get('teacherName') || 'all';
+  const checkCourseValue =
     !courseValue || courseValue === 'all'
       ? 'courseName'
       : `courseName=${courseValue}`;
+  const checkTeacherValue =
+    !teacherValue || teacherValue === 'all'
+      ? 'teacherName'
+      : `teacherName=${teacherValue}`;
   const searchValue = searchParams.get('search') || '';
+
   const creditValue = searchParams.get('credit') || 'all';
 
-  const filters = `isActive=${status[statusValue]},${checkCountryValue},isCompleted=false,StudentName=${searchValue}`;
+  const filters = `isActive=${status[statusValue]},${checkCourseValue},${checkTeacherValue},isCompleted=false,studentName=${searchValue}`;
   const filterQueries =
     user && user?.roles.includes('AccountantAgent')
       ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true`

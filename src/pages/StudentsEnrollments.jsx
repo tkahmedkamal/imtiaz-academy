@@ -5,7 +5,7 @@ import {
   Modal,
   TableOperational,
   Filters,
-  StudyStatusFilter,
+  StatusFilter,
   CountryFilter,
 } from '../ui/index.js';
 import { StudentsEnrollmentsTable } from '../features/studentsEnrollments/index.js';
@@ -13,6 +13,7 @@ import StudentsProvider from '../context/StudentContext.jsx';
 import { withPage } from '../hocs/index.js';
 import CreditFilter from '../ui/CreditFilter.jsx';
 import CourseFilter from '../ui/CourseFilter.jsx';
+import TeacherNameFilter from '../ui/TeacherNameFilter.jsx';
 import { useAuthCtx } from '../context/authContext.jsx';
 
 const Student = () => {
@@ -35,7 +36,7 @@ const Student = () => {
         {user?.roles.includes('AccountantAgent') && (
           <TableOperational windowName='create-student' false>
             <Filters>
-              <StudyStatusFilter />
+              <StatusFilter />
               <CreditFilter />
               <CountryFilter />
             </Filters>
@@ -44,8 +45,9 @@ const Student = () => {
         {user?.roles.includes('EnrollmentAgent') && (
           <TableOperational windowName='create-student' false>
             <Filters>
-              <StudyStatusFilter />
+              <StatusFilter />
               <CourseFilter />
+              <TeacherNameFilter/>
             </Filters>
           </TableOperational>
         )}

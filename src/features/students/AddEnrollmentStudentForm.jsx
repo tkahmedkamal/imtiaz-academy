@@ -75,9 +75,9 @@ const AddEnrollmentStudentForm = ({ studentId, closeModal }) => {
                 id='inputTeacherId'
                 disabled={isTeachersLoading}
               >
-                {teachers?.map(({ teacherId, teacherName }) => (
-                  <option value={teacherId} key={teacherId}>
-                    {teacherName}
+                {teachers?.map(({ id, name }) => (
+                  <option value={id} key={id}>
+                    {name}
                   </option>
                 ))}
               </Select>

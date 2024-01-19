@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 accessTokensGithub.txt
 .env
+.env
