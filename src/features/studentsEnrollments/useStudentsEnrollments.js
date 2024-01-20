@@ -45,6 +45,7 @@ const useStudentsEnrollments = () => {
   const checkSortColumnValue = () => {
     switch (sortColumn) {
       case 'all':
+      case '':
       case null:
       case undefined:
         return 'sortColumn=studentName';
