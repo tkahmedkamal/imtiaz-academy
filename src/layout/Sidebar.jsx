@@ -53,7 +53,7 @@ const Sidebar = () => {
       show:
         user?.roles.includes('AccountantAgent') ||
         user.roles.includes('EnrollmentAgent') ||
-        user.roles.includes('Teacher')
+        user.roles.includes('Admin')
     },
     {
       label: t('sidebar.teachers'),

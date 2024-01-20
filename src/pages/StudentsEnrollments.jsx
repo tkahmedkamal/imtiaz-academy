@@ -7,6 +7,7 @@ import {
   Filters,
   StatusFilter,
   CountryFilter,
+  SortColumn,
 } from '../ui/index.js';
 import { StudentsEnrollmentsTable } from '../features/studentsEnrollments/index.js';
 import StudentsProvider from '../context/StudentContext.jsx';
@@ -46,13 +47,21 @@ const Student = () => {
           <TableOperational windowName='create-student' false>
             <Filters>
               <StatusFilter />
+              <SortColumn
+                data={[
+                  { name: 'Student name (A-Z)'},
+                  { name: 'Student name (Z-A)'},
+                  { name: 'Course name (A-Z)'},
+                  { name: 'Course name (Z-A)'}
+                ]}
+              />
               <CourseFilter />
-              <TeacherNameFilter/>
+              <TeacherNameFilter />
             </Filters>
           </TableOperational>
         )}
       </Modal>
-        <StudentsEnrollmentsTable />
+      <StudentsEnrollmentsTable />
     </StudentsProvider>
   );
 };

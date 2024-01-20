@@ -20,7 +20,9 @@ const useStudentsEnrollments = () => {
   let handler =
     user && user?.roles.includes('EnrollmentAgent')
       ? getStudentsEnrollmentsEnrollment
-      : ( user && user?.roles.includes('AccountantAgent') ? getStudentsAccountant : getTeacherStudents);
+      : user && user?.roles.includes('AccountantAgent')
+      ? getStudentsAccountant
+      : getTeacherStudents;
   const currentPage = +searchParams.get('page') || 1;
 
   const status = {
@@ -36,16 +38,38 @@ const useStudentsEnrollments = () => {
   };
 
   const statusValue = searchParams.get('status') || 'all';
-  const courseValue = searchParams.get('courseName') || 'all';
-  const teacherValue = searchParams.get('teacherName') || 'all';
+  const courseValue = searchParams.get('courseId') || 'all';
+  const teacherValue = searchParams.get('teacherId') || 'all';
+  const sortColumn = searchParams.get('sortColumn') || '';
+
+  const checkSortColumnValue = () => {
+    switch (sortColumn) {
+      case 'all':
+      case null:
+      case undefined:
+        return 'sortColumn=studentName';
+      case 'Student name (A-Z)':
+        return 'sortColumn=studentName';
+      case 'Course name (A-Z)':
+        return 'sortColumn=courseName';
+      case 'Student name (Z-A)':
+        return 'sortColumn=studentName&SortOrder=desc';
+      case 'Course name (Z-A)':
+        return 'sortColumn=courseName&SortOrder=desc';
+      default:
+        return '';
+    }
+  };
+  const checkedSort = checkSortColumnValue();
   const checkCourseValue =
     !courseValue || courseValue === 'all'
-      ? 'courseName'
-      : `courseName=${courseValue}`;
+      ? 'courseId'
+      : `courseId=${courseValue}`;
   const checkTeacherValue =
     !teacherValue || teacherValue === 'all'
-      ? 'teacherName'
-      : `teacherName=${teacherValue}`;
+      ? 'teacherId'
+      : `teacherId=${teacherValue}`;
+
   const searchValue = searchParams.get('search') || '';
 
   const creditValue = searchParams.get('credit') || 'all';
@@ -53,8 +77,8 @@ const useStudentsEnrollments = () => {
   const filters = `isActive=${status[statusValue]},${checkCourseValue},${checkTeacherValue},isCompleted=false,studentName=${searchValue}`;
   const filterQueries =
     user && user?.roles.includes('AccountantAgent')
-      ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true`
-      : `${filters}&isGeneralSearch=true`;
+      ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true&${checkedSort}`
+      : `${filters}&isGeneralSearch=true&${checkedSort}`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['students', filterQueries, currentPage],
@@ -89,7 +113,6 @@ const useStudentsEnrollments = () => {
     isLoading,
   };
 };
-
 
 const useStudentEnrollment = studentId => {
   const { data, isLoading } = useQuery({

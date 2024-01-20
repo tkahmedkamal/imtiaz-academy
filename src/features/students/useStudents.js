@@ -35,19 +35,36 @@ const useStudents = () => {
   };
 
   const statusValue = searchParams.get('status') || 'all';
-  const countryValue = searchParams.get('country') || 'all';
+  const countryValue = searchParams.get('countryId') || 'all';
   const checkCountryValue =
     !countryValue || countryValue === 'all'
-      ? 'country'
-      : `country=${countryValue}`;
+      ? 'countryId'
+      : `countryId=${countryValue}`;
   const searchValue = searchParams.get('search') || '';
   const creditValue = searchParams.get('credit') || 'all';
+  const sortColumn = searchParams.get('sortColumn') || '';
+
+  const checkSortColumnValue = () => {
+    switch (sortColumn) {
+      case 'all':
+      case null:
+      case undefined:
+        return 'sortColumn=name';
+      case 'Student name (A-Z)':
+        return 'sortColumn=name';
+      case 'Student name (Z-A)':
+        return 'sortColumn=name&SortOrder=desc';
+      default:
+        return '';
+    }
+  };
+  const checkedSort = checkSortColumnValue();
 
   const filters = `isActive=${status[statusValue]},${checkCountryValue},name=${searchValue}`;
   const filterQueries =
     user && user?.roles.includes('AccountantAgent')
-      ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true`
-      : `${filters}&isGeneralSearch=true`;
+      ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true${checkedSort}`
+      : `${filters}&isGeneralSearch=true&${checkedSort}`;
 
   const { data, isLoading } = useQuery({
     queryKey: ['students', filterQueries, currentPage],

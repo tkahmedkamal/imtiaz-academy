@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { useAuthCtx } from '../context/authContext';
 import { useLoggedInUser } from '../hooks';
 

@@ -50,7 +50,8 @@
     "courseName": "Course Name",
     "allTeachers": "All Teachers",
     "allCountries": "All Countries",
-    "allCourses": "All Courses"
+    "allCourses": "All Courses",
+    "allColumns": "Sort By"
   },
   "pagination": {
     "showing": "Showing",

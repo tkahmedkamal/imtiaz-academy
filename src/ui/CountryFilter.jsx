@@ -4,7 +4,7 @@ import { useCountries } from '../hooks';
 import { useTranslation } from 'react-i18next';
 
 const CountryFilter = () => {
-  const { term, handler: handleChange } = useFilter('country', true);
+  const { term, handler: handleChange } = useFilter('countryId', true);
   const { data } = useCountries();
   const { t } = useTranslation();
 

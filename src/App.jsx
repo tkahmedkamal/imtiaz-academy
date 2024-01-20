@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { useAuthCtx } from './context/authContext';
 
 import { AppLayout } from './layout';
 
@@ -12,7 +13,7 @@ import {
   Course,
   NotFound,
   Approved,
-  Users
+  Users,
 } from './pages';
 import { Login, StudentSignup, TeacherSignup } from './pages/auth';
 import { ProtectedRoutes } from './ui';
@@ -21,6 +22,7 @@ import StudentsEnrollments from './pages/StudentsEnrollments';
 const App = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { user } = useAuthCtx();
 
   useEffect(() => {
     if (pathname === '/') {
@@ -40,15 +42,32 @@ const App = () => {
           }
         >
           <Route index element={<Dashboard />} />
-          <Route path='students' element={<Student />} />
           <Route path='teachers' element={<Teachers />} />
-          <Route path='students-enrollments' element={<StudentsEnrollments />} />
+          {(user?.roles.includes('EnrollmentAgent') || user?.roles.includes('AccountantAgent')) && (
+            <>      
+            <Route
+              path='students-enrollments'
+              element={<StudentsEnrollments />}
+            />
+            </>
+
+          )}
+          {(user?.roles.includes('EnrollmentAgent') || user?.roles.includes('AccountantAgent')|| user?.roles.includes('Teacher') )   && (
+            <>      
+            <Route path='students' element={<Student />} />
+            </>
+
+          )}
+          {user?.roles.includes('Admin') && (
+            <>      
+              <Route path='approved' element={<Approved />} />
+              <Route path='user-management' element={<Users />} />
+            </>
+          )}
           <Route path='educational-program'>
             <Route index element={<EducationalProgram />} />
             <Route path='course' element={<Course />} />
           </Route>
-          <Route path='approved' element={<Approved />} />
-          <Route path='user-management' element={<Users />} />
           <Route path='*' element={<NotFound />} />
         </Route>
         <Route path='/login' element={<Login />} />

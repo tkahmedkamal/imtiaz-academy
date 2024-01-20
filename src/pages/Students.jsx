@@ -7,6 +7,7 @@ import {
   Filters,
   StatusFilter,
   CountryFilter,
+  SortColumn
 } from '../ui';
 import { AddStudent } from '../features/students';
 import { StudentsAccountantTable } from '../features/students/accountant';
@@ -39,6 +40,12 @@ const Student = () => {
           <TableOperational windowName='create-student' false>
             <Filters>
               <StatusFilter />
+              <SortColumn
+                data={[
+                  { name: 'Student name (A-Z)'},
+                  { name: 'Student name (Z-A)'}
+                ]}
+              />
               <CreditFilter />
               <CountryFilter />
             </Filters>
@@ -48,6 +55,12 @@ const Student = () => {
           <TableOperational windowName='create-student' false>
             <Filters>
               <StatusFilter />
+              <SortColumn
+                data={[
+                  { name: 'Student name (A-Z)'},
+                  { name: 'Student name (Z-A)'}
+                ]}
+              />
               <CountryFilter />
             </Filters>
           </TableOperational>
@@ -56,6 +69,12 @@ const Student = () => {
           <TableOperational windowName='create-student' isButton>
             <Filters>
               <StatusFilter />
+              <SortColumn
+                data={[
+                  { name: 'Student name (A-Z)'},
+                  { name: 'Student name (Z-A)'}
+                ]}
+              />
               <CountryFilter />
             </Filters>
           </TableOperational>

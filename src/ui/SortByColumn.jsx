@@ -2,22 +2,22 @@ import SelectFilter from './SelectFilter';
 import useFilter from '../hooks/useFilter';
 import { useTranslation } from 'react-i18next';
 
-import {useCoursesDialog} from '../hooks'
-const CourseFilter = () => {
-  const { term, handler: handleChange } = useFilter('courseId', true);
-  const { data } = useCoursesDialog();
+const SortColumn = ({ data }) => {
+  const { term, handler: handleChange } = useFilter('sortColumn', true, '');
   const { t } = useTranslation();
 
+
   return (
+    
     <div className='w-[160px]'>
       <SelectFilter
         options={data}
         onChange={handleChange}
-        defaultValue={term}
-        filterFor={t('global.allCourses')}
+        defaultValue=''
+        filterFor={t('global.allColumns')}
       />
     </div>
   );
 };
 
-export default CourseFilter;
+export default SortColumn;

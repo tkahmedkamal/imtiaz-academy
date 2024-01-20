@@ -15,7 +15,7 @@ const useLogin = () => {
     onSuccess: ({ message, ...data }) => {
       toast.success(message);
       setUser(data);
-      navigate('/dashboard', { replace: true });
+      navigate('/dashboard/students', { replace: true });
     },
     onError: ({ message }) => {
       setUser(null);
