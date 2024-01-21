@@ -7,7 +7,8 @@ import {
   Filters,
   StatusFilter,
   CountryFilter,
-  SortColumn
+  SortColumn,
+  CourseFilter
 } from '../ui';
 import { AddStudent } from '../features/students';
 import { StudentsAccountantTable } from '../features/students/accountant';
@@ -61,6 +62,7 @@ const Student = () => {
                   { name: 'Student name (Z-A)'}
                 ]}
               />
+              <CourseFilter />
               <CountryFilter />
             </Filters>
           </TableOperational>

@@ -34,6 +34,7 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
   const {
     id,
     numberOfClasses,
+    additionalMeetings,
     enrollmentDate,
     enrollmentCost,
     year,
@@ -60,6 +61,7 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
     const data = {
       id:values.id,
       numberOfClasses: values.numberOfClasses,
+      additionalMeetings: values.additionalMeetings,
       enrollmentDate: values.enrollmentDate,
       enrollmentCost: values.enrollmentCost,
       year: values.year,
@@ -93,6 +95,7 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
         initialValues={{
           id: id ||'',
           numberOfClasses: numberOfClasses || '',
+          additionalMeetings: additionalMeetings || '',
           enrollmentDate: enrollmentDate || '',
           enrollmentCost: enrollmentCost || '',
           year: year || '',
@@ -155,6 +158,13 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
                 label={t('students.enrollment.numberOfMeetingsPerMonth')}
                 id='inputNumberOfClasses'
                 value={values.numberOfClasses}
+                disabled={isLoadingStudent}
+              />
+              <Input
+                name='additionalMeetings'
+                label={t('students.enrollment.additionalMeetings')}
+                id='inputNumberOfClasses'
+                value={values.additionalMeetings}
                 disabled={isLoadingStudent}
               />
             </FormControl>

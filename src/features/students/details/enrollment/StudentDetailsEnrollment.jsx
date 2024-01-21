@@ -20,7 +20,8 @@ const StudentDetailsEnrollment = ({ enrollments }) => {
               <Table.Th>{t('educational.course.texts.numOfClasses')}</Table.Th>
               <Table.Th>{t('studentEnr.startDate')}</Table.Th>
               <Table.Th>{t('studentEnr.endDate')}</Table.Th>
-              <Table.Th>{t('global.status')}</Table.Th>
+              <Table.Th>{t('global.studyStatus')}</Table.Th>
+              <Table.Th>{t('global.programStatus')}</Table.Th>
               <Table.Th>{t('studentEnr.teacher')}</Table.Th>
             </Table.Thead>
 
@@ -31,16 +32,26 @@ const StudentDetailsEnrollment = ({ enrollments }) => {
                   <Table.Td classes='font-bold'>{index + 1}</Table.Td>
                   <Table.Td>{enrollment.courseName}</Table.Td>
                   <Table.Td>{enrollment.numberOfClasses}</Table.Td>
-                  <Table.Td>{enrollment.startDay}/{enrollment.startMonth}/{enrollment.startYear}</Table.Td>
-                  <Table.Td>{enrollment.endDay}/{enrollment.endMonth}/{enrollment.endYear}</Table.Td>
                   <Table.Td>
-                    {enrollment.isCompletedStudy === 'Completed' ? (
-                      <Tag
-                        label={enrollment.isCompletedStudy}
-                        status='success'
-                      />
+                    {enrollment.startDay}/{enrollment.startMonth}/
+                    {enrollment.startYear}
+                  </Table.Td>
+                  <Table.Td>
+                    {enrollment.endDay}/{enrollment.endMonth}/
+                    {enrollment.endYear}
+                  </Table.Td>
+                  <Table.Td>
+                    {enrollment.isActive ? (
+                      <Tag label={'Active'} status='success' />
                     ) : (
-                      <Tag label={enrollment.isCompletedStudy} status='warn' />
+                      <Tag label={'Pending..'} status='warn' />
+                    )}
+                  </Table.Td>
+                  <Table.Td>
+                    {enrollment.isCompleted ? (
+                      <Tag label={'Completed'} status='success' />
+                    ) : (
+                      <Tag label={'In Study'} status='warn' />
                     )}
                   </Table.Td>
                   <Table.Td>{enrollment.teacherName}</Table.Td>

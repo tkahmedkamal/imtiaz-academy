@@ -64,7 +64,7 @@ const useStudents = () => {
   const filters = `isActive=${status[statusValue]},${checkCountryValue},name=${searchValue}`;
   const filterQueries =
     user && user?.roles.includes('AccountantAgent')
-      ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true${checkedSort}`
+      ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true&${checkedSort}`
       : `${filters}&isGeneralSearch=true&${checkedSort}`;
 
   const { data, isLoading } = useQuery({

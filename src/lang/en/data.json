@@ -141,7 +141,8 @@
       "Group": "Group",
       "buttons": {
         "add": "Enrollment"
-      }
+      },
+      "additionalMeetings": "Additional Meetings"
     }
   },
   "educational": {
@@ -253,5 +254,6 @@
     "startDate": "Start Date",
     "endDate": "End Date",
     "title": "Edit student enrollment"
-  }
+  },
+  "additionalMeetings": "Additional Meetings"
 }
