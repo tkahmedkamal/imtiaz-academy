@@ -1,0 +1,259 @@
+{
+  "global": {
+    "index": "Index",
+    "name": "Name",
+    "username": "Username",
+    "nationality": "Nationality",
+    "country": "Country",
+    "state": "State",
+    "city": "City",
+    "postCode": "Post Code",
+    "national": "National-Id",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone Number",
+    "gender": "Gender",
+    "age": "Age",
+    "status": "Status",
+    "studyStatus": "Study status",
+    "programStatus": "Program status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "actions": "Actions",
+    "pending": "Pending",
+    "address": "Address",
+    "male": "Male",
+    "female": "Female",
+    "choose": "Choose",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "archive": "Archive",
+    "loading": "Loading",
+    "all": "All",
+    "search": "Search",
+    "personal": "Personal",
+    "group": "Group",
+    "info": "Information",
+    "credit": "Student Credit",
+    "ltZero": "< Zero",
+    "gtZero": "> Zero",
+    "eqZero": "= Zero",
+    "enrollment": "Enrollment",
+    "approve": "Approve",
+    "userType": "Employee Type",
+    "registration_date": "Registration Date",
+    "totalPaidAmount": "Total Paid Amount",
+    "totalEnrollmentCost": "Total Enrollment Cost",
+    "from": "From",
+    "to": "To",
+    "courseName": "Course Name",
+    "allTeachers": "All Teachers",
+    "allCountries": "All Countries",
+    "allCourses": "All Courses",
+    "allColumns": "Sort By"
+  },
+  "pagination": {
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "results": "Results",
+    "next": "Next",
+    "prev": "Prev"
+  },
+  "confirmDelete": {
+    "message": "Are you sure want to delete ?"
+  },
+  "archive": {
+    "label": "Archive",
+    "message": "Are you sure want to archive ?"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "students": "Students",
+    "students-enrollments": "Students Enrollments",
+    "teachers": "Teachers",
+    "educational-program": "Educational Program",
+    "details": "Details",
+    "course": "Course",
+    "approved": "Approved",
+    "userManagement": "User Management",
+    "logout": "Logout"
+  },
+  "students": {
+    "title": "Students",
+    "addTitle": "Add new Student",
+    "editTitle": "Edit Student",
+    "form": {
+      "state": "State",
+      "job": "Job",
+      "dateOfBirth": "Date of Birth",
+      "knowAboutUs": "Know About Us",
+      "placeholders": {
+        "name": "Enter your name",
+        "country": "Enter your country",
+        "state": "Enter your state",
+        "phone": "Enter your phone number",
+        "national": "Enter your national ID",
+        "job": "Enter your job",
+        "address": "Enter your address",
+        "age": "Enter your age"
+      }
+    },
+    "customRegistrationCost": "Custom Registration Cost",
+    "registrationCost": "Registration Cost",
+    "buttons": {
+      "add": "New student",
+      "edit": "Edit Student"
+    },
+    "transaction": {
+      "title": "Add Payment Transaction",
+      "form": {
+        "amount": "Amount Paid",
+        "paidTime": "Paid Time",
+        "refPaidNum": "Reference Paid Number",
+        "refNotes": "Notes",
+        "periodStartDate": "Period Start Date",
+        "periodEndDate": "Period End Date",
+        "placeholders": {
+          "refPaidNum": "Enter Reference Paid Number"
+        }
+      },
+      "buttons": {
+        "add": "Add Transaction"
+      }
+    },
+    "enrollment": {
+      "title": "Enroll Student to a Course",
+      "registrationCost": "Registration Cost",
+      "totalRegistrationCost": "Total Registration Cost",
+      "classDurationPerMinuets": "class duration per minuets",
+      "discountCheckbox": "Has special discount",
+      "isCompleteCheckbox": "Completed",
+      "registrationCostPerClass": "registration cost per class",
+      "numberOfMeetingsPerMonth": "number of meetings per month",
+      "isFullTimeSpecialCost": "full time discount",
+      "studyStartDate": "Study Start Date",
+      "studyEndDate": "Study End Date",
+      "courseName": "Course Name",
+      "isPersonal": "Personal",
+      "changeNumberOfClasses": "Change Number Of Classes",
+      "Group": "Group",
+      "buttons": {
+        "add": "Enrollment"
+      },
+      "additionalMeetings": "Additional Meetings"
+    }
+  },
+  "educational": {
+    "addTitle": "Add new Program",
+    "editTitle": "Edit Program",
+    "form": {
+      "placeholders": {
+        "name": "Enter your name"
+      }
+    },
+    "buttons": {
+      "add": "New program",
+      "edit": "Edit program"
+    },
+    "course": {
+      "title": "Course",
+      "addTitle": "Add new course",
+      "editTitle": "Edit course",
+      "texts": {
+        "name": "Name",
+        "numOfClasses": "Number of Classes",
+        "minutes": "Duration In Minutes",
+        "numOfHours": "Number of Hours",
+        "cost": "Program Cost",
+        "discount": "Discount",
+        "costPerClass": "Cost Per Class",
+        "costAfterDiscount": "Cost After Discount",
+        "programType": "Program Type"
+      },
+      "form": {
+        "placeholders": {
+          "name": "Enter Name"
+        }
+      },
+      "buttons": {
+        "add": "New course",
+        "edit": "Edit course"
+      }
+    }
+  },
+  "teacher": {
+    "title": "Teacher"
+  },
+  "login": {
+    "title": "Login",
+    "form": {
+      "password": "Enter your password",
+      "username_email": "Username Or Email",
+      "submit": "Login"
+    }
+  },
+  "teacher_signup": {
+    "title": "Signup",
+    "form": {
+      "email": "Email",
+      "bankName": "Bank Name",
+      "idCardNumber": "ID-Card Number",
+      "nationalId": "National-ID",
+      "nationality": "Nationality",
+      "address": "Address",
+      "bankAccountNumber": "Bank Account Name",
+      "certificate": "Certificate",
+      "age": "Age",
+      "name": "Name",
+      "password": "Password",
+      "isAcceptedPolicies": "",
+      "phoneNumber": "Phone Number",
+      "username": "Username",
+      "gander": "Gander",
+      "iban": "IBAN",
+      "type": "Type",
+      "countryId": "Country",
+      "placeholders": {
+        "email": "Enter your email",
+        "bankName": "Enter bank name",
+        "idCardNumber": "Enter your id card number",
+        "nationalId": "Enter your national id",
+        "nationality": "Enter your nationality",
+        "address": "Enter your address",
+        "bankAccountNumber": "Enter your bank account number",
+        "certificate": "Enter certificate",
+        "age": "Enter your age",
+        "name": "Enter your name",
+        "password": "Enter your password",
+        "isAcceptedPolicies": "",
+        "phoneNumber": "Enter your phone number",
+        "username": "Enter your username"
+      },
+      "submit": "Signup"
+    }
+  },
+  "approve": {
+    "title": "Approve Employee",
+    "form": {
+      "contractStartDate": "Contract Start Date",
+      "contractEndDate": "Contact End Date",
+      "salary": "Salary",
+      "placeholders": {
+        "salary": "Enter your salary"
+      },
+      "submit": "Approve"
+    }
+  },
+  "studentEnr": {
+    "teacher": "Teacher",
+    "course": "course",
+    "program": "Program",
+    "cost": "Cost",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "title": "Edit student enrollment"
+  },
+  "additionalMeetings": "Additional Meetings"
+}
