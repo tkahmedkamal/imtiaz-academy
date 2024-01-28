@@ -1,151 +1,259 @@
 {
   "global": {
-    "index": "Indeks",
+    "index": "Index",
     "name": "Nama",
+    "username": "Nama Pengguna",
+    "nationality": "Kewarganegaraan",
     "country": "Negara",
-    "national": "ID Kebangsaan",
-    "email": "Emel",
+    "state": "Negeri",
+    "city": "Bandar",
+    "postCode": "Poskod",
+    "national": "No Pengenalan",
+    "email": "Email",
+    "password": "Kata Laluan",
     "phone": "Nombor Telefon",
     "gender": "Jantina",
+    "age": "Umur",
     "status": "Status",
+    "studyStatus": "Status Pengajian",
+    "programStatus": "Status Program",
     "active": "Aktif",
-    "pending": "Tangguh",
     "inactive": "Tidak Aktif",
     "actions": "Tindakan",
+    "pending": "Tangguh",
     "address": "Alamat",
     "male": "Lelaki",
     "female": "Perempuan",
     "choose": "Pilih",
     "delete": "Padam",
-    "cancel": "Batal",
+    "cancel": "Batalkan",
     "edit": "Edit",
     "archive": "Arkib",
     "loading": "Memuatkan",
     "all": "Semua",
     "search": "Cari",
-    "personal": "Peribadi",
+    "personal": "individu",
     "group": "Kumpulan",
     "info": "Maklumat",
-    "credit": "Pelajar Kredit",
-    "ltZero": "< Sifar",
-    "gtZero": "> Sifar",
-    "eqZero": "= sama",
+    "credit": "Kredit Pelajar",
+    "ltZero": "< Zero",
+    "gtZero": "> Zero",
+    "eqZero": "= Zero",
     "enrollment": "Pendaftaran",
-    "totalEnrollmentCost": "Yuran penuh",
-    "totalPaidAmount": "Jumlah Amaun Dibayar",
-    "courseName": "",
-    "allTeachers": "എല്ലാ അധ്യാപകരും"
+    "approve": "Terima",
+    "userType": "Jenis Pekerjaan",
+    "registration_date": "Tarikh Pendaftaran",
+    "totalPaidAmount": "Jumlah yang Dibayar",
+    "totalEnrollmentCost": "Jumlah Yuran Penuh",
+    "from": "Dari",
+    "to": "Kepada",
+    "courseName": "Nama Kursus",
+    "allTeachers": "Semua Guru",
+    "allCountries": "Semua Negara",
+    "allCourses": "Semua kursus",
+    "allColumns": "Disusun Mengikut"
   },
   "pagination": {
-    "showing": "Memaparkan",
-    "to": "hingga",
-    "of": "daripada",
-    "results": "Hasil",
+    "showing": "Menunjukkan",
+    "to": "Kepada",
+    "of": "Daripada",
+    "results": "Keputusan",
     "next": "Seterusnya",
     "prev": "Sebelumnya"
   },
   "confirmDelete": {
-    "message": "Adakah anda pasti ingin padam?"
+    "message": "Adakah Anda Pasti Mahu Memadamkan ?"
   },
   "archive": {
     "label": "Arkib",
-    "message": "Adakah anda pasti mahu mengarkibkan?"
+    "message": "Adakah Anda Pasti Mahu Mengarkibkan ?"
   },
   "sidebar": {
     "dashboard": "Papan Pemuka",
     "students": "Pelajar",
+    "students-enrollments": "Pendaftaran Pelajar",
     "teachers": "Guru",
     "educational-program": "Program Pendidikan",
     "details": "Butiran",
-    "course": "Kursus"
+    "course": "Kursus",
+    "approved": "Diterima",
+    "userManagement": "Pengurusan Pengguna",
+    "logout": "Log Keluar"
   },
   "students": {
     "title": "Pelajar",
-    "editTitle": "Edit Pelajar",
     "addTitle": "Tambah Pelajar Baru",
+    "editTitle": "Edit Pelajar",
     "form": {
       "state": "Negeri",
       "job": "Pekerjaan",
-      "age": "Umur",
+      "dateOfBirth": "Tarikh Lahir",
+      "knowAboutUs": "Tahu tentang Kita",
       "placeholders": {
-        "name": "Masukkan nama anda",
-        "country": "Masukkan negara anda",
-        "state": "Masukkan negeri anda",
-        "phone": "Masukkan nombor telefon anda",
-        "national": "Masukkan ID kebangsaan anda",
-        "job": "Masukkan pekerjaan anda",
-        "address": "Masukkan alamat anda",
-        "age": "Masukkan umur anda"
+        "name": "Masukkan nama Anda",
+        "country": "Masukkan Negara anda",
+        "state": "Masukkan negeri Anda",
+        "phone": "Masukkan Nombor Telefon Anda",
+        "national": "Masukkan Id Pengenalan Anda",
+        "job": "Masukkan Perkejaan Anda",
+        "address": "Masukkan ALamat Anda",
+        "age": "Masukkan Umur Anda"
       }
     },
+    "customRegistrationCost": "Kos Pendaftaran Tersuai",
+    "registrationCost": "Kos Pendaftaran",
     "buttons": {
-      "add": "Pelajar baru",
+      "add": "Pelajar Baru",
       "edit": "Edit Pelajar"
     },
     "transaction": {
       "title": "Tambah Transaksi Pembayaran",
       "form": {
-        "amount": "Amaun yang dibayar",
-        "paidTime": "Masa Berbayar",
-        "periodStartDate": "Tarikh mula bayar",
-        "periodEndDate": "Tarikah tamat bayar",
-        "refPaidNum": "Nombor Dibayar Rujukan",
+        "amount": "Jumlah Dibayar",
+        "paidTime": "Tarikh Pembayaran",
+        "refPaidNum": "Nombor Rujukan Pembayaran",
+        "refNotes": "Catatan",
+        "periodStartDate": "Tempoh Tarikh Mula ",
+        "periodEndDate": "Tempoh Tarikh Tamat",
         "placeholders": {
-          "refPaidNum": "Masukkan Nombor Rujukan Dibayar"
-        },
-        "refNotes": "Nota"
+          "refPaidNum": "Masukkan Nombor Rujukan Pembayaran"
+        }
       },
       "buttons": {
-        "add": "Tambah Transaksi"
+        "add": "Tambah Pembayaran"
       }
     },
     "enrollment": {
-      "title": "Mendaftar Pelajar ke Kursus",
+      "title": "Mendaftarkan Pelajar Ke Kusrus",
       "registrationCost": "Kos Pendaftaran",
-      "discountCheckbox": "Ada diskaun istimewa",
+      "totalRegistrationCost": "Jumlah Kos Pendaftaran",
+      "classDurationPerMinuets": "Tempoh Kelas Per minit",
+      "discountCheckbox": "Ada Diskaun Istimewa",
+      "isCompleteCheckbox": "Selesai",
+      "registrationCostPerClass": "Kos Pendaftaran Per Kelas",
+      "numberOfMeetingsPerMonth": "Bilangan Mesyuarat Per Bulan",
+      "isFullTimeSpecialCost": "Diskaun Sepenuh Masa",
+      "studyStartDate": "Tarikh mula Pengajian",
+      "studyEndDate": "tarikh tamat Pengajian",
+      "courseName": "Nama Kusrus",
+      "isPersonal": "Individu",
+      "changeNumberOfClasses": "Tukar Bilangan Kelas",
+      "Group": "Kumpulan",
       "buttons": {
-        "add": "Pendaftaran"
-      }
+        "add": "Tambah Pendaftaran"
+      },
+      "additionalMeetings": "Mesyuarat Tambahan"
     }
   },
   "educational": {
-    "addTitle": "Tambah Program baharu",
+    "addTitle": "Tambah Program Baru",
     "editTitle": "Edit Program",
     "form": {
       "placeholders": {
-        "name": "Masukkan nama anda"
+        "name": "masukkan nama Anda"
       }
     },
     "buttons": {
-      "add": "Program baru",
+      "add": "Program Baru",
       "edit": "Edit program"
     },
     "course": {
       "title": "Kursus",
-      "addTitle": "tambah Kursus baharu",
-      "editTitle": "edit Kursus",
+      "addTitle": "Tambah Kursus Baru",
+      "editTitle": "Edit Kursus",
       "texts": {
         "name": "Nama",
         "numOfClasses": "Bilangan Kelas",
-        "minutes": "Tempoh Kelas Dalam Minit",
+        "minutes": "Tempoh Dalam Minit",
         "numOfHours": "Bilangan Jam",
         "cost": "Kos Program",
         "discount": "Diskaun",
+        "costPerClass": "Kos Setiap Kelas",
         "costAfterDiscount": "Kos Selepas Diskaun",
         "programType": "Jenis Program"
       },
       "form": {
         "placeholders": {
-          "name": "പേര് നൽകുക"
+          "name": "masukkan Nama"
         }
       },
       "buttons": {
-        "add": "Butiran baru",
-        "edit": "Edit butiran"
+        "add": "Kusus Baru",
+        "edit": "Edit Kursus"
       }
     }
   },
   "teacher": {
-    "title": "Cikgu"
-  }
+    "title": "Guru"
+  },
+  "login": {
+    "title": "Log Masuk",
+    "form": {
+      "password": "Masukkan Kata Laluan",
+      "username_email": "Kata Pengguna Atau Email",
+      "submit": "Log Masuk"
+    }
+  },
+  "teacher_signup": {
+    "title": "Mendaftar",
+    "form": {
+      "email": "Email",
+      "bankName": "Nama Bank",
+      "idCardNumber": "Nombor kad Pengenalan",
+      "nationalId": "Id Pengenalan",
+      "nationality": "Kewarganegaraan",
+      "address": "Alamat",
+      "bankAccountNumber": "Nama Akaun bank",
+      "certificate": "Sijil Kelayakan",
+      "age": "Umur",
+      "name": "Nama",
+      "password": "Kata Laluan",
+      "isAcceptedPolicies": "",
+      "phoneNumber": "Nombor Telefon",
+      "username": "Nama Pengguna",
+      "gander": "Jantina",
+      "iban": "IBAN",
+      "type": "Jenis",
+      "countryId": "Negara",
+      "placeholders": {
+        "email": "Masukkan Email Anda",
+        "bankName": "Masukkan Nama Bank",
+        "idCardNumber": "Masukkan Nombor Kad Pengenalan",
+        "nationalId": "Masukkan Id Pengenalan",
+        "nationality": "Masukkan warganegara Anda",
+        "address": "Masukkan Alamat Anda",
+        "bankAccountNumber": "Massukan Nombor Akaun Anda",
+        "certificate": "Masukkan Sijil Anda",
+        "age": "Masukkan umur Anda",
+        "name": "Masukkan nama Anda",
+        "password": "Masukkan Kata Laluan Anda",
+        "isAcceptedPolicies": "",
+        "phoneNumber": "Masukkan Nombor Telefon Anda",
+        "username": "Msukkan Nama Pengguna Anda"
+      },
+      "submit": "Signup"
+    }
+  },
+  "approve": {
+    "title": "Meluluskan Pekerja",
+    "form": {
+      "contractStartDate": "Tarikh Mula Kontrak",
+      "contractEndDate": "Tarikh Tamat Kontrak",
+      "salary": "Elaun",
+      "placeholders": {
+        "salary": "Masukkan Elaun"
+      },
+      "submit": "Terima"
+    }
+  },
+  "studentEnr": {
+    "teacher": "Guru",
+    "course": "Kursus",
+    "program": "Program",
+    "cost": "Kos",
+    "startDate": "Tarikh Mula",
+    "endDate": "Tarikh Tamat",
+    "title": "Edit Pendaftaran Pelajar"
+  },
+  "additionalMeetings": "Mesyuarat Tambahan"
 }
