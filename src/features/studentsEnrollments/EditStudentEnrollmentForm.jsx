@@ -95,7 +95,7 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
         initialValues={{
           id: id ||'',
           numberOfClasses: numberOfClasses || '',
-          additionalMeetings: additionalMeetings || '',
+          additionalMeetings: additionalMeetings || 0,
           enrollmentDate: enrollmentDate || '',
           enrollmentCost: enrollmentCost || '',
           year: year || '',
