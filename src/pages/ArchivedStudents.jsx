@@ -55,7 +55,6 @@ const Student = () => {
         {user?.roles.includes('Teacher') && (
           <TableOperational windowName='create-student' false>
             <Filters>
-              <StatusFilter />
               <SortColumn
                 data={[
                   { name: 'Student name (A-Z)'},
@@ -70,7 +69,6 @@ const Student = () => {
         {user?.roles.includes('EnrollmentAgent') && (
           <TableOperational windowName='create-student' isButton>
             <Filters>
-              <StatusFilter />
               <SortColumn
                 data={[
                   { name: 'Student name (A-Z)'},
