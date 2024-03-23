@@ -47,6 +47,15 @@ const Sidebar = () => {
         user.roles.includes('Teacher')
     },
     {
+      label: t('sidebar.archivedStudents'),
+      icon: <HiOutlineUsers />,
+      link: '/dashboard/archived-students',
+      show:
+        user?.roles.includes('AccountantAgent') ||
+        user.roles.includes('EnrollmentAgent') ||
+        user.roles.includes('Teacher')
+    },
+    {
       label: t('sidebar.students-enrollments'),
       icon: <HiOutlineUsers />,
       link: '/dashboard/students-enrollments',

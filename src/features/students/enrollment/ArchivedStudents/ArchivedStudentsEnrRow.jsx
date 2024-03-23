@@ -4,14 +4,14 @@ import { LuArchive } from 'react-icons/lu';
 import { TbInfoSquare } from 'react-icons/tb';
 import { TfiWrite } from 'react-icons/tfi';
 
-import { Table, ActionBtn, Modal, Tag, Confirm } from '../../../ui';
-import EditStudentForm from '../EditStudentForm';
-import useArchiveStudent from '../useArchiveStudent';
-import AddEnrollmentStudentForm from '../AddEnrollmentStudentForm';
-import { Archive } from '../../../assets';
-import StudentDetails from '../details/enrollment/StudentDetails';
+import { Table, ActionBtn, Modal, Tag, Confirm } from '../../../../ui';
+import EditStudentForm from '../../EditStudentForm';
+import useArchiveStudent from '../../useArchiveStudent';
+import AddEnrollmentStudentForm from '../../AddEnrollmentStudentForm';
+import { Archive } from '../../../../assets';
+import StudentDetails from '../../details/enrollment/StudentDetails';
 
-const StudentsEnrollmentRow = ({ index, student }) => {
+const ArchivedStudentsEnrRow = ({ index, student }) => {
   const { t } = useTranslation();
   const { mutate, isLoading } = useArchiveStudent();
 
@@ -108,4 +108,4 @@ const StudentsEnrollmentRow = ({ index, student }) => {
   );
 };
 
-export default StudentsEnrollmentRow;
+export default ArchivedStudentsEnrRow;

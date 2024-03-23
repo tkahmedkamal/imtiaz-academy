@@ -71,6 +71,7 @@
   "sidebar": {
     "dashboard": "Dashboard",
     "students": "Students",
+    "archivedStudents": "Archived Students",
     "students-enrollments": "Students Enrollments",
     "teachers": "Teachers",
     "educational-program": "Educational Program",

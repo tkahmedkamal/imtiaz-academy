@@ -18,6 +18,7 @@ import {
 import { Login, StudentSignup, TeacherSignup } from './pages/auth';
 import { ProtectedRoutes } from './ui';
 import StudentsEnrollments from './pages/StudentsEnrollments';
+import ArchivedStudents from './pages/ArchivedStudents';
 
 const App = () => {
   const navigate = useNavigate();
@@ -48,6 +49,15 @@ const App = () => {
             <Route
               path='students-enrollments'
               element={<StudentsEnrollments />}
+            />
+            </>
+
+          )}
+          {(user?.roles.includes('EnrollmentAgent') || user?.roles.includes('AccountantAgent')) && (
+            <>      
+            <Route
+              path='archived-students'
+              element={<ArchivedStudents />}
             />
             </>
 

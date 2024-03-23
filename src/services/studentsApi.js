@@ -25,57 +25,6 @@ export const getStudentsAccountant = async (page, filter) => {
     throw Error(message);
   }
 };
-export const getStudentsEnrollmentsAccountant = async (page, filter) => {
-  const token = localStorage.getItem('im_access_token');
-
-  try {
-    const res = await axiosConfig.get(
-      `/api/Student/accountant/notArchived?searchString=${filter}&pageNumber=${page}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    );
-    if (res.data.status === 406) {
-      return Promise.reject(Error(res.data.msg));
-    }
-    return res.data;
-  } catch ({ message }) {
-    if (message.includes('Network Error')) {
-      throw Error('Something went wrong, please try again');
-    }
-
-    throw Error(message);
-  }
-};
-
-export const getStudentsEnrollmentsEnrollment = async (page, filter) => {
-  const token = localStorage.getItem('im_access_token');
-
-  try {
-    const res = await axiosConfig.get(
-      `/api/StudentEnrollments/GetStudentsEnrollmentsInformation?searchString=${filter}&pageNumber=${page}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    );
-    if (res.data.status === 406) {
-      return Promise.reject(Error(res.data.msg));
-    }
-    return res.data;
-  } catch ({ message }) {
-    if (message.includes('Network Error')) {
-      throw Error('Something went wrong, please try again');
-    }
-
-    throw Error(message);
-  }
-};
 
 export const getStudentsEnrollment = async (page, filter) => {
   const token = localStorage.getItem('im_access_token');
@@ -108,6 +57,135 @@ export const getTeacherStudents = async (page, filter) => {
   try {
     const res = await axiosConfig.get(
       `/api/teacher/myStudents?searchString=${filter}&pageNumber=${page}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    if (res.data.status === 406) {
+      return Promise.reject(Error(res.data.msg));
+    }
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+
+export const getArchivedStudentsAccountant = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const res = await axiosConfig.get(
+      `/api/Student/accountant/notArchived?searchString=${filter}&pageNumber=${page}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    if (res.data.status === 406) {
+      return Promise.reject(Error(res.data.msg));
+    }
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+
+export const getArchivedStudentsEnrollment = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const res = await axiosConfig.get(
+      `/api/student/ArchivedStudents?searchString=${filter}&pageNumber=${page}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    if (res.data.status === 406) {
+      return Promise.reject(Error(res.data.msg));
+    }
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+export const getArchivedTeacherStudents = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const res = await axiosConfig.get(
+      `/api/teacher/myStudents?searchString=${filter}&pageNumber=${page}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    if (res.data.status === 406) {
+      return Promise.reject(Error(res.data.msg));
+    }
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+
+export const getStudentsEnrollmentsAccountant = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const res = await axiosConfig.get(
+      `/api/Student/accountant/notArchived?searchString=${filter}&pageNumber=${page}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    if (res.data.status === 406) {
+      return Promise.reject(Error(res.data.msg));
+    }
+    return res.data;
+  } catch ({ message }) {
+    if (message.includes('Network Error')) {
+      throw Error('Something went wrong, please try again');
+    }
+
+    throw Error(message);
+  }
+};
+
+export const getStudentsEnrollmentsEnrollment = async (page, filter) => {
+  const token = localStorage.getItem('im_access_token');
+
+  try {
+    const res = await axiosConfig.get(
+      `/api/StudentEnrollments/GetStudentsEnrollmentsInformation?searchString=${filter}&pageNumber=${page}`,
       {
         headers: {
           'Content-Type': 'application/json',
