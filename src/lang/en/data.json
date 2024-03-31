@@ -45,6 +45,7 @@
     "registration_date": "Registration Date",
     "totalPaidAmount": "Total Paid Amount",
     "totalEnrollmentCost": "Total Enrollment Cost",
+    "enrollmentCost":"Enrollment Cost",
     "from": "From",
     "to": "To",
     "courseName": "Course Name",
@@ -71,8 +72,9 @@
   "sidebar": {
     "dashboard": "Dashboard",
     "students": "Students",
+    "registration":"Registration",
     "archivedStudents": "Archived Students",
-    "students-enrollments": "Students Enrollments",
+    "students-enrollments": "Class Data",
     "teachers": "Teachers",
     "educational-program": "Educational Program",
     "details": "Details",
@@ -127,7 +129,7 @@
     "enrollment": {
       "title": "Enroll Student to a Course",
       "registrationCost": "Registration Cost",
-      "totalRegistrationCost": "Total Registration Cost",
+      "totalRegistrationCost": "Total Study Fees",
       "classDurationPerMinuets": "class duration per minuets",
       "discountCheckbox": "Has special discount",
       "isCompleteCheckbox": "Completed",
@@ -256,5 +258,11 @@
     "endDate": "End Date",
     "title": "Edit student enrollment"
   },
-  "additionalMeetings": "Additional Meetings"
+  "additionalMeetings": "Additional Meetings",
+  "studentDetails":
+  {
+  "info":"Student information",
+  "contact" :"Contact information",
+  "classData":"Class data"
+  }
 }

@@ -37,13 +37,13 @@ const ArchivedStudentsEnrRow = ({ index, student }) => {
       {/* <Table.Td>
         {registrationDay}/{registrationMonth}/{registrationYear}
       </Table.Td> */}
-      <Table.Td>
+      {/*<Table.Td>
         {isActive ? (
           <Tag label={'Active'} status='success' />
         ) : (
           <Tag label={'Pending'} status='warn' />
         )}
-      </Table.Td>
+        </Table.Td>*/}
 
       <Table.Td classes='flex item-center gap-3'>
         <Modal>

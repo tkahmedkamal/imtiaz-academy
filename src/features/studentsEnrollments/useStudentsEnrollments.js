@@ -3,8 +3,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
 import {
-  getStudentsEnrollmentsEnrollment,
-  getStudentsAccountant,
+  getStudentsEnrollmentsAcc,
   getTeacherStudents,
   getStudentEnrollmentById,
 } from '../../services/studentsApi';
@@ -18,10 +17,8 @@ const useStudentsEnrollments = () => {
   const { user } = useAuthCtx();
 
   let handler =
-    user && user?.roles.includes('EnrollmentAgent')
-      ? getStudentsEnrollmentsEnrollment
-      : user && user?.roles.includes('AccountantAgent')
-      ? getStudentsAccountant
+      user?.roles.includes('EnrollmentAgent')  ||  user?.roles.includes('AccountantAgent')
+      ? getStudentsEnrollmentsAcc
       : getTeacherStudents;
   const currentPage = +searchParams.get('page') || 1;
 
@@ -78,7 +75,7 @@ const useStudentsEnrollments = () => {
   const filters = `isActive=${status[statusValue]},${checkCourseValue},${checkTeacherValue},isCompleted=false,studentName=${searchValue}`;
   const filterQueries =
     user && user?.roles.includes('AccountantAgent')
-      ? `${filters},credit=${credit[creditValue]}&isGeneralSearch=true&${checkedSort}`
+      ? `${filters},&isGeneralSearch=true&${checkedSort}`
       : `${filters}&isGeneralSearch=true&${checkedSort}`;
 
   const { data, isLoading } = useQuery({

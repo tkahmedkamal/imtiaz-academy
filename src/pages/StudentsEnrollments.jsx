@@ -37,9 +37,17 @@ const Student = () => {
         {user?.roles.includes('AccountantAgent') && (
           <TableOperational windowName='create-student' false>
             <Filters>
-              <StatusFilter />
-              <CreditFilter />
-              <CountryFilter />
+            <StatusFilter />
+              <SortColumn
+                data={[
+                  { name: 'Student name (A-Z)'},
+                  { name: 'Student name (Z-A)'},
+                  { name: 'Course name (A-Z)'},
+                  { name: 'Course name (Z-A)'}
+                ]}
+              />
+              <CourseFilter />
+              <TeacherNameFilter />
             </Filters>
           </TableOperational>
         )}

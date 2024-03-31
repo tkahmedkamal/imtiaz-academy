@@ -5,7 +5,7 @@ import { LoadingButton, Input, FormControl } from '../../ui';
 import useAddPaymentTransaction from './useAddPaymentTransaction.js';
 import { paymentTransactionSchema } from './validation';
 
-const AddPaymentTransactionForm = ({ studentId, closeModal }) => {
+const AddPaymentTransactionForm = ({ studentId,studentEnrollmentId, closeModal }) => {
   const { t } = useTranslation();
   const { mutate, isLoading } = useAddPaymentTransaction(closeModal);
 
@@ -28,11 +28,12 @@ const AddPaymentTransactionForm = ({ studentId, closeModal }) => {
         initialValues={{
           studentId: studentId,
           amountPaid: '',
-          paidTime: '',
+          paidTime: new Date().toISOString(),
           referencePaidNumber: '',
-          notes: '',
-          PeriodStartDate: new Date().toISOString(),
-          PeriodEndDate: new Date().toISOString(),
+          studentEnrollmentId:studentEnrollmentId,
+           notes: ''
+          // PeriodStartDate: new Date().toISOString(),
+          // PeriodEndDate: new Date().toISOString(),
         }}
         validationSchema={paymentTransactionSchema}
         onSubmit={handleSubmit}
@@ -52,9 +53,10 @@ const AddPaymentTransactionForm = ({ studentId, closeModal }) => {
                 label={t('students.transaction.form.paidTime')}
                 type='date'
                 id='inputPaidTime'
+                placeholder = {new Date().toISOString()}
               />
             </FormControl>
-            <FormControl>
+            {/* <FormControl>
               <Input
                 name='PeriodStartDate'
                 label={t('students.transaction.form.periodStartDate')}
@@ -67,7 +69,7 @@ const AddPaymentTransactionForm = ({ studentId, closeModal }) => {
                 type='date'
                 id='inputPeriodEndDate'
               />
-            </FormControl>
+            </FormControl> */}
             <FormControl>
               <Input
                 name='referencePaidNumber'

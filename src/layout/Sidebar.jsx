@@ -38,18 +38,9 @@ const Sidebar = () => {
       user.roles.includes('Admin')
     },
     {
-      label: t('sidebar.students'),
+      label: t('sidebar.registration'),
       icon: <HiOutlineUsers />,
       link: '/dashboard/students',
-      show:
-        user?.roles.includes('AccountantAgent') ||
-        user.roles.includes('EnrollmentAgent') ||
-        user.roles.includes('Teacher')
-    },
-    {
-      label: t('sidebar.archivedStudents'),
-      icon: <HiOutlineUsers />,
-      link: '/dashboard/archived-students',
       show:
         user?.roles.includes('AccountantAgent') ||
         user.roles.includes('EnrollmentAgent') ||
@@ -99,6 +90,14 @@ const Sidebar = () => {
       icon: <HiOutlineUsers />,
       link: '/dashboard/user-management',
       show: user?.roles.includes('Admin'),
+    },
+    {
+      label: t('sidebar.archivedStudents'),
+      icon: <HiOutlineUsers />,
+      link: '/dashboard/archived-students',
+      show:
+        user?.roles.includes('AccountantAgent') ||
+        user.roles.includes('EnrollmentAgent')
     },
     {
       label: t('sidebar.logout'),

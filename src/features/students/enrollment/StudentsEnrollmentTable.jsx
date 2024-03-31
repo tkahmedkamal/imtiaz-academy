@@ -39,7 +39,6 @@ const StudentsEnrollmentTable = () => {
             <Table.Th>{t('global.phone')}</Table.Th>
             {/* <Table.Th>{t('global.state')}</Table.Th> */}
             {/* <Table.Th>{t('global.registration_date')}</Table.Th> */}
-            <Table.Th>{t('global.status')}</Table.Th>
             <Table.Th>{t('global.actions')}</Table.Th>
           </Table.Thead>
 

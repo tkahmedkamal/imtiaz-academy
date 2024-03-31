@@ -53,13 +53,13 @@ const StudentsAccountantRow = ({ index, student }) => {
 
       <Table.Td classes='flex item-center gap-3'>
         <Modal>
-          <Modal.Open opens={`add-student-transaction-${id}`}>
+          {/* <Modal.Open opens={`add-student-transaction-${id}`}>
             <ActionBtn
               title={t('students.transaction.title')}
               icon={<MdPayment />}
               status='primary'
             />
-          </Modal.Open>
+          </Modal.Open> */}
 
           <Modal.Open opens={`info-student-${id}`}>
             <ActionBtn

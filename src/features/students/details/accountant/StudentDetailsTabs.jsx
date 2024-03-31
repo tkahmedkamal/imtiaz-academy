@@ -1,23 +1,30 @@
-const tabs = [
-  {
-    label: 'Info',
-  },
-  {
-    label: 'Contact',
-  },
-  {
-    label: 'Enrollment',
-  },
-];
+import { useTranslation } from 'react-i18next';
+
 
 const StudentDetailsTabs = ({ tab, setTab }) => {
-  const tabItems = tabs.map(({ label }) => (
+  const { t } = useTranslation();
+  const tabs = [
+    {
+      label: t('studentDetails.info'),
+      id:"Info"
+    },
+    {
+      label: t('studentDetails.contact'),
+      id:"Contact"
+    },
+    {
+      label: t('studentDetails.classData'),
+      id:"Enrollment"
+    },
+  ];
+
+  const tabItems = tabs.map(({ label, id }) => (
     <button
       className={`w-full rounded-md border border-divider p-1.5 text-center font-publicSans font-semibold text-primary-text transition-colors duration-500 hover:bg-primary dark:border-dark-divider dark:text-dark-primary-text dark:hover:bg-dark-primary ${
-        tab === label.toLowerCase() ? 'bg-primary dark:bg-dark-primary' : ''
+        tab === id.toLowerCase() ? 'bg-primary dark:bg-dark-primary' : ''
       }`}
-      key={label}
-      onClick={() => setTab(label.toLowerCase())}
+      key={id}
+      onClick={() => setTab(id.toLowerCase())}
     >
       {label}
     </button>

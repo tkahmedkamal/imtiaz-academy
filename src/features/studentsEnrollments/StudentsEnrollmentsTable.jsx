@@ -5,10 +5,12 @@ import { Table, Spinner, Pagination, Empty } from '../../ui';
 import useStudentsEnrollments from '../studentsEnrollments/useStudentsEnrollments';
 import StudentsEnrollmentsRow from './StudentsEnrollmentsRow';
 import { useStudentsCtx } from '../../context/StudentContext';
+import { useAuthCtx } from '../../context/authContext';
 
 const StudentsEnrollmentsTable = () => {
   const { t } = useTranslation();
   const { data, isLoading } = useStudentsEnrollments();
+  const { user } = useAuthCtx();
 
   const {
     data: students,
@@ -37,6 +39,8 @@ const StudentsEnrollmentsTable = () => {
             <Table.Th>{t('global.name')}</Table.Th>
             <Table.Th>{t('global.courseName')}</Table.Th>
             <Table.Th>{t('educational.course.texts.numOfClasses')}</Table.Th>
+            <Table.Th>{t('global.enrollmentCost')}</Table.Th>
+            <Table.Th>{t('global.totalPaidAmount')}</Table.Th>
             <Table.Th>{t('global.status')}</Table.Th>
             <Table.Th>{t('global.phone')}</Table.Th>
             <Table.Th>{t('global.actions')}</Table.Th>

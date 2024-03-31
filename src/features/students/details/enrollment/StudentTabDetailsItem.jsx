@@ -2,6 +2,7 @@ import { useState } from 'react';
 import StudentDetailsTabs from './StudentDetailsTabs';
 import { formatIsoDate } from '../../../../utils/formatDate';
 import StudentDetailsEnrollment from './StudentDetailsEnrollment';
+import { useTranslation } from 'react-i18next';
 
 const knowAboutUs = new Map();
 knowAboutUs.set(1, 'Facebook');
@@ -13,7 +14,7 @@ knowAboutUs.set(6, 'Other');
 
 const StudentTabDetailsItem = ({ info, enrollments }) => {
   const [tab, setTab] = useState('info');
-
+  const { t } = useTranslation();
   if (!info) {
     return null;
   }
@@ -27,9 +28,9 @@ const StudentTabDetailsItem = ({ info, enrollments }) => {
       label: 'Date of Birth',
       value: info.dateOfBirth ? formatIsoDate(info.dateOfBirth) : '—',
     },
-    { label: 'Nationality', value: info.nationality ? info.nationality : '—' },
-    { label: 'Age', value: info.age ? info.age : '—' },
-    { label: 'Gender', value: info.isMale ? 'Male' : 'Female' },
+    { label: t('global.nationality'), value: info.nationality ? info.nationality : '—' },
+    { label: t('global.age'), value: info.age ? info.age : '—' },
+    { label: t('global.gender'), value: info.isMale ? 'Male' : 'Female' },
     { label: 'job', value: info.job ? info.job : '—' },
     { label: 'Know About Us', value: knowAboutUs.get(info.knowAboutUs) },
   ];

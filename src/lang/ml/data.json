@@ -45,6 +45,7 @@
     "registration_date": "Tarikh Pendaftaran",
     "totalPaidAmount": "Jumlah yang Dibayar",
     "totalEnrollmentCost": "Jumlah Yuran Penuh",
+    "enrollmentCost": "Yuran Penuh",
     "from": "Dari",
     "to": "Kepada",
     "courseName": "Nama Kursus",
@@ -69,9 +70,11 @@
     "message": "Adakah Anda Pasti Mahu Mengarkibkan ?"
   },
   "sidebar": {
-    "dashboard": "Papan Pemuka",
+    "dashboard": "Dashboard",
     "students": "Pelajar",
-    "students-enrollments": "Pendaftaran Pelajar",
+    "students-enrollments": "Data Kelas",
+    "archivedStudents":"Pelajar arkib",
+    "registration" : "Pendaftaran",
     "teachers": "Guru",
     "educational-program": "Program Pendidikan",
     "details": "Butiran",
@@ -126,7 +129,7 @@
     "enrollment": {
       "title": "Mendaftarkan Pelajar Ke Kusrus",
       "registrationCost": "Kos Pendaftaran",
-      "totalRegistrationCost": "Jumlah Kos Pendaftaran",
+      "totalRegistrationCost": "⁠Jumlah Yuran Pengajian",
       "classDurationPerMinuets": "Tempoh Kelas Per minit",
       "discountCheckbox": "Ada Diskaun Istimewa",
       "isCompleteCheckbox": "Selesai",
@@ -255,5 +258,11 @@
     "endDate": "Tarikh Tamat",
     "title": "Edit Pendaftaran Pelajar"
   },
-  "additionalMeetings": "Mesyuarat Tambahan"
+  "additionalMeetings": "Mesyuarat Tambahan",
+  "studentDetails":
+  {
+  "info":"Maklumat Pelajar",
+  "contact" :"Maklumat Hubungi",
+  "classData":"Data Kelas"
+  }
 }

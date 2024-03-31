@@ -108,7 +108,6 @@ const EditStudentForm = ({ studentId, closeModal }) => {
             gender: applicationUser?.isMale ? 'male' : 'female',
             age: applicationUser?.age || '',
             dateOfBirth: formatIsoDate(applicationUser?.dateOfBirth),
-            active: applicationUser?.isActive ? 'active' : 'inactive',
           },
         }}
         validationSchema={editStudentSchema}
@@ -263,19 +262,6 @@ const EditStudentForm = ({ studentId, closeModal }) => {
                 <SelectOption value={4} label='Whatsapp' />
                 <SelectOption value={5} label='Telegram' />
                 <SelectOption value={6} label='Other' />
-              </Select>
-            </FormControl>
-
-            <FormControl>
-              <Select
-                name='applicationUser.active'
-                label={t('global.status')}
-                id='inputActive'
-                selected={values.applicationUser.active}
-                disabled={isLoadingStudent}
-              >
-                <SelectOption value='active' label='Active' />
-                <SelectOption value='inactive' label='Pending' />
               </Select>
             </FormControl>
 
