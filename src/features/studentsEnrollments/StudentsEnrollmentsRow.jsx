@@ -35,7 +35,8 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
     endYear,
     enrollmentCost,
     numberOfClasses,
-    paidAmountForCourse
+    paidAmountForCourse,
+    studentCredit = enrollmentCost - paidAmountForCourse,
   } = student;
 
   return (
@@ -44,18 +45,36 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
       <Table.Td>{studentName}</Table.Td>
       <Table.Td>{courseName}</Table.Td>
       <Table.Td>{numberOfClasses}</Table.Td>
-      <Table.Td>{enrollmentCost}</Table.Td>
-      <Table.Td>
-        {paidAmountForCourse > enrollmentCost ? (
-          <Tag label={paidAmountForCourse} status='warn' />
-        ) : paidAmountForCourse === 0 ? (
-          <Tag label={paidAmountForCourse} status='error' />
-        ) : paidAmountForCourse === enrollmentCost ? (
-          <Tag label={paidAmountForCourse} status='success' />
-        ) : (
-          ''
-        )}
-        </Table.Td>
+
+      {user.roles.includes('AccountantAgent') && (
+        <>
+        <Table.Td>{enrollmentCost}</Table.Td>
+          <Table.Td>
+            {paidAmountForCourse > enrollmentCost ? (
+              <Tag label={paidAmountForCourse} status='warn' />
+            ) : paidAmountForCourse === 0 ? (
+              <Tag label={paidAmountForCourse} status='error' />
+            ) : paidAmountForCourse === enrollmentCost ? (
+              <Tag label={paidAmountForCourse} status='success' />
+            ) : paidAmountForCourse < enrollmentCost ? (
+              <Tag label={paidAmountForCourse} status='error' />
+            ) : (
+              ''
+            )}
+          </Table.Td>
+          <Table.Td>
+            {studentCredit > 0 ? (
+              <Tag label={studentCredit} status='warn' />
+            ) : studentCredit === 0 ? (
+              <Tag label={studentCredit} status='success' />
+            ) : studentCredit < 0 ? (
+              <Tag label={studentCredit} status='error' />
+            ) : (
+              ''
+            )}
+          </Table.Td>
+        </>
+      )}
       <Table.Td>
         {isActive ? (
           <Tag label={'Active'} status='success' />
@@ -90,41 +109,41 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
               status='danger'
             />
           </Modal.Open> */}
-{
-  user.roles.includes('EnrollmentAgent') && (
-    <>
-      <Modal.Open opens={`edit-student-${studentEnrollmentId}`}>
-        <ActionBtn
-          title={t('global.edit')}
-          icon={<BiEdit />}
-          status='primary'
-        />
-      </Modal.Open>
-      <Modal.Window name={`edit-student-${studentEnrollmentId}`}>
-        <EditStudentEnrollmentForm enrollmentId={studentEnrollmentId} studentName={studentName} />
-      </Modal.Window>
-    </>
-  )
-}
+          {user.roles.includes('EnrollmentAgent') && (
+            <>
+              <Modal.Open opens={`edit-student-${studentEnrollmentId}`}>
+                <ActionBtn
+                  title={t('global.edit')}
+                  icon={<BiEdit />}
+                  status='primary'
+                />
+              </Modal.Open>
+              <Modal.Window name={`edit-student-${studentEnrollmentId}`}>
+                <EditStudentEnrollmentForm
+                  enrollmentId={studentEnrollmentId}
+                  studentName={studentName}
+                />
+              </Modal.Window>
+            </>
+          )}
 
-{
-  user.roles.includes('AccountantAgent') && (
-    <>
-      <Modal.Open opens={`add-student-transaction-${studentId}`}>
-            <ActionBtn
-              title={t('students.transaction.title')}
-              icon={<MdPayment />}
-              status='primary'
-            />
-          </Modal.Open>
-          <Modal.Window name={`add-student-transaction-${studentId}`}>
-            <AddPaymentTransactionForm studentId={studentId} studentEnrollmentId={studentEnrollmentId}/>
-          </Modal.Window>
-
-    </>
-  )
-}
-
+          {user.roles.includes('AccountantAgent') && (
+            <>
+              <Modal.Open opens={`add-student-transaction-${studentId}`}>
+                <ActionBtn
+                  title={t('students.transaction.title')}
+                  icon={<MdPayment />}
+                  status='primary'
+                />
+              </Modal.Open>
+              <Modal.Window name={`add-student-transaction-${studentId}`}>
+                <AddPaymentTransactionForm
+                  studentId={studentId}
+                  studentEnrollmentId={studentEnrollmentId}
+                />
+              </Modal.Window>
+            </>
+          )}
 
           <Modal.Window name={`archive-student-${studentId}`}>
             <Confirm
@@ -136,7 +155,6 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
               handleConfirm={() => mutate(studentId)}
             />
           </Modal.Window>
-      
         </Modal>
       </Table.Td>
     </Table.Tr>

@@ -73,15 +73,17 @@
     "dashboard": "Dashboard",
     "students": "Pelajar",
     "students-enrollments": "Data Kelas",
-    "archivedStudents":"Pelajar arkib",
-    "registration" : "Pendaftaran",
+    "archivedStudents": "Pelajar arkib",
+    "registration": "Pendaftaran",
     "teachers": "Guru",
     "educational-program": "Program Pendidikan",
     "details": "Butiran",
     "course": "Kursus",
     "approved": "Diterima",
     "userManagement": "Pengurusan Pengguna",
-    "logout": "Log Keluar"
+    "logout": "Log Keluar",
+    "student-Fees": "Yuran Pelajar",
+    "total-student-Fees": "Total Yuran Pelajar"
   },
   "students": {
     "title": "Pelajar",
@@ -259,10 +261,9 @@
     "title": "Edit Pendaftaran Pelajar"
   },
   "additionalMeetings": "Mesyuarat Tambahan",
-  "studentDetails":
-  {
-  "info":"Maklumat Pelajar",
-  "contact" :"Maklumat Hubungi",
-  "classData":"Data Kelas"
+  "studentDetails": {
+    "info": "Maklumat Pelajar",
+    "contact": "Maklumat Hubungi",
+    "classData": "Data Kelas"
   }
 }

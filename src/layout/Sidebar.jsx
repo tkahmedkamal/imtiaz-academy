@@ -42,18 +42,28 @@ const Sidebar = () => {
       icon: <HiOutlineUsers />,
       link: '/dashboard/students',
       show:
-        user?.roles.includes('AccountantAgent') ||
-        user.roles.includes('EnrollmentAgent') ||
-        user.roles.includes('Teacher')
+        user.roles.includes('EnrollmentAgent') 
     },
     {
       label: t('sidebar.students-enrollments'),
       icon: <HiOutlineUsers />,
       link: '/dashboard/students-enrollments',
       show:
-        user?.roles.includes('AccountantAgent') ||
-        user.roles.includes('EnrollmentAgent') ||
-        user.roles.includes('Admin')
+        user?.roles.includes('EnrollmentAgent')
+    },
+    {
+      label: t('sidebar.student-Fees'), // الرسوم الدراسية
+      icon: <HiOutlineUsers />,
+      link: '/dashboard/students-enrollments',
+      show:
+        user?.roles.includes('AccountantAgent')
+    },
+    {
+      label: t('sidebar.total-student-Fees'), // الرسوم الدراسية
+      icon: <HiOutlineUsers />,
+      link: '/dashboard/students',
+      show:
+        user?.roles.includes('AccountantAgent')
     },
     {
       label: t('sidebar.teachers'),
@@ -96,7 +106,7 @@ const Sidebar = () => {
       icon: <HiOutlineUsers />,
       link: '/dashboard/archived-students',
       show:
-        user?.roles.includes('AccountantAgent') ||
+        // user?.roles.includes('AccountantAgent') ||
         user.roles.includes('EnrollmentAgent')
     },
     {
