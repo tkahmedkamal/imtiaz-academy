@@ -3,7 +3,7 @@ import useFilter from '../hooks/useFilter';
 import { useTranslation } from 'react-i18next';
 
 const SortColumn = ({ data }) => {
-  const { term, handler: handleChange } = useFilter('sortColumn', true, '');
+  const { handler: handleChange } = useFilter('sortColumn', true, '');
   const { t } = useTranslation();
 
 

@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'react-hot-toast';
+//import { toast } from 'react-hot-toast';
 
 import { getLoggedInUser } from '../services/generalApi';
 import { useAuthCtx } from '../context/authContext';

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineX } from 'react-icons/hi';
 import { HiMenuAlt3 } from 'react-icons/hi';
 
-import TopBar from './TopBar';
+//import TopBar from './TopBar';
 import { Sidebar } from '../layout';
 import { FloatButton } from '../ui';
 import { opacityVariants } from '../utils/motion';

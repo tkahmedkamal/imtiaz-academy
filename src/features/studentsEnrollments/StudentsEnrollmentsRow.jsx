@@ -19,20 +19,20 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
     studentName,
     studentPhoneNumber,
     isActive,
-    teacherName,
+    //teacherName,
     courseName,
-    teacherId,
+    //teacherId,
     studentEnrollmentId,
-    courseId,
-    studyStartDate,
-    studyEndDate,
-    isCompletedStudy,
-    startDay,
-    startMonth,
-    startYear,
-    endDay,
-    endMonth,
-    endYear,
+    //courseId,
+    //studyStartDate,
+    // studyEndDate,
+    // isCompletedStudy,
+    // startDay,
+    // startMonth,
+    // startYear,
+    // endDay,
+    // endMonth,
+    // endYear,
     enrollmentCost,
     numberOfClasses,
     paidAmountForCourse,
@@ -48,7 +48,7 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
 
       {user.roles.includes('AccountantAgent') && (
         <>
-        <Table.Td>{enrollmentCost}</Table.Td>
+        <Table.Td><Tag label={enrollmentCost} status='info'/></Table.Td>
           <Table.Td>
             {paidAmountForCourse > enrollmentCost ? (
               <Tag label={paidAmountForCourse} status='warn' />
@@ -63,11 +63,13 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
             )}
           </Table.Td>
           <Table.Td>
-            {studentCredit > 0 ? (
+             {studentCredit > enrollmentCost ? (
               <Tag label={studentCredit} status='warn' />
             ) : studentCredit === 0 ? (
               <Tag label={studentCredit} status='success' />
-            ) : studentCredit < 0 ? (
+            ) : studentCredit === enrollmentCost ? (
+              <Tag label={studentCredit} status='error' />
+            ) : studentCredit < enrollmentCost ? (
               <Tag label={studentCredit} status='error' />
             ) : (
               ''

@@ -27,12 +27,12 @@ const useStudentsEnrollments = () => {
     active: true,
     pending: false,
   };
-  const credit = {
-    all: null,
-    'less-than-zero': '<0',
-    'greater-than-zero': '>0',
-    'equal-zero': '0',
-  };
+  // const credit = {
+  //   all: null,
+  //   'less-than-zero': '<0',
+  //   'greater-than-zero': '>0',
+  //   'equal-zero': '0',
+  // };
 
   const statusValue = searchParams.get('status') || 'all';
   const courseValue = searchParams.get('courseId') || 'all';
@@ -70,7 +70,7 @@ const useStudentsEnrollments = () => {
 
   const searchValue = searchParams.get('search') || '';
 
-  const creditValue = searchParams.get('credit') || 'all';
+  // const creditValue = searchParams.get('credit') || 'all';
 
   const filters = `isActive=${status[statusValue]},${checkCourseValue},${checkTeacherValue},isCompleted=false,studentName=${searchValue}`;
   const filterQueries =
@@ -112,16 +112,16 @@ const useStudentsEnrollments = () => {
   };
 };
 
-const useStudentEnrollment = studentId => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['students', studentId],
-    queryFn: () => getStudentEnrollmentById(studentId),
-    cacheTime: 0,
+// const useStudentEnrollment = studentId => {
+//   const { data, isLoading } = useQuery({
+//     queryKey: ['students', studentId],
+//     queryFn: () => getStudentEnrollmentById(studentId),
+//     cacheTime: 0,
 
-    onError: ({ msg }) => {
-      toast.success(msg);
-    },
-  });
+//     onError: ({ msg }) => {
+//       toast.success(msg);
+//     },
+//   });
 
   return {
     data,

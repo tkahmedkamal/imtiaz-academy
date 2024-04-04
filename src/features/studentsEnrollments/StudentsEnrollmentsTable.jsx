@@ -39,9 +39,12 @@ const StudentsEnrollmentsTable = () => {
             <Table.Th>{t('global.name')}</Table.Th>
             <Table.Th>{t('global.courseName')}</Table.Th>
             <Table.Th>{t('educational.course.texts.numOfClasses')}</Table.Th>
-            <Table.Th>{t('global.enrollmentCost')}</Table.Th>
+          {user.roles.includes('AccountantAgent') && ( 
+            <> 
+            <Table.Th>{t('global.cost')}</Table.Th>
             <Table.Th>{t('global.totalPaidAmount')}</Table.Th>
-            <Table.Th>{t('global.totalPaidAmount')}</Table.Th>
+            <Table.Th>{t('global.unPaidAmount')}</Table.Th> 
+            </>)}
             <Table.Th>{t('global.status')}</Table.Th>
             <Table.Th>{t('global.phone')}</Table.Th>
             <Table.Th>{t('global.actions')}</Table.Th>
