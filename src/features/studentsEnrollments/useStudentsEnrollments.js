@@ -112,16 +112,16 @@ const useStudentsEnrollments = () => {
   };
 };
 
-// const useStudentEnrollment = studentId => {
-//   const { data, isLoading } = useQuery({
-//     queryKey: ['students', studentId],
-//     queryFn: () => getStudentEnrollmentById(studentId),
-//     cacheTime: 0,
+ const useStudentEnrollment = studentId => {
+  const { data, isLoading } = useQuery({
+    queryKey: ['students', studentId],
+    queryFn: () => getStudentEnrollmentById(studentId),
+  cacheTime: 0,
 
-//     onError: ({ msg }) => {
-//       toast.success(msg);
-//     },
-//   });
+    onError: ({ msg }) => {
+      toast.success(msg);
+     },
+  });
 
   return {
     data,
