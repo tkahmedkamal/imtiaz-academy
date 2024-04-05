@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import {
   getStudentsEnrollmentsAcc,
   getTeacherStudents,
-  getStudentEnrollmentById,
+  // getStudentEnrollmentById,
 } from '../../services/studentsApi';
 import { useStudentsCtx } from '../../context/StudentContext';
 import { useAuthCtx } from '../../context/authContext';
@@ -112,21 +112,21 @@ const useStudentsEnrollments = () => {
   };
 };
 
- const useStudentEnrollment = studentId => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['students', studentId],
-    queryFn: () => getStudentEnrollmentById(studentId),
-  cacheTime: 0,
+//  const useStudentEnrollment = studentId => {
+//   const { data, isLoading } = useQuery({
+//     queryKey: ['students', studentId],
+//     queryFn: () => getStudentEnrollmentById(studentId),
+//   cacheTime: 0,
 
-    onError: ({ msg }) => {
-      toast.success(msg);
-     },
-  });
+//     onError: ({ msg }) => {
+//       toast.success(msg);
+//      },
+//   });
 
-  return {
-    data,
-    isLoading,
-  };
-};
+//   return {
+//     data,
+//     isLoading,
+//   };
+// };
 
 export default useStudentsEnrollments;
