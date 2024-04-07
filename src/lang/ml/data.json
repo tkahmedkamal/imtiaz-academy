@@ -54,7 +54,9 @@
     "allTeachers": "Semua Guru",
     "allCountries": "Semua Negara",
     "allCourses": "Semua kursus",
-    "allColumns": "Disusun Mengikut"
+    "allColumns": "Disusun Mengikut",
+    "stopped": "Stopped",
+    "completed": "Completed"
   },
   "pagination": {
     "showing": "Menunjukkan",

@@ -5,7 +5,7 @@ import {
   Modal,
   TableOperational,
   Filters,
-  StatusFilter,
+  EnrStatusFilter,
   // CountryFilter,
   SortColumn,
 } from '../ui/index.js';
@@ -37,7 +37,7 @@ const Student = () => {
         {user?.roles.includes('AccountantAgent') && (
           <TableOperational windowName='create-student' false>
             <Filters>
-            <StatusFilter />
+            <EnrStatusFilter />
               <SortColumn
                 data={[
                   { name: 'Student name (A-Z)'},
@@ -54,7 +54,7 @@ const Student = () => {
         {user?.roles.includes('EnrollmentAgent') && (
           <TableOperational windowName='create-student' false>
             <Filters>
-              <StatusFilter />
+              <EnrStatusFilter />
               <SortColumn
                 data={[
                   { name: 'Student name (A-Z)'},

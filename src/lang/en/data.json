@@ -46,15 +46,17 @@
     "totalPaidAmount": "Total Payment",
     "unPaidAmount": "Unpaid",
     "totalEnrollmentCost": "Full Fees",
-    "enrollmentCost":"Enrollment Cost",
-    "cost":"Cost",
+    "enrollmentCost": "Enrollment Cost",
+    "cost": "Cost",
     "from": "From",
     "to": "To",
     "courseName": "Course Name",
     "allTeachers": "All Teachers",
     "allCountries": "All Countries",
     "allCourses": "All Courses",
-    "allColumns": "Sort By"
+    "allColumns": "Sort By",
+    "stopped": "Stopped",
+    "completed": "Completed"
   },
   "pagination": {
     "showing": "Showing",
@@ -74,7 +76,7 @@
   "sidebar": {
     "dashboard": "Dashboard",
     "students": "Students",
-    "registration":"Registration",
+    "registration": "Registration",
     "archivedStudents": "Archived Students",
     "students-enrollments": "Class Data",
     "student-Fees": "Student Fees",
@@ -263,10 +265,9 @@
     "title": "Edit student enrollment"
   },
   "additionalMeetings": "Additional Meetings",
-  "studentDetails":
-  {
-  "info":"Student information",
-  "contact" :"Contact information",
-  "classData":"Class data"
+  "studentDetails": {
+    "info": "Student information",
+    "contact": "Contact information",
+    "classData": "Class data"
   }
 }

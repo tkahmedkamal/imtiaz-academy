@@ -18,7 +18,7 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
     studentId,
     studentName,
     studentPhoneNumber,
-    isActive,
+    enrollmentStatus,
     //teacherName,
     courseName,
     //teacherId,
@@ -77,13 +77,20 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
           </Table.Td>
         </>
       )}
-      <Table.Td>
-        {isActive ? (
-          <Tag label={'Active'} status='success' />
-        ) : (
-          <Tag label={'Pending..'} status='warn' />
-        )}
-      </Table.Td>
+<Table.Td>
+  {enrollmentStatus === 1 ? (
+    <Tag label={t(`global.active`)} status='success' />
+  ) : enrollmentStatus === 2 ? (
+    <Tag label={t(`global.pending`)} status='warn' />
+  ) : enrollmentStatus === 4 ? (
+    <Tag label={t(`global.completed`)} status='danger' />
+  ) : enrollmentStatus === 3 ? (
+    <Tag label={t('global.stopped')} status='success' />
+  ) : (
+    ''
+  )}
+</Table.Td>
+
       <Table.Td>{studentPhoneNumber}</Table.Td>
 
       <Table.Td classes='flex item-center gap-3'>

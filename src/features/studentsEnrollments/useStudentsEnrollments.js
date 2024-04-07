@@ -22,11 +22,7 @@ const useStudentsEnrollments = () => {
       : getTeacherStudents;
   const currentPage = +searchParams.get('page') || 1;
 
-  const status = {
-    all: null,
-    active: true,
-    pending: false,
-  };
+
   // const credit = {
   //   all: null,
   //   'less-than-zero': '<0',
@@ -34,11 +30,26 @@ const useStudentsEnrollments = () => {
   //   'equal-zero': '0',
   // };
 
-  const statusValue = searchParams.get('status') || 'all';
+  const statusValue = searchParams.get('enrollmentStatus') || 'all';
+  
   const courseValue = searchParams.get('courseId') || 'all';
   const teacherValue = searchParams.get('teacherId') || 'all';
   const sortColumn = searchParams.get('sortColumn') || '';
-
+//   const enrStatus = ()=> 
+//   { switch (statusValue) {
+//     case 'all':
+//     case '':
+//     case null:
+//     case undefined:
+//       return '';
+//     case 'active':
+//       return 'enrollmentStatus=1';
+//     case 'pending':
+//       return 'enrollmentStatus=2';
+//     default:
+//       return '';
+//   }
+// }
   const checkSortColumnValue = () => {
     switch (sortColumn) {
       case 'all':
@@ -71,8 +82,11 @@ const useStudentsEnrollments = () => {
   const searchValue = searchParams.get('search') || '';
 
   // const creditValue = searchParams.get('credit') || 'all';
-
-  const filters = `isActive=${status[statusValue]},${checkCourseValue},${checkTeacherValue},isCompleted=false,studentName=${searchValue}`;
+  const checkEnrollmentStatusValue =
+  !statusValue || statusValue ==='all'
+  ? 'enrollmentStatus'
+  : `enrollmentStatus=${statusValue}`
+  const filters = `${checkEnrollmentStatusValue},${checkCourseValue},${checkTeacherValue},studentName=${searchValue}`;
   const filterQueries =
     user && user?.roles.includes('AccountantAgent')
       ? `${filters},&isGeneralSearch=true&${checkedSort}`

@@ -44,8 +44,7 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
     teacherId,
     quarterId,
     costIsMonthlyPerClass,
-    isCompleted,
-    isActive,
+    enrollmentStatus,
     studyStartDate,
     studyEndDate,
     createdBy,
@@ -57,8 +56,9 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
   const { data: courses, isLoading: isCoursesLoading } = useCoursesDialog();
 
   const handleSubmit = values => {
-
+    const enrollmentStatusByte = parseInt(values.enrollmentStatus);
     const data = {
+      enrollmentStatus: enrollmentStatusByte,
       id:values.id,
       numberOfClasses: values.numberOfClasses,
       additionalMeetings: values.additionalMeetings,
@@ -71,8 +71,6 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
       teacherId: values.teacherId,
       quarterId: values.quarterId,
       costIsMonthlyPerClass: values.costIsMonthlyPerClass,
-      isCompleted: values.programStatus === 'Completed',
-      isActive: values.studyStatus === 'Active',
       isFullTimeSpecialCost: values.isFullTimeSpecialCost,
       createdBy: values.createdBy,
       updatedBy: values.updatedBy,
@@ -98,6 +96,7 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
           additionalMeetings: additionalMeetings || 0,
           enrollmentDate: enrollmentDate || '',
           enrollmentCost: enrollmentCost || '',
+          enrollmentStatus: enrollmentStatus|| 0,
           year: year || '',
           month: month || '',
           studentId: studentId || '',
@@ -105,14 +104,11 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
           teacherId: teacherId || '',
           quarterId: quarterId || '',
           costIsMonthlyPerClass: costIsMonthlyPerClass,
-          isActive: isActive,
           isFullTimeSpecialCost: isFullTimeSpecialCost,
           studyStartDate: data?.data?.studyStartDate ? new Date(data.data.studyStartDate).toISOString().split('T')[0] : '',
           studyEndDate: data?.data?.studyEndDate ? new Date(data.data.studyEndDate).toISOString().split('T')[0] : '',
           createdBy: createdBy || '',
-          updatedBy: updatedBy || '',
-          studyStatus : isActive ? 'Active' : 'Pending..',
-          programStatus: isCompleted ? 'Completed' : 'In Study'
+          updatedBy: updatedBy || ''
         }}
         validationSchema={enrollStudentSchema}
         onSubmit={handleSubmit}
@@ -189,25 +185,18 @@ const EditStudentEnrollmentForm = ({ enrollmentId, studentName,closeModal }) => 
 
             <FormControl>
               <Select
-                name='studyStatus'
+                type='number'
+                name='enrollmentStatus'
                 label={t('global.studyStatus')}
-                id='inputIsActive'
-                selected={values.studyStatus}
-                disabled={isLoadingStudent}
+                id='inputEnrollmentStatus'
+                selected={values.enrollmentStatus}
               >
-                <SelectOption value='Active' label='Active' />
-                <SelectOption value='Pending..' label='Pending..' />
+                <SelectOption value={1} label={t(`global.active`)} />
+                <SelectOption value={2} label={t(`global.pending`)} />
+                <SelectOption value={3} label={t(`global.completed`)} />
+                <SelectOption value={4} label={t(`global.stopped`)} />
               </Select>
-              <Select
-                name='programStatus'
-                label={t('global.programStatus')}
-                id='inputIsActive'
-                selected={values.programStatus}
-                disabled={isLoadingStudent}
-              >
-                <SelectOption value='Completed' label='Completed' />
-                <SelectOption value='In Study' label='In Study' />
-              </Select>
+              
             </FormControl>
 
             <div className='text-md flex items-center gap-2 font-publicSans font-medium text-dark-secondary-text'>
