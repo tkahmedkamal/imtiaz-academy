@@ -9,18 +9,18 @@ import {
   CountryFilter,
   SortColumn,
   CourseFilter
-} from '../ui';
-import { AddStudent } from '../features/students';
-//import { StudentsAccountantTable } from '../features/students/accountant';
-import { StudentsEnrollmentTable } from '../features/students/enrollment';
-import { StudentsTeacherTable } from '../features/students/teacher';
-import StudentsEnrollmentsTable from '../features/studentsEnrollments/StudentsEnrollmentsTable';
-import StudentsProvider from '../context/StudentContext';
-import { withPage } from '../hocs';
+} from '../ui/index.js';
+import { AddStudent } from '../features/students/index.js';
+import { StudentsAccountantTable } from '../features/students/accountant';
+import { StudentsEnrollmentTable } from '../features/students/enrollment/index.js';
+import { StudentsTeacherTable } from '../features/students/teacher/index.js';
+//import StudentsEnrollmentsTable from '../features/studentsEnrollments/StudentsEnrollmentsTable.jsx';
+import StudentsProvider from '../context/StudentContext.jsx';
+import { withPage } from '../hocs/index.js';
 import CreditFilter from '../ui/CreditFilter.jsx';
-import { useAuthCtx } from '../context/authContext';
+import { useAuthCtx } from '../context/authContext.jsx';
 
-const Student = () => {
+const StudentsTotalFees = () => {
   const navigate = useNavigate();
   const { user } = useAuthCtx();
 
@@ -85,7 +85,7 @@ const Student = () => {
       </Modal>
 
       {user?.roles.includes('AccountantAgent') ? (
-        <StudentsEnrollmentsTable />
+        <StudentsAccountantTable />
       ) : user?.roles.includes('Teacher') ? (
         <StudentsTeacherTable />
       ) : (
@@ -95,4 +95,4 @@ const Student = () => {
   );
 };
 
-export default withPage(Student, 'students.title');
+export default withPage(StudentsTotalFees, 'students.title');

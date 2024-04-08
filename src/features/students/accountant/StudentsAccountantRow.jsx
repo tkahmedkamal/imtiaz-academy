@@ -69,14 +69,14 @@ const StudentsAccountantRow = ({ index, student }) => {
             />
           </Modal.Open>
 
+          <Modal.Window name={`info-student-${id}`} large>
+            <StudentDetails studentId={id} />
+          </Modal.Window>
 
           <Modal.Window name={`add-student-transaction-${id}`}>
             <AddPaymentTransactionForm studentId={id} />
           </Modal.Window>
 
-          <Modal.Window name={`info-student-${id}`} large>
-            <StudentDetails studentId={id} />
-          </Modal.Window>
 
 
         </Modal>

@@ -8,6 +8,9 @@ import { Archive } from '../../assets';
 import { useAuthCtx } from '../../context/authContext';
 import { MdPayment } from 'react-icons/md';
 import AddPaymentTransactionForm from '../students/AddPaymentTransactionForm';
+import { TbInfoSquare } from 'react-icons/tb';
+
+import StudentDetails from '../students/details/accountant/StudentDetails';
 
 const StudentsEnrollmentsRow = ({ index, student }) => {
   const { t } = useTranslation();
@@ -118,9 +121,7 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
               status='danger'
             />
           </Modal.Open> */}
-          {user.roles.includes('EnrollmentAgent') && (
-            <>
-              <Modal.Open opens={`edit-student-${studentEnrollmentId}`}>
+          <Modal.Open opens={`edit-student-${studentEnrollmentId}`}>
                 <ActionBtn
                   title={t('global.edit')}
                   icon={<BiEdit />}
@@ -133,8 +134,11 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
                   studentName={studentName}
                 />
               </Modal.Window>
+          {/* {user.roles.includes('EnrollmentAgent') && (
+            <>
+            
             </>
-          )}
+          )} */}
 
           {user.roles.includes('AccountantAgent') && (
             <>
@@ -153,7 +157,13 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
               </Modal.Window>
             </>
           )}
-
+  <Modal.Open opens={`info-student-${studentId}`}>
+            <ActionBtn
+              title={t('global.info')}
+              icon={<TbInfoSquare />}
+              status='primary'
+            />
+          </Modal.Open>
           <Modal.Window name={`archive-student-${studentId}`}>
             <Confirm
               label={t('archive.label')}
@@ -164,6 +174,11 @@ const StudentsEnrollmentsRow = ({ index, student }) => {
               handleConfirm={() => mutate(studentId)}
             />
           </Modal.Window>
+
+          <Modal.Window name={`info-student-${studentId}`} large>
+            <StudentDetails studentId={studentId} />
+          </Modal.Window>
+
         </Modal>
       </Table.Td>
     </Table.Tr>

@@ -261,7 +261,8 @@ const EditStudentForm = ({ studentId, closeModal }) => {
                 <SelectOption value={3} label='Friends' />
                 <SelectOption value={4} label='Whatsapp' />
                 <SelectOption value={5} label='Telegram' />
-                <SelectOption value={6} label='Other' />
+                <SelectOption value={6} label='Google' />
+                <SelectOption value={7} label='Other' />
               </Select>
             </FormControl>
 

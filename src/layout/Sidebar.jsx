@@ -54,17 +54,19 @@ const Sidebar = () => {
     {
       label: t('sidebar.student-Fees'), // الرسوم الدراسية
       icon: <HiOutlineUsers />,
-      link: '/dashboard/students-enrollments',
+      link: '/dashboard/students',
       show:
         user?.roles.includes('AccountantAgent')
     },
     {
       label: t('sidebar.total-student-Fees'), // الرسوم الدراسية
       icon: <HiOutlineUsers />,
-      link: '/dashboard/students',
+      link: '/dashboard/total-student-Fees',
       show:
         user?.roles.includes('AccountantAgent')
     },
+  
+    
     {
       label: t('sidebar.teachers'),
       icon: <HiOutlineUserGroup />,
