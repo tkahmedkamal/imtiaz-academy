@@ -3,9 +3,6 @@
 
 Imtiaz Academy is an Online Islamic Studies Academy in Malaysia that offers Systematic & Comprehensive Al-Quran, Arabic and Tahfiz Al-Quran classes
 
-![Logo](https://mrkzgulfup.com/do.php?img=22882)
-
-
 ## Authors
 
 - Backend: [@Ahmed Mohamed](https://www.facebook.com/ahmed.m.abdelhady.7)
@@ -57,12 +54,6 @@ Start the server
 To run this project, you will need to add the following environment variables to your .env file
 
 `VITE_BASE_URL`
-
-
-## Screenshots
-
-![App Screenshot](https://mrkzgulfup.com/do.php?img=22880)
-
 
 ## Used By
 
